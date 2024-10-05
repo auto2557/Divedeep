@@ -1,35 +1,35 @@
 ﻿using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class Movement : MonoBehaviour
 {
-    public float moveSpeed = 5f;        // ความเร็วในการเคลื่อนที่
-    public float jumpForce = 7f;        // แรงกระโดด
-    public float dashForce = 10f;       // แรงสำหรับ dash
-    public float dashCooldown = 0.1f;     // เวลารอในการ dash
-    private float dashCooldownTimer;
+    public float moveSpeed = 5f;     
+    public float jumpForce = 7f;
 
     private Rigidbody2D rb;
+    private Animator animator;
     private bool isGrounded;
     private bool canDoubleJump;
-    private bool canDash;
-    
-    private bool facingRight = true;    // เช็คทิศทางการหันหน้าของตัวละคร
-    private SpriteRenderer spriteRenderer; // อ้างอิงไปยัง SpriteRenderer ของตัวละคร
+    private bool facingRight = true;
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>(); // โหลด SpriteRenderer จาก GameObject
-        dashCooldownTimer = 0f;
+        animator = GetComponent<Animator>(); 
+        spriteRenderer = GetComponent<SpriteRenderer>(); 
     }
 
     void Update()
     {
-        // การเคลื่อนไหวซ้ายขวา
+        movement();
+        AnimatePlayer(); 
+    }
+
+    void movement()
+    {
         float moveInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
 
-        // เช็คการ flip ภาพตามทิศทางการเคลื่อนที่
         if (moveInput > 0 && !facingRight)
         {
             Flip();
@@ -39,13 +39,11 @@ public class PlayerMovement : MonoBehaviour
             Flip();
         }
 
-        // เช็คว่าผู้เล่นอยู่บนพื้นหรือไม่
         if (isGrounded)
         {
             canDoubleJump = true;
         }
 
-        // กระโดด
         if (Input.GetKeyDown(KeyCode.K))
         {
             if (isGrounded)
@@ -58,40 +56,35 @@ public class PlayerMovement : MonoBehaviour
                 canDoubleJump = false;
             }
         }
-
-        // Dash
-        dashCooldownTimer -= Time.deltaTime; // ลดเวลาคูลดาวน์
-
-        if (Input.GetKeyDown(KeyCode.L) && dashCooldownTimer <= 0)
-        {
-            Dash();
-        }
     }
 
-    // ฟังก์ชันการกระโดด
     void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        animator.SetBool("isJumping", true); 
     }
 
-    // ฟังก์ชัน Dash ตามทิศทางที่หันหน้า
-    void Dash()
+    void AnimatePlayer()
     {
-        float dashDirection = facingRight ? 1f : -1f; // ถ้าหันขวา dash ไปทางขวา ถ้าหันซ้าย dash ไปทางซ้าย
-        rb.AddForce(new Vector2(dashDirection * dashForce, 0), ForceMode2D.Impulse);
-        dashCooldownTimer = dashCooldown; // รีเซ็ตคูลดาวน์หลังจาก dash
+      
+        float moveInput = Input.GetAxis("Horizontal");
+        animator.SetBool("isRunning", Mathf.Abs(moveInput) > 0);
+
+      
+        if (isGrounded)
+        {
+            animator.SetBool("isJumping", false); 
+        }
     }
 
-    // ฟังก์ชันสำหรับการ flip ตัวละคร
     void Flip()
     {
-        facingRight = !facingRight; // เปลี่ยนสถานะการหันหน้าของตัวละคร
+        facingRight = !facingRight; 
         Vector3 scaler = transform.localScale;
-        scaler.x *= -1; // ทำการ flip ในแกน X
-        transform.localScale = scaler; // อัปเดตขนาดของตัวละคร
+        scaler.x *= -1; 
+        transform.localScale = scaler;
     }
 
-    // เช็คการชนพื้น
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
@@ -100,7 +93,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // เมื่อออกจากการชนพื้น
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
