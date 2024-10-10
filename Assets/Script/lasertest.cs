@@ -23,6 +23,9 @@ public class LaserController : MonoBehaviour
     // เก็บทิศทางที่เลเซอร์จะยิง
     private Vector2 directionToTarget;
 
+    // ระยะเพิ่มหลังจากชนเป้าหมาย
+    public float extraDistanceAfterHit = 20f;
+
     private void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
@@ -56,8 +59,8 @@ public class LaserController : MonoBehaviour
         // คำนวณทิศทางจากเลเซอร์ไปยังเป้าหมายครั้งเดียวตอนเริ่มการยิง
         directionToTarget = (target.position - transform.position).normalized;
 
-        // คำนวณระยะทางจากจุดเริ่มต้นไปยังเป้าหมาย
-        float distanceToTarget = Vector2.Distance(transform.position, target.position);
+        // คำนวณระยะทางจากจุดเริ่มต้นไปยังเป้าหมาย และเพิ่มระยะพิเศษ
+        float distanceToTarget = Vector2.Distance(transform.position, target.position) + extraDistanceAfterHit;
 
         // เริ่มต้นความยาวเลเซอร์ที่ 0 ก่อน
         currentLaserLength = 0f;
@@ -89,7 +92,7 @@ public class LaserController : MonoBehaviour
 
             if (hit)
             {
-                // หากชนวัตถุ ให้สิ้นสุดเลเซอร์ที่จุดที่ชน
+                // หากชนวัตถุ ให้สิ้นสุดเลเซอร์ที่จุดที่ชน แต่ไม่หยุดการยิง
                 lineRenderer.SetPosition(1, hit.point);
 
                 // ตรวจสอบว่าชนกับศัตรูหรือไม่
@@ -98,11 +101,6 @@ public class LaserController : MonoBehaviour
                     // ทำลายศัตรู
                     Destroy(hit.collider.gameObject);
                 }
-
-                // ลบเลเซอร์เมื่อชนวัตถุหรือยิงเสร็จ
-                lineRenderer.enabled = false;
-                isLaserShooting = false;
-                yield break;
             }
 
             yield return null; // รอ 1 เฟรม ก่อนขยายเลเซอร์ต่อไป
