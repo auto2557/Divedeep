@@ -1481,13 +1481,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5edbde2aa2de454b9ca653ac5a27b67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserPrefab: {fileID: 7027626269243466405, guid: 6aea5976974e22e4ea4f7c88b4b9ffdd, type: 3}
+  laserPrefab: {fileID: 6514172680493749173, guid: de0e4ffdc270195469c018fe90285205, type: 3}
   player: {fileID: 2101576542}
-  minYDistance: 8
-  maxYDistance: 10
   minXDistance: 2
   maxXDistance: 5
-  laserLifetime: 4
+  yDistance: 2
+  minSpawnInterval: 1
+  maxSpawnInterval: 3
+  straightLineCount: 10
+  spreadCount: 5
+  rapidFireCount: 25
+  straightLineInterval: 2
+  spreadInterval: 2
+  rapidFireInterval: 1
 --- !u!1 &1990494204
 GameObject:
   m_ObjectHideFlags: 0
