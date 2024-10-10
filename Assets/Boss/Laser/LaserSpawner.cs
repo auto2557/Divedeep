@@ -29,6 +29,8 @@ public class LaserSpawner : MonoBehaviour
 
     void Start()
     {
+        Camera.main.orthographicSize = 7;
+
         // เริ่มต้นกระบวนการ spawn
         ScheduleNextSpawn();
     }

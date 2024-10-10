@@ -1476,7 +1476,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1631010558}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5edbde2aa2de454b9ca653ac5a27b67, type: 3}
   m_Name: 
@@ -1485,7 +1485,7 @@ MonoBehaviour:
   player: {fileID: 2101576542}
   minXDistance: 2
   maxXDistance: 5
-  yDistance: 2
+  yDistance: 7
   minSpawnInterval: 1
   maxSpawnInterval: 3
   straightLineCount: 10
