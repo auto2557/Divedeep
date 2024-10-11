@@ -34,7 +34,6 @@ public class LaserController : MonoBehaviour
 
     void Update()
     {
-        // ยิงเลเซอร์เฉพาะเมื่อยังไม่ได้ยิง
         if (!isLaserShooting)
         {
             GameObject player = GameObject.FindWithTag("Player");
@@ -42,33 +41,28 @@ public class LaserController : MonoBehaviour
             {
                 target = player.transform;
 
-                // ยิงเลเซอร์ทันทีเมื่อเริ่มต้น
                 ShootLaser();
-            }
-            else
-            {
-                Debug.LogError("ไม่พบ GameObject ที่มีแท็ก 'Player'");
             }
         }
     }
 
     private void ShootLaser()
     {
-        if (target == null) return; // ตรวจสอบว่ามี target อยู่จริงหรือไม่
+        if (target == null) return; 
 
-        // คำนวณทิศทางจากเลเซอร์ไปยังเป้าหมายครั้งเดียวตอนเริ่มการยิง
+        
         directionToTarget = (target.position - transform.position).normalized;
 
-        // คำนวณระยะทางจากจุดเริ่มต้นไปยังเป้าหมาย และเพิ่มระยะพิเศษ
+     
         float distanceToTarget = Vector2.Distance(transform.position, target.position) + extraDistanceAfterHit;
 
-        // เริ่มต้นความยาวเลเซอร์ที่ 0 ก่อน
+      
         currentLaserLength = 0f;
 
-        // ตั้งสถานะว่าเลเซอร์กำลังยิง
+       
         isLaserShooting = true;
 
-        // ยิงเลเซอร์ไปยังเป้าหมาย
+        
         StartCoroutine(ExpandLaser(distanceToTarget));
     }
 
@@ -76,37 +70,39 @@ public class LaserController : MonoBehaviour
     {
         while (currentLaserLength < distanceToTarget)
         {
-            // เพิ่มความยาวของเลเซอร์ทีละน้อย
+     
             currentLaserLength += laserGrowthSpeed * Time.deltaTime;
-            currentLaserLength = Mathf.Min(currentLaserLength, distanceToTarget); // จำกัดความยาวไม่ให้เกินระยะถึงเป้าหมาย
+            currentLaserLength = Mathf.Min(currentLaserLength, distanceToTarget); 
 
-            // ตั้งตำแหน่งจุดเริ่มต้นของเลเซอร์
+          
             lineRenderer.SetPosition(0, transform.position);
 
-            // คำนวณตำแหน่งสิ้นสุดของเลเซอร์ตามความยาวปัจจุบัน
+         
             Vector2 laserEndPoint = (Vector2)transform.position + directionToTarget * currentLaserLength;
             lineRenderer.SetPosition(1, laserEndPoint);
 
-            // ยิง Raycast ในทิศทางของเป้าหมายตามความยาวปัจจุบัน
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToTarget, currentLaserLength);
+           
+            RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, directionToTarget, currentLaserLength);
 
-            if (hit)
+            foreach (var hit in hits)
             {
-                // หากชนวัตถุ ให้สิ้นสุดเลเซอร์ที่จุดที่ชน แต่ไม่หยุดการยิง
-                lineRenderer.SetPosition(1, hit.point);
-
-                // ตรวจสอบว่าชนกับศัตรูหรือไม่
-                if (hit.collider.CompareTag("Enemy"))
+                if (hit.collider.CompareTag("Player"))
                 {
-                    // ทำลายศัตรู
-                    Destroy(hit.collider.gameObject);
+                  
+                    lineRenderer.SetPosition(1, hit.point);
+                    currentLaserLength = Vector2.Distance(transform.position, hit.point);
+                    break;
+                }
+                else if (hit.collider.CompareTag("Block"))
+                {
+                    
+                    continue;
                 }
             }
 
-            yield return null; // รอ 1 เฟรม ก่อนขยายเลเซอร์ต่อไป
+            yield return null; 
         }
 
-        // รอ 2 วินาทีก่อนลบเลเซอร์
         yield return new WaitForSeconds(2f);
         lineRenderer.enabled = false;
         isLaserShooting = false;
