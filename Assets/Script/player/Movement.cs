@@ -19,7 +19,7 @@ public class Movement : MonoBehaviour
     private bool canDash = true;
     private bool isDashing;
     public float dashingPower = 24f;
-    private float dashingTime = 0.2f;
+    private float dashingTime = 0.4f;
     public float dashingCooldown = 1f;
     [SerializeField] private TrailRenderer tr;
 
@@ -105,6 +105,17 @@ public class Movement : MonoBehaviour
         if (isGrounded)
         {
             animator.SetBool("isJumping", false); 
+        }
+
+        if (isDashing)
+        {
+        animator.SetBool("isDash", true);  
+        gameObject.transform.tag = "dashMode";
+        }
+        else
+        {
+        animator.SetBool("isDash", false); 
+        gameObject.transform.tag = "Player";
         }
     }
 
