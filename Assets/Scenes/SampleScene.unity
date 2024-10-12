@@ -1486,7 +1486,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1631010558}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5edbde2aa2de454b9ca653ac5a27b67, type: 3}
   m_Name: 
@@ -1647,6 +1647,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3304825898537332434, guid: 5c7e0679c1d93e54f970e991a602c596, type: 3}
+      propertyPath: dashingPower
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3304825898537332434, guid: 5c7e0679c1d93e54f970e991a602c596, type: 3}
       propertyPath: hitBlockLeft
       value: 
