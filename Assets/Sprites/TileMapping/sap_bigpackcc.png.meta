@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sap_bigpackcc_0
+      name: cfloor_left_corner
       rect:
         serializedVersion: 2
         x: 32
@@ -111,14 +111,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8fb944f6788fe154d89fdab364c0616d
-      internalID: -389541056
+      spriteID: cde663f3163b4b74a830f9c52fefe718
+      internalID: -1446272267
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sap_bigpackcc_1
+      name: cfloor_cen
       rect:
         serializedVersion: 2
         x: 96
@@ -132,14 +132,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1708ffe7c43cf374e91b13d39e9ba6b1
-      internalID: -1832519890
+      spriteID: 34ee1a690a2270e4e9d7bfb1513b5544
+      internalID: 918481236
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sap_bigpackcc_2
+      name: cfloor_right_corne
       rect:
         serializedVersion: 2
         x: 160
@@ -153,14 +153,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 854223a20344aaf4ea5b95a5a30a28ec
-      internalID: -516074636
+      spriteID: b904c86efc480d6439724fae378bc0bf
+      internalID: 241809940
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sap_bigpackcc_3
+      name: ccellar_left_corner
       rect:
         serializedVersion: 2
         x: 224
@@ -174,14 +174,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04fdb6ccb19030c41a841eb5f1d8818c
-      internalID: -1298791495
+      spriteID: 99b4a02c339804640a22278ff451f2b3
+      internalID: 2133231497
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sap_bigpackcc_4
+      name: ccellar_cen
       rect:
         serializedVersion: 2
         x: 288
@@ -195,14 +195,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7b7a83afcde7e74694255dfe890a1ac
-      internalID: -689431450
+      spriteID: 0520190805885a74d8aad69f0a299e8b
+      internalID: -1054165431
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sap_bigpackcc_5
+      name: ccellar_right_corner
       rect:
         serializedVersion: 2
         x: 352
@@ -216,14 +216,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 530df6ffc9dab224ca041591874f175e
-      internalID: 1905496665
+      spriteID: d71b41d1067090d409b82f5aab4a8cbc
+      internalID: 2065611211
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sap_bigpackcc_6
+      name: cground_left_corner
       rect:
         serializedVersion: 2
         x: 32
@@ -237,14 +237,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29a1586f4f1fd124e982de2176bdbe6b
-      internalID: -481727777
+      spriteID: 036edb483f557d8459c130f4f58cb090
+      internalID: -1430080427
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sap_bigpackcc_7
+      name: cground_cen
       rect:
         serializedVersion: 2
         x: 96
@@ -258,14 +258,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ddd84f7549e2b994c8d957751ae1b695
-      internalID: 2071969952
+      spriteID: 98749f170c4cb034ab1db3d1ae3cc83e
+      internalID: 678358245
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sap_bigpackcc_8
+      name: cground_mergetop
       rect:
         serializedVersion: 2
         x: 160
@@ -279,14 +279,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7371add3b50d9444f84f09a949114720
-      internalID: -1794887993
+      spriteID: 395ff016e1ea173448c4e57d7c37a179
+      internalID: 2108349658
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sap_bigpackcc_9
+      name: cwall_left_corner
       rect:
         serializedVersion: 2
         x: 224
@@ -300,14 +300,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd8faf9541b50b141908737c8971587c
-      internalID: 372800026
+      spriteID: 1b8a75f12bd37ec4eab52419a0cbeecb
+      internalID: -607683773
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sap_bigpackcc_10
+      name: cwall_cen
       rect:
         serializedVersion: 2
         x: 288
@@ -321,14 +321,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6527987a2b39dbe42848c7f2f13447d3
-      internalID: 311885689
+      spriteID: 67a42e597df1a7f45a8abbc1ffd75e1b
+      internalID: -61273713
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sap_bigpackcc_11
+      name: cewall_right_corner
       rect:
         serializedVersion: 2
         x: 352
@@ -342,14 +342,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20969cd3a83dbf646bf2ab171334f86c
-      internalID: -348589409
+      spriteID: 3e49b06e66986de40aa11ca90c91d82b
+      internalID: -1824430295
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sap_bigpackcc_12
+      name: cfade_top
       rect:
         serializedVersion: 2
         x: 32
@@ -363,14 +363,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b94e9525256b9b49a2d98918e773940
-      internalID: -2089373733
+      spriteID: fa89da082c82643419a8af31e2c8d0ed
+      internalID: -492832990
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sap_bigpackcc_13
+      name: cfade_bott
       rect:
         serializedVersion: 2
         x: 96
@@ -384,14 +384,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2aa022a07cf4c2d44bcaa6912af4a185
-      internalID: 88693291
+      spriteID: 669d920a6bbe6484ca7cd76d650b97e2
+      internalID: -2095885486
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sap_bigpackcc_14
+      name: cground_left_cf_merge
       rect:
         serializedVersion: 2
         x: 160
@@ -405,18 +405,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba1203bb07dd21d4288b19e53de42cef
-      internalID: 1188165838
+      spriteID: 6621890cbadbba5419f12d07437d80c2
+      internalID: 915371428
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sap_bigpackcc_15
+      name: cfloor_left_cf_merge
       rect:
         serializedVersion: 2
         x: 224
-        y: 224
+        y: 225
         width: 32
         height: 32
       alignment: 0
@@ -426,14 +426,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cff15a394f36e0a48b509953f55110ea
-      internalID: -51861313
+      spriteID: 353e4d40528ffc344886a7dc73f7889e
+      internalID: -1600850655
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sap_bigpackcc_16
+      name: cwall_light_off
       rect:
         serializedVersion: 2
         x: 288
@@ -447,14 +447,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e01bb6dd1ae1a1498f9d34a934c7baa
-      internalID: 1058853852
+      spriteID: 32f9c25c7273dc347a4a793838ca3165
+      internalID: -844556136
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sap_bigpackcc_17
+      name: cwall_light_on
       rect:
         serializedVersion: 2
         x: 352
@@ -468,14 +468,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f78077410abfcb84ab37b1ff4e3b1776
-      internalID: 866942925
+      spriteID: 029fdfaaef063694e9013e8c51aeaaf4
+      internalID: 29110637
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sap_bigpackcc_18
+      name: db_mpillar
       rect:
         serializedVersion: 2
         x: 32
@@ -489,14 +489,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bbdd894d46a869e4180df6259a4f9f08
-      internalID: 393551087
+      spriteID: 7e95585e07a5fe542a2b124b52194f05
+      internalID: -1043511380
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sap_bigpackcc_19
+      name: bridge_mpillar
       rect:
         serializedVersion: 2
         x: 96
@@ -510,14 +510,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cee0ef4446e624c41b954d27e1b63b12
-      internalID: 297033195
+      spriteID: f54edd80671904445a6ce9b1be8217af
+      internalID: -209746913
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sap_bigpackcc_20
+      name: singularbase_mpillar
       rect:
         serializedVersion: 2
         x: 160
@@ -531,14 +531,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87ef9393ea3a61a4a92539721051c53f
-      internalID: -1617567659
+      spriteID: 02cba96eb9c46a148be4d8ff4bd520cf
+      internalID: 1772408623
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sap_bigpackcc_21
+      name: catwalk_left_corner
       rect:
         serializedVersion: 2
         x: 224
@@ -552,14 +552,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6369a817d3b33945b65fdf27b9efbbc
-      internalID: -32162429
+      spriteID: 5e1b916c35bd74b42beef6b63ca7871d
+      internalID: -1009484325
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sap_bigpackcc_22
+      name: catwalk_cen
       rect:
         serializedVersion: 2
         x: 288
@@ -573,14 +573,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32db4080cb1171341978f15e5aa30b91
-      internalID: -529837197
+      spriteID: 7f4fdd7756d0ce247a1ccfd595672ac9
+      internalID: -1682919772
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sap_bigpackcc_23
+      name: fence_left
       rect:
         serializedVersion: 2
         x: 352
@@ -594,14 +594,56 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ffbf80a969d161340960f89ebf2a3c8e
-      internalID: -1328572282
+      spriteID: b057abeb628a8c5459fcb41903748390
+      internalID: -2142727888
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sap_bigpackcc_24
+      name: ccellar_right_merge
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fc7c9ea9e7ba4645901e14ca19e0946
+      internalID: -1312714820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cground_right_corner
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bd28765367adb044a956e852defb430
+      internalID: 1777849003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dbbase_mpillar
       rect:
         serializedVersion: 2
         x: 160
@@ -615,14 +657,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62f31e77ffa44d344a2dd4909de4caa1
-      internalID: -1925032964
+      spriteID: 529a30aa45b2f9349b7ad227ab4e824b
+      internalID: -709168558
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sap_bigpackcc_25
+      name: singular_mpillar
       rect:
         serializedVersion: 2
         x: 224
@@ -636,14 +678,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a7c83366cc9949419ef2da9167bd35c
-      internalID: 1277557123
+      spriteID: 634d76ddf117e554ca460a60a2e8e799
+      internalID: -1086691673
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sap_bigpackcc_26
+      name: catwalk_right_corner
       rect:
         serializedVersion: 2
         x: 288
@@ -657,14 +699,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3510b9d05c01a64593bd5f5a6b9233b
-      internalID: 2121378437
+      spriteID: 8215b340db5c2d04fb22fbb9e9193d87
+      internalID: 12988456
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sap_bigpackcc_27
+      name: fence_right
       rect:
         serializedVersion: 2
         x: 352
@@ -678,8 +720,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bee09fae50e143146b63b50f87edd0c5
-      internalID: 853199036
+      spriteID: 91fe560490e6d7f44b92c247cf4b456e
+      internalID: 3758388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cwall_dirforward
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 933560b9d9ba14644902f53669d20441
+      internalID: -1583588598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cwall_dirdownward
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 764aba6861aee0040bf1a22c0ac6374c
+      internalID: 1657246853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cwall_dirupward
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2760f371b4020de41955ccac7a48d4e2
+      internalID: 1629393995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cfloor_dirforward
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4db172b4b757dfd47b15c464f3afe791
+      internalID: 423790987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cfloor_dropmark
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 654cda0e158face45beb223955805009
+      internalID: -1463007445
       vertices: []
       indices: 
       edges: []
@@ -695,34 +842,42 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      sap_bigpackcc_0: -389541056
-      sap_bigpackcc_1: -1832519890
-      sap_bigpackcc_10: 311885689
-      sap_bigpackcc_11: -348589409
-      sap_bigpackcc_12: -2089373733
-      sap_bigpackcc_13: 88693291
-      sap_bigpackcc_14: 1188165838
-      sap_bigpackcc_15: -51861313
-      sap_bigpackcc_16: 1058853852
-      sap_bigpackcc_17: 866942925
-      sap_bigpackcc_18: 393551087
-      sap_bigpackcc_19: 297033195
-      sap_bigpackcc_2: -516074636
-      sap_bigpackcc_20: -1617567659
-      sap_bigpackcc_21: -32162429
-      sap_bigpackcc_22: -529837197
-      sap_bigpackcc_23: -1328572282
-      sap_bigpackcc_24: -1925032964
-      sap_bigpackcc_25: 1277557123
-      sap_bigpackcc_26: 2121378437
-      sap_bigpackcc_27: 853199036
-      sap_bigpackcc_3: -1298791495
-      sap_bigpackcc_4: -689431450
-      sap_bigpackcc_5: 1905496665
-      sap_bigpackcc_6: -481727777
-      sap_bigpackcc_7: 2071969952
-      sap_bigpackcc_8: -1794887993
-      sap_bigpackcc_9: 372800026
+      bridge_mpillar: -209746913
+      catwalk_cen: -1682919772
+      catwalk_left_corner: -1009484325
+      catwalk_right_corner: 12988456
+      ccellar_cen: -1054165431
+      ccellar_left_corner: 2133231497
+      ccellar_right_corner: 2065611211
+      ccellar_right_merge: -1312714820
+      cewall_right_corner: -1824430295
+      cfade_bott: -2095885486
+      cfade_top: -492832990
+      cfloor_cen: 918481236
+      cfloor_dirforward: 423790987
+      cfloor_dropmark: -1463007445
+      cfloor_left_cf_merge: -1600850655
+      cfloor_left_corner: -1446272267
+      cfloor_right_corne: 241809940
+      cground_cen: 678358245
+      cground_left_cf_merge: 915371428
+      cground_left_corner: -1430080427
+      cground_mergetop: 2108349658
+      cground_right_corner: 1777849003
+      cwall_cen: -61273713
+      cwall_dirdownward: 1657246853
+      cwall_dirforward: -1583588598
+      cwall_dirupward: 1629393995
+      cwall_left_corner: -607683773
+      cwall_light_off: -844556136
+      cwall_light_on: 29110637
+      db_mpillar: -1043511380
+      dbbase_mpillar: -709168558
+      fence_left: -2142727888
+      fence_right: 3758388
+      sap_bigpackcc_12: -1881440596
+      singular_mpillar: -1086691673
+      singularbase_mpillar: 1772408623
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
