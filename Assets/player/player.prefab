@@ -153,7 +153,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: d9dc89bb9ed7dcb4ab697b845afada49, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -180,6 +180,11 @@ MonoBehaviour:
   jumpForce: 4
   hitBlockRight: {fileID: 7589719281005335380}
   hitBlockLeft: {fileID: 5138478220898826809}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  groundCheck: {fileID: 0}
+  groundCheckRadius: 0.2
   dashingPower: 15
   dashingCooldown: 0.6
   tr: {fileID: -8459811265688139056}

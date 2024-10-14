@@ -7,6 +7,9 @@ public class Movement : MonoBehaviour
     public float jumpForce = 7f;
     public GameObject hitBlockRight; 
     public GameObject hitBlockLeft;  
+    public LayerMask groundLayer; // เลเยอร์สำหรับตรวจสอบพื้น
+    public Transform groundCheck;  // ตำแหน่งจุดตรวจสอบพื้น
+    public float groundCheckRadius = 0.2f;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -25,9 +28,9 @@ public class Movement : MonoBehaviour
 
     // Attack combo
     private int attackCount = 0; 
-    private float comboResetTime = 1.5f; // เวลาที่คอมโบจะรีเซ็ต
+    private float comboResetTime = 1.5f; 
     private float lastAttackTime;
-    private bool isAttacking = false; // ตรวจสอบว่าอนิเมชั่นโจมตีกำลังเล่นอยู่หรือไม่
+    private bool isAttacking = false;
 
     void Start()
     {
@@ -41,19 +44,20 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        if (isDashing)
+        if (isDashing || isAttacking)
         {
             return;
         }
+        CheckGround(); // เพิ่มฟังก์ชันตรวจสอบพื้น
         movement();
         AnimatePlayer();
         UpdateHitBlockPosition();
-        HandleAttack(); // เพิ่มการตรวจจับการโจมตี
+        HandleAttack(); 
     }
 
     private void FixedUpdate()
     {
-        if (isDashing)
+        if (isDashing || isAttacking)
         {
             return;
         }
@@ -116,13 +120,13 @@ public class Movement : MonoBehaviour
 
         if (isDashing)
         {
-        animator.SetBool("isDash", true);  
-        gameObject.transform.tag = "dashMode";
+            animator.SetBool("isDash", true);  
+            gameObject.transform.tag = "dashMode";
         }
         else
         {
-        animator.SetBool("isDash", false); 
-        gameObject.transform.tag = "Player";
+            animator.SetBool("isDash", false); 
+            gameObject.transform.tag = "Player";
         }
     }
 
@@ -148,60 +152,53 @@ public class Movement : MonoBehaviour
         }
     }
 
-   private void HandleAttack()
-{
-    // ตรวจสอบว่าอนิเมชั่นโจมตีเสร็จหรือยัง
-    AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-
-    if (isAttacking && stateInfo.normalizedTime < 1f)
+    private void HandleAttack()
     {
-        // หากอนิเมชั่นยังไม่จบ ยังไม่อนุญาตให้โจมตีครั้งต่อไป
-        return;
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+        if (isAttacking && stateInfo.normalizedTime < 1f)
+        {
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.J) && !isAttacking)
+        {
+            if (Time.time - lastAttackTime > comboResetTime)
+            {
+                attackCount = 0;
+            }
+
+            attackCount++; 
+            lastAttackTime = Time.time;
+
+            if (attackCount > 4)
+            {
+                attackCount = 1;
+            }
+
+            if (!isGrounded)
+            {
+                PlayJumpAttack();
+            }
+            else
+            {
+                PlayAttackAnimation(attackCount); 
+            }
+        }
     }
 
-    if (Input.GetKeyDown(KeyCode.J) && !isAttacking)
+    private void PlayJumpAttack()
     {
-        if (Time.time - lastAttackTime > comboResetTime)
-        {
-            // รีเซ็ตคอมโบถ้ากดไม่ต่อเนื่อง
-            attackCount = 0;
-        }
+        isAttacking = true; 
+        animator.Play("JumpAttack"); 
 
-        attackCount++; 
-        lastAttackTime = Time.time;
-
-        // จำกัดคอมโบที่ 4 ครั้ง
-        if (attackCount > 4)
-        {
-            attackCount = 1;
-        }
-
-        // Check if the player is in the air and perform jump attack if so
-        if (!isGrounded)
-        {
-            PlayJumpAttack();
-        }
-        else
-        {
-            PlayAttackAnimation(attackCount); 
-        }
+        StartCoroutine(ResetAttackState(animator.GetCurrentAnimatorStateInfo(0).length));
     }
-}
-
-private void PlayJumpAttack()
-{
-    isAttacking = true; // ระบุว่ากำลังโจมตีอยู่
-    animator.Play("JumpAttack"); // Play the jump attack animation
-
-    // Reset the attack state after the animation duration
-    StartCoroutine(ResetAttackState(animator.GetCurrentAnimatorStateInfo(0).length));
-}
 
     private void PlayAttackAnimation(int attackStep)
     {
-        isAttacking = true; // ระบุว่ากำลังโจมตีอยู่
+        isAttacking = true; 
 
-        // กำหนดการเล่นอนิเมชั่นตามคอมโบ
         switch (attackStep)
         {
             case 1:
@@ -218,7 +215,6 @@ private void PlayJumpAttack()
                 break;
         }
 
-        // รีเซ็ตสถานะการโจมตีหลังจากอนิเมชั่นเสร็จ
         StartCoroutine(ResetAttackState(animator.GetCurrentAnimatorStateInfo(0).length));
     }
 
@@ -228,20 +224,9 @@ private void PlayJumpAttack()
         isAttacking = false;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void CheckGround()
     {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = true;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = false;
-        }
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
     }
 
     IEnumerator Dash()
@@ -265,4 +250,5 @@ private void PlayJumpAttack()
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }
+
 }
