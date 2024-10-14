@@ -1,0 +1,1016 @@
+fileFormatVersion: 2
+guid: 134e563d5c0ae4a4483c164b95e6a1c5
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_0
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 394
+        width: 51
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 449e9d1ca87f4cc44ac27ac7022d1851
+      internalID: 1870135930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_1
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 394
+        width: 51
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a01ff8cc45aecc4db2abb6ef9204619
+      internalID: -1161384817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_2
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 394
+        width: 50
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e68794fea1280c9418922a2f21950db9
+      internalID: -2000930197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_3
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 394
+        width: 48
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98a0cb274cb8d254d8afc5df3b92b87c
+      internalID: -960604029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_4
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 303
+        width: 45
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34170baca3efb6d4c84362f721f2d06e
+      internalID: -1505865437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_5
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 304
+        width: 47
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11b64925e6939a1429e66d8139152de8
+      internalID: 988658386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_6
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 303
+        width: 51
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31d1e53270a1a8246aa161c8a59119fa
+      internalID: 885506116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_7
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 303
+        width: 47
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5587dd5752c7b764088460903408e547
+      internalID: -1889518889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_8
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 305
+        width: 47
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26ee978223c75d14a8a4e7e5110b7b97
+      internalID: 661024811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_9
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 303
+        width: 50
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 055eb063fde66e3429c0e32a909b6a71
+      internalID: 192503252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_10
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 208
+        width: 29
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c144379891208e41ae45b01cde1712c
+      internalID: -1200607423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_11
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 206
+        width: 31
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a7f3c91645146d47999c5467b585288
+      internalID: 1371587182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_12
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 205
+        width: 40
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2c7777893c625f4dba8511d99cfda42
+      internalID: 1004606458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_13
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 211
+        width: 48
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6be2504d64471684a9c7d298b5d64485
+      internalID: -1641128255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_14
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 211
+        width: 49
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dea4ebedf3719e348b2e6123915ffe2f
+      internalID: -1866251049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_15
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 208
+        width: 46
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f21ad13c79f1b75419abb5f6f6c24d73
+      internalID: -1399016418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_16
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 119
+        width: 33
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: facc97f7bd18bde44aadb84179f332fc
+      internalID: 2021316699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_17
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 120
+        width: 36
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70b637e2b28716d46a4b34b900535e77
+      internalID: -536531810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_18
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 125
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47b1697f9057b8d40be1d55cc00ad2e7
+      internalID: 514055273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_19
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 119
+        width: 34
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12c22e0d0bf458740ad45c1008b2e74a
+      internalID: 1447279877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_20
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 120
+        width: 37
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63aa4dd1d0a356244871ec39913d2e7b
+      internalID: -2145930386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_21
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 125
+        width: 62
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a93b94ea96924bc42a75d61eb5950f50
+      internalID: 1321061218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_22
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 14
+        width: 48
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1606b1bd94cd2e243a9661fcb688b380
+      internalID: -376233760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_23
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 14
+        width: 43
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1166043e1505b594e80d8702bc7e905a
+      internalID: -981661151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_24
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 14
+        width: 76
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d06e19f75fc6aa943b657adc12000335
+      internalID: -2038968398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_25
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 14
+        width: 69
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a0a72784d0bd204a87ec538dcab19dc
+      internalID: 1824731222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_26
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 15
+        width: 65
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bd48f8dae9e0514b939efa9ed2e158f
+      internalID: 634501226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_27
+      rect:
+        serializedVersion: 2
+        x: 673
+        y: 15
+        width: 39
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc112e763c1319c4eb14c5bd0734d4a6
+      internalID: 558744266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_28
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 14
+        width: 46
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eadfeac8945fa2742ba4947679d7d439
+      internalID: 1847743418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_29
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 14
+        width: 77
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0808d96e300b7d143bd63b66039f8167
+      internalID: -627949388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_30
+      rect:
+        serializedVersion: 2
+        x: 1043
+        y: 17
+        width: 65
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5143ac169429314479452644163c96d2
+      internalID: -396916926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_31
+      rect:
+        serializedVersion: 2
+        x: 1177
+        y: 15
+        width: 73
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac23f39bd0955fc4cb34fec7ea153f59
+      internalID: 877720861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_32
+      rect:
+        serializedVersion: 2
+        x: 1306
+        y: 14
+        width: 61
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df3c541f82279e54a9e7c46039cfe19e
+      internalID: -928408472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_33
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 13
+        width: 56
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17ef959064ffb734398ef8e98a1d272d
+      internalID: -814301804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_34
+      rect:
+        serializedVersion: 2
+        x: 1571
+        y: 13
+        width: 51
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3efc9d6aa57c9d4a870db6020e1ef33
+      internalID: 1304362568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_35
+      rect:
+        serializedVersion: 2
+        x: 1685
+        y: 14
+        width: 84
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26a98b15350109b41862870b2e27c217
+      internalID: 2063793254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_36
+      rect:
+        serializedVersion: 2
+        x: 1809
+        y: 13
+        width: 80
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c50bade66519d14ea6fe934882313df
+      internalID: 276235727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_37
+      rect:
+        serializedVersion: 2
+        x: 1934
+        y: 14
+        width: 68
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74ed68015de10a24283b1f15e62597be
+      internalID: -511511030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_38
+      rect:
+        serializedVersion: 2
+        x: 2058
+        y: 14
+        width: 70
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 365ddd5dbb001d94c8fe0d139f693c3e
+      internalID: 856146041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_39
+      rect:
+        serializedVersion: 2
+        x: 2181
+        y: 14
+        width: 114
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0f65a86fe9d10848a2eafb0bca862a9
+      internalID: 1979022543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN OC DEEPDRIVE ALL MOVEMENT_40
+      rect:
+        serializedVersion: 2
+        x: 2316
+        y: 14
+        width: 52
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75b9fab9af298ac46944ac83d34aca3b
+      internalID: 1885045746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      MAIN OC DEEPDRIVE ALL MOVEMENT_0: 1870135930
+      MAIN OC DEEPDRIVE ALL MOVEMENT_1: -1161384817
+      MAIN OC DEEPDRIVE ALL MOVEMENT_10: -1200607423
+      MAIN OC DEEPDRIVE ALL MOVEMENT_11: 1371587182
+      MAIN OC DEEPDRIVE ALL MOVEMENT_12: 1004606458
+      MAIN OC DEEPDRIVE ALL MOVEMENT_13: -1641128255
+      MAIN OC DEEPDRIVE ALL MOVEMENT_14: -1866251049
+      MAIN OC DEEPDRIVE ALL MOVEMENT_15: -1399016418
+      MAIN OC DEEPDRIVE ALL MOVEMENT_16: 2021316699
+      MAIN OC DEEPDRIVE ALL MOVEMENT_17: -536531810
+      MAIN OC DEEPDRIVE ALL MOVEMENT_18: 514055273
+      MAIN OC DEEPDRIVE ALL MOVEMENT_19: 1447279877
+      MAIN OC DEEPDRIVE ALL MOVEMENT_2: -2000930197
+      MAIN OC DEEPDRIVE ALL MOVEMENT_20: -2145930386
+      MAIN OC DEEPDRIVE ALL MOVEMENT_21: 1321061218
+      MAIN OC DEEPDRIVE ALL MOVEMENT_22: -376233760
+      MAIN OC DEEPDRIVE ALL MOVEMENT_23: -981661151
+      MAIN OC DEEPDRIVE ALL MOVEMENT_24: -2038968398
+      MAIN OC DEEPDRIVE ALL MOVEMENT_25: 1824731222
+      MAIN OC DEEPDRIVE ALL MOVEMENT_26: 634501226
+      MAIN OC DEEPDRIVE ALL MOVEMENT_27: 558744266
+      MAIN OC DEEPDRIVE ALL MOVEMENT_28: 1847743418
+      MAIN OC DEEPDRIVE ALL MOVEMENT_29: -627949388
+      MAIN OC DEEPDRIVE ALL MOVEMENT_3: -960604029
+      MAIN OC DEEPDRIVE ALL MOVEMENT_30: -396916926
+      MAIN OC DEEPDRIVE ALL MOVEMENT_31: 877720861
+      MAIN OC DEEPDRIVE ALL MOVEMENT_32: -928408472
+      MAIN OC DEEPDRIVE ALL MOVEMENT_33: -814301804
+      MAIN OC DEEPDRIVE ALL MOVEMENT_34: 1304362568
+      MAIN OC DEEPDRIVE ALL MOVEMENT_35: 2063793254
+      MAIN OC DEEPDRIVE ALL MOVEMENT_36: 276235727
+      MAIN OC DEEPDRIVE ALL MOVEMENT_37: -511511030
+      MAIN OC DEEPDRIVE ALL MOVEMENT_38: 856146041
+      MAIN OC DEEPDRIVE ALL MOVEMENT_39: 1979022543
+      MAIN OC DEEPDRIVE ALL MOVEMENT_4: -1505865437
+      MAIN OC DEEPDRIVE ALL MOVEMENT_40: 1885045746
+      MAIN OC DEEPDRIVE ALL MOVEMENT_5: 988658386
+      MAIN OC DEEPDRIVE ALL MOVEMENT_6: 885506116
+      MAIN OC DEEPDRIVE ALL MOVEMENT_7: -1889518889
+      MAIN OC DEEPDRIVE ALL MOVEMENT_8: 661024811
+      MAIN OC DEEPDRIVE ALL MOVEMENT_9: 192503252
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
