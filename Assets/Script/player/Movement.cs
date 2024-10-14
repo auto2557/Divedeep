@@ -25,7 +25,7 @@ public class Movement : MonoBehaviour
 
     // Attack combo
     private int attackCount = 0; 
-    private float comboResetTime = 2f; // เวลาที่คอมโบจะรีเซ็ต
+    private float comboResetTime = 1.5f; // เวลาที่คอมโบจะรีเซ็ต
     private float lastAttackTime;
     private bool isAttacking = false; // ตรวจสอบว่าอนิเมชั่นโจมตีกำลังเล่นอยู่หรือไม่
 
@@ -148,37 +148,54 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private void HandleAttack()
-    {
-        // ตรวจสอบว่าอนิเมชั่นโจมตีเสร็จหรือยัง
-        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+   private void HandleAttack()
+{
+    // ตรวจสอบว่าอนิเมชั่นโจมตีเสร็จหรือยัง
+    AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
-        if (isAttacking && stateInfo.normalizedTime < 1f)
+    if (isAttacking && stateInfo.normalizedTime < 1f)
+    {
+        // หากอนิเมชั่นยังไม่จบ ยังไม่อนุญาตให้โจมตีครั้งต่อไป
+        return;
+    }
+
+    if (Input.GetKeyDown(KeyCode.J) && !isAttacking)
+    {
+        if (Time.time - lastAttackTime > comboResetTime)
         {
-            // หากอนิเมชั่นยังไม่จบ ยังไม่อนุญาตให้โจมตีครั้งต่อไป
-            return;
+            // รีเซ็ตคอมโบถ้ากดไม่ต่อเนื่อง
+            attackCount = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.J) && !isAttacking)
+        attackCount++; 
+        lastAttackTime = Time.time;
+
+        // จำกัดคอมโบที่ 4 ครั้ง
+        if (attackCount > 4)
         {
-            if (Time.time - lastAttackTime > comboResetTime)
-            {
-                // รีเซ็ตคอมโบถ้ากดไม่ต่อเนื่อง
-                attackCount = 0;
-            }
+            attackCount = 1;
+        }
 
-            attackCount++; 
-            lastAttackTime = Time.time;
-
-            // จำกัดคอมโบที่ 4 ครั้ง
-            if (attackCount > 4)
-            {
-                attackCount = 1;
-            }
-
+        // Check if the player is in the air and perform jump attack if so
+        if (!isGrounded)
+        {
+            PlayJumpAttack();
+        }
+        else
+        {
             PlayAttackAnimation(attackCount); 
         }
     }
+}
+
+private void PlayJumpAttack()
+{
+    isAttacking = true; // ระบุว่ากำลังโจมตีอยู่
+    animator.Play("JumpAttack"); // Play the jump attack animation
+
+    // Reset the attack state after the animation duration
+    StartCoroutine(ResetAttackState(animator.GetCurrentAnimatorStateInfo(0).length));
+}
 
     private void PlayAttackAnimation(int attackStep)
     {
