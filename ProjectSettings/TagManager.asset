@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - firepoint
+  - dashMode
+  - Wall
   layers:
   - Default
   - TransparentFX
