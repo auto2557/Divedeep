@@ -163,6 +163,8 @@ public class Movement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.J) && !isAttacking)
         {
+          rb.velocity = Vector2.zero;
+
             if (Time.time - lastAttackTime > comboResetTime)
             {
                 attackCount = 0;
@@ -191,6 +193,14 @@ public class Movement : MonoBehaviour
     {
         isAttacking = true; 
         animator.Play("JumpAttack"); 
+        if (facingRight == false)
+                {
+                    rb.velocity = Vector2.left;
+                }
+                else if (facingRight == true)
+                {
+                    rb.velocity = Vector2.one;
+                }
 
         StartCoroutine(ResetAttackState(animator.GetCurrentAnimatorStateInfo(0).length));
     }
@@ -209,6 +219,14 @@ public class Movement : MonoBehaviour
                 break;
             case 3:
                 animator.Play("Attack3");
+                if (facingRight == false)
+                {
+                    rb.velocity = Vector2.left;
+                }
+                else if (facingRight == true)
+                {
+                    rb.velocity = Vector2.one;
+                }
                 break;
             case 4:
                 animator.Play("Attack4");
