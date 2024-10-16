@@ -132,10 +132,9 @@ public class Movement : MonoBehaviour
 
     void Flip()
     {
-        facingRight = !facingRight; 
-        Vector3 scaler = transform.localScale;
-        scaler.x *= -1; 
-        transform.localScale = scaler;
+         facingRight = !facingRight;
+    spriteRenderer.flipX = !facingRight;
+        
     }
 
     void UpdateHitBlockPosition()
