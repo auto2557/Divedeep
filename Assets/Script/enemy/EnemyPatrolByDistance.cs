@@ -6,7 +6,7 @@ public class EnemyPatrolByDistance : enemyHP
 {
     public float patrolDistance = 5f; 
     public float speed = 2f; 
-    public float waitTime = 2f; 
+    public float waitTime; 
     public float detectionRange = 5f; 
     public float returnSpeed = 3f; 
     public Animator animator; 
@@ -23,6 +23,8 @@ public class EnemyPatrolByDistance : enemyHP
 
     public IEnumerator Patrol()
     {
+        int randomWaittime = Random.Range(1,5);
+        waitTime = randomWaittime;
         while (true)
         {
             if (!isChasingPlayer && !isReturningToPatrol)
