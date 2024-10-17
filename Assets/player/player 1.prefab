@@ -89,10 +89,9 @@ GameObject:
   - component: {fileID: 8548121484587534705}
   - component: {fileID: 5191111168156489294}
   - component: {fileID: 8206051183691185502}
-  - component: {fileID: 7512058668062650222}
-  - component: {fileID: 2763526908617662540}
   - component: {fileID: 776362890323378182}
   - component: {fileID: 36478943919749371}
+  - component: {fileID: 4613804016571150366}
   m_Layer: 6
   m_Name: player 1
   m_TagString: Player
@@ -242,43 +241,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7512058668062650222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 491640643322003361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b554617958e25c459b943b4992999fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 4
-  jumpForce: 5
-  hitBlockRight: {fileID: 5038445643102018133}
-  hitBlockLeft: {fileID: 390672970662811227}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  groundCheck: {fileID: 8865660637046000360}
-  groundCheckRadius: 0.2
-  dashingPower: 8
-  dashingCooldown: 0.6
-  tr: {fileID: 36478943919749371}
---- !u!114 &2763526908617662540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 491640643322003361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15f5393f30366e34987827af1290acee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
 --- !u!95 &776362890323378182
 Animator:
   serializedVersion: 5
@@ -413,6 +375,30 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &4613804016571150366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491640643322003361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daaa637657a9af0479589fb22305ba39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  jumpForce: 7
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  groundCheck: {fileID: 0}
+  groundCheckRadius: 0.2
+  dashingPower: 24
+  dashingCooldown: 1
+  tr: {fileID: 0}
+  hitBlockRight: {fileID: 0}
+  hitBlockLeft: {fileID: 0}
 --- !u!1 &1617122903878813488
 GameObject:
   m_ObjectHideFlags: 0
