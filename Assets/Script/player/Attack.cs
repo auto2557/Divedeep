@@ -5,24 +5,30 @@ using UnityEngine;
 public class Attack : Movement
 {
     protected int attackCount = 0; 
+    protected int damage;
     protected float comboResetTime = 1.5f; 
     protected float lastAttackTime;
     protected bool isAttacking = false;
 
-     public GameObject hitBlockRight; 
-    public GameObject hitBlockLeft;  
-   
-     protected void UpdateHitBlockPosition()
+    public GameObject hitBlockRight; 
+    public GameObject hitBlockLeft;
+
+    protected void UpdateHitBlockPosition()
     {
-        if (facingRight)
+        if (facingRight && Input.GetKeyDown(KeyCode.J))
         {
             hitBlockRight.SetActive(true);
             hitBlockLeft.SetActive(false);
         }
-        else
+        else if (!facingRight && Input.GetKeyDown(KeyCode.J))
         {
             hitBlockRight.SetActive(false);
             hitBlockLeft.SetActive(true);
+        }
+        else
+        {
+            hitBlockRight.SetActive(false);
+            hitBlockLeft.SetActive(false);
         }
     }
 
@@ -37,7 +43,10 @@ public class Attack : Movement
 
         if (Input.GetKeyDown(KeyCode.J) && !isAttacking)
         {
-          rb.velocity = Vector2.zero;
+            int randomDmg = Random.Range(9, 20);
+            damage = randomDmg;
+            Debug.Log("dmg = " + damage);
+            rb.velocity = Vector2.zero;
 
             if (Time.time - lastAttackTime > comboResetTime)
             {
@@ -66,48 +75,74 @@ public class Attack : Movement
     protected void PlayJumpAttack()
     {
         isAttacking = true; 
-        animator.Play("JumpAttack"); 
-        if (facingRight == false)
-                {
-                    rb.velocity = Vector2.left;
-                }
-                else if (facingRight == true)
-                {
-                    rb.velocity = Vector2.one;
-                }
+        animator.Play("JumpAttack");
+        
+        if (!facingRight)
+        {
+            rb.velocity = Vector2.left;
+        }
+        else
+        {
+            rb.velocity = Vector2.one;
+        }
 
         StartCoroutine(ResetAttackState(animator.GetCurrentAnimatorStateInfo(0).length));
     }
 
     protected void PlayAttackAnimation(int attackStep)
     {
-        isAttacking = true; 
+        isAttacking = true;
 
         switch (attackStep)
         {
             case 1:
                 animator.Play("Attack1");
+                ResetHitBlockSize(); 
                 break;
             case 2:
                 animator.Play("Attack2");
+                AdjustHitBlockSize(new Vector3(1.2f,1.2f)); 
                 break;
             case 3:
                 animator.Play("Attack3");
-                if (facingRight == false)
+                AdjustHitBlockSize(new Vector2(1.4f,1.4f));
+                if (!facingRight)
                 {
                     rb.velocity = Vector2.left;
                 }
-                else if (facingRight == true)
+                else
                 {
                     rb.velocity = Vector2.one;
                 }
                 break;
             case 4:
                 animator.Play("Attack4");
+                ResetHitBlockSize();  
                 break;
         }
 
         StartCoroutine(ResetAttackState(animator.GetCurrentAnimatorStateInfo(0).length));
+    }
+
+    
+    protected void AdjustHitBlockSize(Vector2 newScale)
+    {
+        if (facingRight)
+        {
+            hitBlockRight.transform.localScale = newScale;
+        }
+        else
+        {
+            hitBlockLeft.transform.localScale = newScale;
+        }
+    }
+
+   
+    protected void ResetHitBlockSize()
+    {
+        Vector2 defaultScale = new Vector2(1f, 1f);
+        hitBlockRight.transform.localScale = defaultScale;
+        hitBlockLeft.transform.localScale = defaultScale;
     }
 
     IEnumerator ResetAttackState(float animationDuration)
@@ -115,5 +150,4 @@ public class Attack : Movement
         yield return new WaitForSeconds(animationDuration);
         isAttacking = false;
     }
-
 }
