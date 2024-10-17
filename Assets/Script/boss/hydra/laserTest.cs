@@ -37,7 +37,7 @@ void ShootLaserAtPlayer()
             lineRenderer.SetPosition(1, hit.point);
 
             // ตรวจสอบว่าเลเซอร์ชน Player หรือไม่
-            if (hit.collider.CompareTag("Player"))
+            /*if (hit.collider.CompareTag("Player"))
             {
                 // ให้ Player รับดาเมจ
                 PlayerHealth playerHealth = hit.collider.GetComponent<PlayerHealth>();
@@ -45,7 +45,7 @@ void ShootLaserAtPlayer()
                 {
                     playerHealth.TakeDamage(10); // ทำดาเมจ 10
                 }
-            }
+            }*/
         }
         else
         {

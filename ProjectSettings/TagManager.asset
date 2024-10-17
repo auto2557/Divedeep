@@ -8,6 +8,7 @@ TagManager:
   - firepoint
   - dashMode
   - Wall
+  - hitblock
   layers:
   - Default
   - TransparentFX

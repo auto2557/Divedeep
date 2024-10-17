@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6838377250521811113}
   m_Layer: 6
   m_Name: hitblockL
-  m_TagString: Untagged
+  m_TagString: hitblock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -488,7 +488,7 @@ GameObject:
   - component: {fileID: 4490384723968892912}
   m_Layer: 6
   m_Name: hitblockR
-  m_TagString: Untagged
+  m_TagString: hitblock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Attack : Movement
 {
     protected int attackCount = 0; 
-    protected int damage;
+    public int damage;
     protected float comboResetTime = 1.5f; 
     protected float lastAttackTime;
     protected bool isAttacking = false;
@@ -45,6 +45,7 @@ public class Attack : Movement
         {
             int randomDmg = Random.Range(9, 20);
             damage = randomDmg;
+
             Debug.Log("dmg = " + damage);
             rb.velocity = Vector2.zero;
 

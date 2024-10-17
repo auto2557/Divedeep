@@ -13,7 +13,7 @@ public class Movement : MonoBehaviour
     protected Animator animator;
     protected bool isGrounded;
     protected bool canDoubleJump;
-    protected bool facingRight = true;
+    public bool facingRight = true;
     protected SpriteRenderer spriteRenderer;
 
     // Dash
