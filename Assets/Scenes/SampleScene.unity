@@ -1758,6 +1758,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5336345738640341283, guid: 5d9a2b7c0622a4445b8168871466229a, type: 3}
+      propertyPath: m_Mass
+      value: 0.09
+      objectReference: {fileID: 0}
     - target: {fileID: 8334267393318921014, guid: 5d9a2b7c0622a4445b8168871466229a, type: 3}
       propertyPath: m_Name
       value: EME1
