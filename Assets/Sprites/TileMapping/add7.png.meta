@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8b34b75d0e683d64ba6b50fdd1e33ac2
+guid: e9838fe8930ab464798f4ce5ca9faded
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 31
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,76 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cc_nocollidgroup_2
+      name: add7_0
       rect:
         serializedVersion: 2
-        x: 151
-        y: 288
+        x: 0
+        y: 32
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 38ee236375d96d24b810f4c1753a92df
-      internalID: 698830888
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cc_nocollidgroup_8
-      rect:
-        serializedVersion: 2
-        x: 215
-        y: 224
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 23209edb9d6d2fb4ca0616df7deac492
-      internalID: -1576530936
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cc_nocollidgroup_9
-      rect:
-        serializedVersion: 2
-        x: 278
-        y: 224
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 01af7ccc1cc3a9d4db7a13299894052c
-      internalID: -718059543
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: aglined_0
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 175
-        width: 32
-        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,8 +111,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e09a1ac528c3fdb4f82201f9846e3a67
-      internalID: 1225783527
+      spriteID: 7f325a309301f7b4bb0e26e0a339601e
+      internalID: 1977256391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: add7_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b29891b3380f57f478c0475eb02453b3
+      internalID: 640850676
       vertices: []
       indices: 
       edges: []
@@ -191,24 +149,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      aglined_0: 1225783527
-      cc_nocollidgroup_0: 450745459
-      cc_nocollidgroup_1: 668716348
-      cc_nocollidgroup_10: 1682998465
-      cc_nocollidgroup_11: 692678810
-      cc_nocollidgroup_12: 1609468900
-      cc_nocollidgroup_13: 544856056
-      cc_nocollidgroup_14: -413378711
-      cc_nocollidgroup_15: 1643701542
-      cc_nocollidgroup_16: -863406436
-      cc_nocollidgroup_2: 698830888
-      cc_nocollidgroup_3: -969535235
-      cc_nocollidgroup_4: 461484373
-      cc_nocollidgroup_5: -618660874
-      cc_nocollidgroup_6: -842139475
-      cc_nocollidgroup_7: -538510890
-      cc_nocollidgroup_8: -1576530936
-      cc_nocollidgroup_9: -718059543
+      add7_0: 1977256391
+      add7_1: 640850676
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
