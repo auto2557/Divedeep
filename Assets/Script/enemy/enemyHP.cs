@@ -10,6 +10,7 @@ public class enemyHP : MonoBehaviour
     public bool isDead = false;
     protected bool isHit = false;
 
+    public GameObject damagePopupPrefab;  
 
     public IEnumerator Die()
     {
@@ -20,29 +21,45 @@ public class enemyHP : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("hitblock") && !isDead)
+        if (collision.CompareTag("hitblock") && !isDead && !isHit)
         {
-            hp -= Playerscript.damage;
-            isHit = true;
+            isHit = true;  // Set isHit to true immediately to prevent repeated damage
 
-            if (Playerscript.facingRight == true)
+            int damageAmount = Playerscript.damage;  
+            hp -= damageAmount;
+
+            ShowDamagePopup(damageAmount);
+
+            // Apply knockback based on player's facing direction
+            if (Playerscript.facingRight)
             {
-                rb.velocity = new Vector2(3f, 1f);
+                rb.velocity = new Vector2(3.5f, 3f);
             }
-            else if (Playerscript.facingRight == false)
+            else
             {
-                rb.velocity = new Vector2(-3f, 1f);
-
+                rb.velocity = new Vector2(-3.5f, 3f);
             }
 
-            StartCoroutine(ResetHit());
+            // Check if the enemy is dead
+            if (hp <= 0)
+            {
+                isDead = true;
+                StartCoroutine(Die());
+            }
 
+            StartCoroutine(ResetHit()); 
         }
+    }
+
+    private void ShowDamagePopup(int damageAmount)
+    {
+        GameObject damagePopup = Instantiate(damagePopupPrefab, transform.position, Quaternion.identity);
+        damagePopup.GetComponent<DamagePopup>().Setup(damageAmount);
     }
 
     IEnumerator ResetHit()
     {
-        yield return new WaitForSeconds(0.5f); 
-        isHit = false; 
+        yield return new WaitForSeconds(0.3f); 
+        isHit = false;  
     }
 }

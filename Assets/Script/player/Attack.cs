@@ -49,7 +49,10 @@ public class Attack : Movement
             Debug.Log("dmg = " + damage);
             rb.velocity = Vector2.zero;
 
-            if (Time.time - lastAttackTime > comboResetTime)
+            int randomCaseAtk = Random.Range(1, 5);
+
+
+            /*if (Time.time - lastAttackTime > comboResetTime)
             {
                 attackCount = 0;
             }
@@ -60,7 +63,7 @@ public class Attack : Movement
             if (attackCount > 4)
             {
                 attackCount = 1;
-            }
+            }*/
 
             if (!isGrounded)
             {
@@ -68,7 +71,7 @@ public class Attack : Movement
             }
             else
             {
-                PlayAttackAnimation(attackCount); 
+                PlayAttackAnimation(randomCaseAtk); 
             }
         }
     }
@@ -141,7 +144,7 @@ public class Attack : Movement
    
     protected void ResetHitBlockSize()
     {
-        Vector2 defaultScale = new Vector2(1f, 1f);
+        Vector2 defaultScale = new Vector2(0.3f, 0.3f);
         hitBlockRight.transform.localScale = defaultScale;
         hitBlockLeft.transform.localScale = defaultScale;
     }

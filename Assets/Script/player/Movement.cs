@@ -4,14 +4,16 @@ using System.Collections;
 public class Movement : MonoBehaviour
 {
     public float moveSpeed = 5f;     
-    public float jumpForce = 7f;
-    public LayerMask groundLayer; // เลเยอร์สำหรับตรวจสอบพื้น
-    public Transform groundCheck;  // ตำแหน่งจุดตรวจสอบพื้น
+    public float firstJumpForce = 7f;  
+    public float secondJumpForce = 10f; 
+    public LayerMask groundLayer;
+    public Transform groundCheck;  
     public float groundCheckRadius = 0.2f;
 
     protected Rigidbody2D rb;
     protected Animator animator;
     protected bool isGrounded;
+    protected bool wasGrounded;
     protected bool canDoubleJump;
     public bool facingRight = true;
     protected SpriteRenderer spriteRenderer;
@@ -23,7 +25,13 @@ public class Movement : MonoBehaviour
     protected float dashingTime = 0.4f;
     public float dashingCooldown = 1f;
     [SerializeField] protected TrailRenderer tr;
-    
+
+    protected void Update()
+    {
+        CheckGround(); 
+        movement();    
+        AnimatePlayer();
+    }
 
     protected void movement()
     {
@@ -40,19 +48,19 @@ public class Movement : MonoBehaviour
 
         if (isGrounded)
         {
-            canDoubleJump = true;
+            canDoubleJump = true; 
         }
 
         if (Input.GetKeyDown(KeyCode.K))
         {
             if (isGrounded)
             {
-                Jump();
+                Jump(firstJumpForce);  
             }
             else if (canDoubleJump)
             {
-                Jump();
-                canDoubleJump = false;
+                Jump(secondJumpForce); 
+                canDoubleJump = false;  
             }
         }
 
@@ -62,14 +70,15 @@ public class Movement : MonoBehaviour
         }
     }
 
-    protected void Jump()
+    protected void Jump(float jumpForce)
     {
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        rb.velocity = new Vector2(rb.velocity.x, jumpForce); 
         animator.SetBool("isJumping", true); 
     }
 
-     protected void CheckGround()
+    protected void CheckGround()
     {
+        wasGrounded = isGrounded;
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
     }
 
@@ -77,6 +86,15 @@ public class Movement : MonoBehaviour
     {
         float moveInput = Input.GetAxis("Horizontal");
         animator.SetBool("isRunning", Mathf.Abs(moveInput) > 0);
+
+        if (isGrounded && !wasGrounded) 
+        {
+            animator.SetBool("isLanding", true);  
+        }
+        else if (!isGrounded) 
+        {
+            animator.SetBool("isLanding", false); 
+        }
 
         if (isGrounded)
         {
@@ -97,12 +115,10 @@ public class Movement : MonoBehaviour
 
     protected void Flip()
     {
-         facingRight = !facingRight;
-    spriteRenderer.flipX = !facingRight;
-        
+        facingRight = !facingRight;
+        spriteRenderer.flipX = !facingRight;
     }
 
-   
     IEnumerator Dash()
     {
         canDash = false;
@@ -124,5 +140,4 @@ public class Movement : MonoBehaviour
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }
-
 }

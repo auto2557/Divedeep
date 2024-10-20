@@ -281,8 +281,9 @@ MonoBehaviour:
   Playerscript: {fileID: 0}
   anim: {fileID: 0}
   isDead: 0
+  damagePopupPrefab: {fileID: 7594088303279087093, guid: 1a62194cfdaf0f14b9d314630510227a, type: 3}
   patrolDistance: 5
-  speed: 2
+  speed: 1
   waitTime: 2
   detectionRange: 5
   returnSpeed: 3

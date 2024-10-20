@@ -18,23 +18,25 @@ public class EnemyPatrolByDistance : enemyHP
     public Vector2 patrolStartPoint; 
     public bool movingRight = true; 
 
-
-
-
     public IEnumerator Patrol()
     {
-        int randomWaittime = Random.Range(1,5);
+        int randomWaittime = Random.Range(1, 5);
         waitTime = randomWaittime;
         while (true)
         {
+            // Stop patrol if the enemy is dead
+            if (isDead) 
+            {
+                animator.SetBool("isWalking", false);
+                yield break;  // Exit the coroutine
+            }
+
             if (!isChasingPlayer && !isReturningToPatrol)
             {
                 animator.SetBool("isWalking", true); 
 
-      
                 FlipSprite(movingRight ? 1 : -1);
 
-             
                 if (movingRight)
                 {
                     transform.position = Vector2.MoveTowards(transform.position, patrolStartPoint + Vector2.right * patrolDistance, speed * Time.deltaTime);
@@ -63,7 +65,13 @@ public class EnemyPatrolByDistance : enemyHP
 
     public void ChasePlayer()
     {
-       
+ 
+        if (isDead) 
+        {
+            animator.SetBool("isWalking", false);
+            return;  
+        }
+
         if (isChasingPlayer)
         {
             animator.SetBool("isWalking", true); 
@@ -76,7 +84,13 @@ public class EnemyPatrolByDistance : enemyHP
 
     public IEnumerator ReturnToPatrol()
     {
-       
+   
+        if (isDead) 
+        {
+            animator.SetBool("isWalking", false);
+            yield break;  
+        }
+
         Vector2 targetPoint = movingRight ? patrolStartPoint + Vector2.right * patrolDistance : patrolStartPoint;
         animator.SetBool("isWalking", true); 
 
@@ -85,6 +99,14 @@ public class EnemyPatrolByDistance : enemyHP
         while (Vector2.Distance(transform.position, targetPoint) > 0.1f && isReturningToPatrol)
         {
             transform.position = Vector2.MoveTowards(transform.position, targetPoint, returnSpeed * Time.deltaTime);
+
+           
+            if (isDead)
+            {
+                animator.SetBool("isWalking", false);
+                yield break;  
+            }
+
             yield return null;
         }
 
@@ -116,5 +138,3 @@ public class EnemyPatrolByDistance : enemyHP
         Gizmos.DrawLine(transform.position - Vector3.right * patrolDistance, transform.position + Vector3.right * patrolDistance);
     }
 }
-
-
