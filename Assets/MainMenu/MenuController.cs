@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    public Button[] menuButtons;        
+    public Button[] menuButtons;    
+    public GameObject[] Tab;     
     public Image highlight;           
     public Image arrowIcon;              
-    private int selectedIndex = 0;       
+    protected int selectedIndex = 0;       
 
     void Start()
     {
@@ -37,7 +38,7 @@ public class MenuController : MonoBehaviour
     }
 
   
-    void UpdateMenuUI()
+    public void UpdateMenuUI()
     {
         highlight.gameObject.SetActive(false);
         arrowIcon.gameObject.SetActive(false);
@@ -52,7 +53,7 @@ public class MenuController : MonoBehaviour
     }
 
 
-    void ExecuteSelectedOption()
+    public virtual void ExecuteSelectedOption()
     {
         switch (selectedIndex)
         {
@@ -62,6 +63,8 @@ public class MenuController : MonoBehaviour
                 break;
             case 1:
                 Debug.Log("Setting selected");
+                Tab[1].gameObject.SetActive(true);
+                Tab[0].gameObject.SetActive(false);
                 break;
             case 2:
                 Debug.Log("Credit selected");

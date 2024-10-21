@@ -9,13 +9,11 @@ public class videoch : MonoBehaviour
 
     void Start()
     {
-        // ตรวจสอบเมื่อวิดีโอเล่นจบ
         videoPlayer.loopPointReached += OnVideoEnd;
     }
 
     void Update()
     {
-        // ตรวจสอบเมื่อกด spacebar
         if (Input.GetKeyDown(KeyCode.Space))
         {
             ChangeScene();
