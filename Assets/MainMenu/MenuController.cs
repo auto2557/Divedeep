@@ -49,14 +49,6 @@ public class MenuController : MonoBehaviour
         arrowIcon.transform.position = new Vector3(menuButtons[selectedIndex].transform.position.x - 130, 
                                                    menuButtons[selectedIndex].transform.position.y, 0);
 
-        for (int i = 0; i < menuButtons.Length; i++)
-        {
-            TextMeshProUGUI buttonText = menuButtons[i].GetComponentInChildren<TextMeshProUGUI>();
-            if (i == selectedIndex)
-            {
-                buttonText.color = Color.white;  
-            }
-        }
     }
 
 
