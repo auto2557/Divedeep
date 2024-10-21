@@ -46,7 +46,7 @@ public class MenuController : MonoBehaviour
         arrowIcon.gameObject.SetActive(true);
 
         highlight.transform.position = menuButtons[selectedIndex].transform.position;
-        arrowIcon.transform.position = new Vector3(menuButtons[selectedIndex].transform.position.x - 130, 
+        arrowIcon.transform.position = new Vector3(menuButtons[selectedIndex].transform.position.x - 300, 
                                                    menuButtons[selectedIndex].transform.position.y, 0);
 
     }
