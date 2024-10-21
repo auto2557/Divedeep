@@ -65,6 +65,7 @@ public class MenuController : MonoBehaviour
                 Debug.Log("Setting selected");
                 Tab[1].gameObject.SetActive(true);
                 Tab[0].gameObject.SetActive(false);
+                selectedIndex = 1;
                 break;
             case 2:
                 Debug.Log("Credit selected");

@@ -35,14 +35,18 @@ public class SettingController : MenuController
         {
             case 0:
               Debug.Log("Control");
+              Tab[2].gameObject.SetActive(true);
                 break;
             case 1:
                 Debug.Log("Audio");
+                Tab[2].gameObject.SetActive(false);
                 break;
             case 2:
                 Debug.Log("Back");
                  Tab[1].gameObject.SetActive(true);
                 Tab[0].gameObject.SetActive(false);
+                Tab[2].gameObject.SetActive(false);
+                selectedIndex = 2;
                 break;
           
         }
