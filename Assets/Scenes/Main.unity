@@ -1049,7 +1049,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.003025995, g: 0.37470967, b: 0.6415094, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -4250,7 +4250,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 386873794}
-  - {fileID: 2118687643}
   - {fileID: 1967089803}
   - {fileID: 1489281469}
   - {fileID: 893936330}
@@ -5099,11 +5098,11 @@ Transform:
   m_GameObject: {fileID: 2118687641}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -609.89355, y: -288.21048, z: 6.6856804}
+  m_LocalPosition: {x: 350.10645, y: 251.78952, z: 6.6856804}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1756031389}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2119644343
 GameObject:
@@ -5381,3 +5380,4 @@ SceneRoots:
   - {fileID: 1756031389}
   - {fileID: 1121534943}
   - {fileID: 1080021804}
+  - {fileID: 2118687643}
