@@ -9,6 +9,7 @@ public class Attack : Movement
     protected float comboResetTime = 1.5f; 
     protected float lastAttackTime;
     protected bool isAttacking = false;
+    protected bool inputBuffered = false;
 
     public GameObject hitBlockRight; 
     public GameObject hitBlockLeft;
@@ -36,43 +37,57 @@ public class Attack : Movement
     {
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
+        // Input buffering: Allow input buffering for smooth combo chaining
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            inputBuffered = true;
+        }
+
+        // If already attacking and animation is not finished, wait
         if (isAttacking && stateInfo.normalizedTime < 1f)
         {
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.J) && !isAttacking)
+        // Handle the attack only if input is buffered and not currently attacking
+        if (inputBuffered && !isAttacking)
         {
-            int randomDmg = Random.Range(9, 20);
-            damage = randomDmg;
+            inputBuffered = false;
+            StartAttackSequence();
+        }
+    }
 
-            Debug.Log("dmg = " + damage);
-            rb.velocity = Vector2.zero;
+    private void StartAttackSequence()
+    {
+        int randomDmg = Random.Range(9, 20);
+        damage = randomDmg;
+        Debug.Log("dmg = " + damage);
 
-            int randomCaseAtk = Random.Range(1, 5);
+        rb.velocity = Vector2.zero;
 
+    
+        if (Time.time - lastAttackTime > comboResetTime)
+        {
+            attackCount = 0;
+        }
 
-            /*if (Time.time - lastAttackTime > comboResetTime)
-            {
-                attackCount = 0;
-            }
+        attackCount++; 
+        lastAttackTime = Time.time;
 
-            attackCount++; 
-            lastAttackTime = Time.time;
+      
+        if (attackCount > 3)
+        {
+            attackCount = 1;
+        }
 
-            if (attackCount > 4)
-            {
-                attackCount = 1;
-            }*/
-
-            if (!isGrounded)
-            {
-                PlayJumpAttack();
-            }
-            else
-            {
-                PlayAttackAnimation(randomCaseAtk); 
-            }
+     
+        if (!isGrounded)
+        {
+            PlayJumpAttack();
+        }
+        else
+        {
+            PlayAttackAnimation(attackCount); 
         }
     }
 
@@ -80,7 +95,7 @@ public class Attack : Movement
     {
         isAttacking = true; 
         animator.Play("JumpAttack");
-        
+
         if (!facingRight)
         {
             rb.velocity = Vector2.left;
@@ -100,17 +115,16 @@ public class Attack : Movement
         switch (attackStep)
         {
             case 1:
-                animator.Play("Attack1");
+                animator.Play("Attack4");
                 ResetHitBlockSize(); 
                 break;
             case 2:
                 animator.Play("Attack2");
-                AdjustHitBlockSize(new Vector3(1.2f,1.2f)); 
+             AdjustHitBlockSize(new Vector2(1.2f,1.2f));
                 break;
             case 3:
                 animator.Play("Attack3");
-                AdjustHitBlockSize(new Vector2(1.4f,1.4f));
-                if (!facingRight)
+                  if (!facingRight)
                 {
                     rb.velocity = Vector2.left;
                 }
@@ -118,17 +132,14 @@ public class Attack : Movement
                 {
                     rb.velocity = Vector2.one;
                 }
-                break;
-            case 4:
-                animator.Play("Attack4");
-                ResetHitBlockSize();  
+                AdjustHitBlockSize(new Vector2(1.4f,1.4f));
                 break;
         }
 
+      
         StartCoroutine(ResetAttackState(animator.GetCurrentAnimatorStateInfo(0).length));
     }
 
-    
     protected void AdjustHitBlockSize(Vector2 newScale)
     {
         if (facingRight)
@@ -141,7 +152,6 @@ public class Attack : Movement
         }
     }
 
-   
     protected void ResetHitBlockSize()
     {
         Vector2 defaultScale = new Vector2(0.3f, 0.3f);
@@ -153,5 +163,12 @@ public class Attack : Movement
     {
         yield return new WaitForSeconds(animationDuration);
         isAttacking = false;
+
+     
+        if (inputBuffered)
+        {
+            inputBuffered = false;
+            StartAttackSequence();
+        }
     }
 }

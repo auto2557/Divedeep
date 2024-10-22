@@ -26,14 +26,14 @@ public class Movement : MonoBehaviour
     public float dashingCooldown = 1f;
     [SerializeField] protected TrailRenderer tr;
 
-    protected void Update()
+    void Update()
     {
         CheckGround(); 
         movement();    
         AnimatePlayer();
     }
 
-    protected void movement()
+    protected virtual void movement()
     {
         float moveInput = Input.GetAxis("Horizontal");
 
@@ -119,7 +119,7 @@ public class Movement : MonoBehaviour
         spriteRenderer.flipX = !facingRight;
     }
 
-    IEnumerator Dash()
+    public IEnumerator Dash()
     {
         canDash = false;
         isDashing = true;
