@@ -38,12 +38,12 @@ public class HydraBeamAttack : MonoBehaviour
         beamLine.enabled = false;
     }
 
-    void OnTriggerStay2D(Collider2D collision)
+    /*void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             // ทำความเสียหายต่อผู้เล่นเมื่ออยู่ในลำแสง
             collision.GetComponent<PlayerHealth>().TakeDamage(beamDamage * Time.deltaTime);
         }
-    }
+    }*/
 }

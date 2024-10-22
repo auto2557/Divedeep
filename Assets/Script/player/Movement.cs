@@ -4,68 +4,36 @@ using System.Collections;
 public class Movement : MonoBehaviour
 {
     public float moveSpeed = 5f;     
-    public float jumpForce = 7f;
-    public GameObject hitBlockRight; 
-    public GameObject hitBlockLeft;  
-    public LayerMask groundLayer; // เลเยอร์สำหรับตรวจสอบพื้น
-    public Transform groundCheck;  // ตำแหน่งจุดตรวจสอบพื้น
+    public float firstJumpForce = 7f;  
+    public float secondJumpForce = 10f; 
+    public LayerMask groundLayer;
+    public Transform groundCheck;  
     public float groundCheckRadius = 0.2f;
 
-    private Rigidbody2D rb;
-    private Animator animator;
-    private bool isGrounded;
-    private bool canDoubleJump;
-    private bool facingRight = true;
-    private SpriteRenderer spriteRenderer;
+    protected Rigidbody2D rb;
+    protected Animator animator;
+    protected bool isGrounded;
+    protected bool wasGrounded;
+    protected bool canDoubleJump;
+    public bool facingRight = true;
+    protected SpriteRenderer spriteRenderer;
 
     // Dash
-    private bool canDash = true;
-    private bool isDashing;
+    protected bool canDash = true;
+    protected bool isDashing;
     public float dashingPower = 24f;
-    private float dashingTime = 0.4f;
+    protected float dashingTime = 0.4f;
     public float dashingCooldown = 1f;
-    [SerializeField] private TrailRenderer tr;
-
-    // Attack combo
-    private int attackCount = 0; 
-    private float comboResetTime = 1.5f; 
-    private float lastAttackTime;
-    private bool isAttacking = false;
-
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>(); 
-        spriteRenderer = GetComponent<SpriteRenderer>(); 
-
-        hitBlockLeft.SetActive(false);
-        hitBlockRight.SetActive(true);  
-    }
+    [SerializeField] protected TrailRenderer tr;
 
     void Update()
     {
-        if (isDashing || isAttacking)
-        {
-            return;
-        }
-        CheckGround(); // เพิ่มฟังก์ชันตรวจสอบพื้น
-        movement();
+        CheckGround(); 
+        movement();    
         AnimatePlayer();
-        UpdateHitBlockPosition();
-        HandleAttack(); 
     }
 
-    private void FixedUpdate()
-    {
-        if (isDashing || isAttacking)
-        {
-            return;
-        }
-        float moveInput = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
-    }
-
-    void movement()
+    protected virtual void movement()
     {
         float moveInput = Input.GetAxis("Horizontal");
 
@@ -80,19 +48,19 @@ public class Movement : MonoBehaviour
 
         if (isGrounded)
         {
-            canDoubleJump = true;
+            canDoubleJump = true; 
         }
 
         if (Input.GetKeyDown(KeyCode.K))
         {
             if (isGrounded)
             {
-                Jump();
+                Jump(firstJumpForce);  
             }
             else if (canDoubleJump)
             {
-                Jump();
-                canDoubleJump = false;
+                Jump(secondJumpForce); 
+                canDoubleJump = false;  
             }
         }
 
@@ -102,16 +70,31 @@ public class Movement : MonoBehaviour
         }
     }
 
-    void Jump()
+    protected void Jump(float jumpForce)
     {
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        rb.velocity = new Vector2(rb.velocity.x, jumpForce); 
         animator.SetBool("isJumping", true); 
     }
 
-    void AnimatePlayer()
+    protected void CheckGround()
+    {
+        wasGrounded = isGrounded;
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+    }
+
+    protected void AnimatePlayer()
     {
         float moveInput = Input.GetAxis("Horizontal");
         animator.SetBool("isRunning", Mathf.Abs(moveInput) > 0);
+
+        if (isGrounded && !wasGrounded) 
+        {
+            animator.SetBool("isLanding", true);  
+        }
+        else if (!isGrounded) 
+        {
+            animator.SetBool("isLanding", false); 
+        }
 
         if (isGrounded)
         {
@@ -130,106 +113,13 @@ public class Movement : MonoBehaviour
         }
     }
 
-    void Flip()
+    protected void Flip()
     {
-        facingRight = !facingRight; 
-        Vector3 scaler = transform.localScale;
-        scaler.x *= -1; 
-        transform.localScale = scaler;
+        facingRight = !facingRight;
+        spriteRenderer.flipX = !facingRight;
     }
 
-    void UpdateHitBlockPosition()
-    {
-        if (facingRight)
-        {
-            hitBlockRight.SetActive(true);
-            hitBlockLeft.SetActive(false);
-        }
-        else
-        {
-            hitBlockRight.SetActive(false);
-            hitBlockLeft.SetActive(true);
-        }
-    }
-
-    private void HandleAttack()
-    {
-        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-
-        if (isAttacking && stateInfo.normalizedTime < 1f)
-        {
-            return;
-        }
-
-        if (Input.GetKeyDown(KeyCode.J) && !isAttacking)
-        {
-            if (Time.time - lastAttackTime > comboResetTime)
-            {
-                attackCount = 0;
-            }
-
-            attackCount++; 
-            lastAttackTime = Time.time;
-
-            if (attackCount > 4)
-            {
-                attackCount = 1;
-            }
-
-            if (!isGrounded)
-            {
-                PlayJumpAttack();
-            }
-            else
-            {
-                PlayAttackAnimation(attackCount); 
-            }
-        }
-    }
-
-    private void PlayJumpAttack()
-    {
-        isAttacking = true; 
-        animator.Play("JumpAttack"); 
-
-        StartCoroutine(ResetAttackState(animator.GetCurrentAnimatorStateInfo(0).length));
-    }
-
-    private void PlayAttackAnimation(int attackStep)
-    {
-        isAttacking = true; 
-
-        switch (attackStep)
-        {
-            case 1:
-                animator.Play("Attack1");
-                break;
-            case 2:
-                animator.Play("Attack2");
-                break;
-            case 3:
-                animator.Play("Attack3");
-                break;
-            case 4:
-                animator.Play("Attack4");
-                break;
-        }
-
-        StartCoroutine(ResetAttackState(animator.GetCurrentAnimatorStateInfo(0).length));
-    }
-
-    IEnumerator ResetAttackState(float animationDuration)
-    {
-        yield return new WaitForSeconds(animationDuration);
-        isAttacking = false;
-    }
-
-    private void CheckGround()
-    {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-    }
-
-    IEnumerator Dash()
+    public IEnumerator Dash()
     {
         canDash = false;
         isDashing = true;
@@ -250,5 +140,4 @@ public class Movement : MonoBehaviour
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }
-
 }

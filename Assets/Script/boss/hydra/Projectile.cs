@@ -10,7 +10,7 @@ public class Projectile : MonoBehaviour
         transform.Translate(Vector2.right * speed * Time.deltaTime);
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    /*void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
@@ -18,5 +18,5 @@ public class Projectile : MonoBehaviour
             collision.GetComponent<PlayerHealth>().TakeDamage(damage);
             Destroy(gameObject);  // ทำลาย projectile หลังการปะทะ
         }
-    }
+    }*/
 }
