@@ -200,11 +200,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1430742395732832583, guid: 75bb23b5f7857214ca6aee9b55e04464, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1255
+      value: 441.8
       objectReference: {fileID: 0}
     - target: {fileID: 1430742395732832583, guid: 75bb23b5f7857214ca6aee9b55e04464, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1259
+      value: -40.4
       objectReference: {fileID: 0}
     - target: {fileID: 1430742395732832583, guid: 75bb23b5f7857214ca6aee9b55e04464, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1164,6 +1164,10 @@ MonoBehaviour:
   - {fileID: 1838438881}
   highlight: {fileID: 1489281471}
   arrowIcon: {fileID: 893936328}
+  arrowMoveSpeed: 5
+  arrowMoveRange: 10
+  arrowMoveFrequency: 2
+  lerpSpeed: 5
 --- !u!1 &344268391
 GameObject:
   m_ObjectHideFlags: 0
@@ -2538,6 +2542,10 @@ MonoBehaviour:
   - {fileID: 323092840}
   highlight: {fileID: 1489281471}
   arrowIcon: {fileID: 893936328}
+  arrowMoveSpeed: 4
+  arrowMoveRange: 10
+  arrowMoveFrequency: 5
+  lerpSpeed: 10
 --- !u!1 &871444097
 GameObject:
   m_ObjectHideFlags: 0
@@ -3793,7 +3801,11 @@ MonoBehaviour:
   sfxSource: {fileID: 1042509561}
   bgmClips:
   - {fileID: 8300000, guid: de5a3b3e67bbec94ba76e47509950f10, type: 3}
-  sfxClips: []
+  sfxClips:
+  - {fileID: 8300000, guid: fedb389382848c24abc05898a76e159f, type: 3}
+  masterSlider: {fileID: 1348253651}
+  bgmSlider: {fileID: 1011554795}
+  sfxSlider: {fileID: 1363471944}
 --- !u!4 &1130765004
 Transform:
   m_ObjectHideFlags: 0
@@ -3818,9 +3830,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1130765002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a24ef676b67a5ad4fab37e7bce3fda35, type: 3}
+  m_Script: {fileID: 11500000, guid: ed7470d9fc9a69e41bf237f02de6100c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bgmSource: {fileID: 1875557759}
+  sfxSource: {fileID: 1042509561}
 --- !u!1 &1161979052
 GameObject:
   m_ObjectHideFlags: 0
@@ -7390,7 +7404,7 @@ VideoPlayer:
   m_RenderMode: 0
   m_AspectRatio: 2
   m_DataSource: 0
-  m_TimeUpdateMode: 2
+  m_TimeUpdateMode: 1
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
   m_TargetAudioSources: []
@@ -7400,9 +7414,9 @@ VideoPlayer:
   m_DirectAudioMutes: 
   m_ControlledAudioTrackCount: 0
   m_PlayOnAwake: 1
-  m_SkipOnDrop: 1
+  m_SkipOnDrop: 0
   m_Looping: 1
-  m_WaitForFirstFrame: 1
+  m_WaitForFirstFrame: 0
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
 --- !u!4 &2118687643

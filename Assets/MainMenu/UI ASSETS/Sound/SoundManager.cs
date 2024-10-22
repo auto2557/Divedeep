@@ -12,8 +12,8 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField]
     private AudioClip[] bgmClips;  // Array สำหรับเก็บเพลงพื้นหลัง
-    [SerializeField]
-    private AudioClip[] sfxClips;  // Array สำหรับเก็บเสียงเอฟเฟกต์
+    
+    public AudioClip[] sfxClips;  // Array สำหรับเก็บเสียงเอฟเฟกต์
 
     private float masterVolume = 0.5f;  // Master Volume เริ่มต้นที่ 100%
     private float bgmVolume = 0.5f;     // BGM Volume เริ่มต้นที่ 100%

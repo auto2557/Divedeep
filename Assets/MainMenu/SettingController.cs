@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class SettingController : MenuController
 {
-    void Start()
+     void Start()
     {
         UpdateMenuUI();
+        currentArrowPosition = arrowIcon.transform.position;  
     }
 
     void Update()
@@ -14,19 +15,27 @@ public class SettingController : MenuController
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             selectedIndex = (selectedIndex + 1) % menuButtons.Length;
+             SoundManager.instance.PlaySFX(0);
             UpdateMenuUI();
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             selectedIndex = (selectedIndex - 1 + menuButtons.Length) % menuButtons.Length;
+             SoundManager.instance.PlaySFX(0);
             UpdateMenuUI();
         }
 
-      
         if (Input.GetKeyDown(KeyCode.Return))
         {
             ExecuteSelectedOption();
         }
+
+    
+        float xOffset = Mathf.Sin(Time.time * arrowMoveFrequency) * arrowMoveRange;
+        Vector3 desiredPosition = new Vector3(targetArrowPosition.x + xOffset, targetArrowPosition.y, targetArrowPosition.z);
+
+        currentArrowPosition = Vector3.Lerp(currentArrowPosition, desiredPosition, Time.deltaTime * lerpSpeed);
+        arrowIcon.transform.position = currentArrowPosition;
     }
 
     public override void ExecuteSelectedOption()
@@ -54,5 +63,7 @@ public class SettingController : MenuController
           
         }
     }
+
+    
 
 }
