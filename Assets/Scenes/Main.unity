@@ -3800,7 +3800,7 @@ MonoBehaviour:
   bgmSource: {fileID: 1875557759}
   sfxSource: {fileID: 1042509561}
   bgmClips:
-  - {fileID: 8300000, guid: de5a3b3e67bbec94ba76e47509950f10, type: 3}
+  - {fileID: 8300000, guid: 396f4914024180949be14f27eea86793, type: 3}
   sfxClips:
   - {fileID: 8300000, guid: fedb389382848c24abc05898a76e159f, type: 3}
   masterSlider: {fileID: 1348253651}
@@ -6177,7 +6177,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
