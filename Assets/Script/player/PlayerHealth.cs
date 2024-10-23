@@ -1,20 +1,25 @@
 using UnityEngine;
+using UnityEngine.UI;  
 
 public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 100;
-    [SerializeField]
-    private int currentHealth;
+    [SerializeField] private int currentHealth;
+    public Slider healthSlider; 
 
     void Start()
     {
         currentHealth = maxHealth;
+        healthSlider.maxValue = maxHealth; 
+        healthSlider.value = currentHealth; 
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         Debug.Log("Player hit! Current health: " + currentHealth);
+
+        healthSlider.value = currentHealth; 
 
         if (currentHealth <= 0)
         {
@@ -25,6 +30,5 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         Debug.Log("Player died!");
-        // เพิ่มฟังก์ชันการตายของผู้เล่นที่นี่
     }
 }

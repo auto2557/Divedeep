@@ -37,19 +37,16 @@ public class Attack : Movement
     {
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
-        // Input buffering: Allow input buffering for smooth combo chaining
         if (Input.GetKeyDown(KeyCode.J))
         {
             inputBuffered = true;
         }
 
-        // If already attacking and animation is not finished, wait
         if (isAttacking && stateInfo.normalizedTime < 1f)
         {
             return;
         }
 
-        // Handle the attack only if input is buffered and not currently attacking
         if (inputBuffered && !isAttacking)
         {
             inputBuffered = false;
@@ -59,7 +56,7 @@ public class Attack : Movement
 
     private void StartAttackSequence()
     {
-        int randomDmg = Random.Range(9, 20);
+        int randomDmg = Random.Range(5, 12);
         damage = randomDmg;
         Debug.Log("dmg = " + damage);
 
@@ -116,11 +113,11 @@ public class Attack : Movement
         {
             case 1:
                 animator.Play("Attack4");
-                ResetHitBlockSize(); 
+                AdjustHitBlockSize(new Vector2(0.7f,0.7f));
                 break;
             case 2:
                 animator.Play("Attack2");
-             AdjustHitBlockSize(new Vector2(1.2f,1.2f));
+             AdjustHitBlockSize(new Vector2(0.9f,0.9f));
                 break;
             case 3:
                 animator.Play("Attack3");
@@ -132,7 +129,7 @@ public class Attack : Movement
                 {
                     rb.velocity = Vector2.one;
                 }
-                AdjustHitBlockSize(new Vector2(1.4f,1.4f));
+                AdjustHitBlockSize(new Vector2(1.2f,1.2f));
                 break;
         }
 

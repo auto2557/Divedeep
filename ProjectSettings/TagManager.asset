@@ -9,6 +9,7 @@ TagManager:
   - dashMode
   - Wall
   - hitblock
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
+  - Enemy1
   - 
   - 
   - 
