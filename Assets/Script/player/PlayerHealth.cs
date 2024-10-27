@@ -1,14 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;  
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHealth = 100;
+    public int maxHealth;
     [SerializeField] private int currentHealth;
     public Slider healthSlider; 
 
     void Start()
     {
+        maxHealth = 5;
         currentHealth = maxHealth;
         healthSlider.maxValue = maxHealth; 
         healthSlider.value = currentHealth; 
@@ -29,6 +31,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Die()
     {
+         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Debug.Log("Player died!");
     }
 }
