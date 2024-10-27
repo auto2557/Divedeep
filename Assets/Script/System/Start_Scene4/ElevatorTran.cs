@@ -7,14 +7,17 @@ public class ElevatorTran : MonoBehaviour
     private Rigidbody2D rb;
     public Transform endPoint;
     public player player;
+    public FadeImageAlpha[] fade;
     public GameObject[] black;
 
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(0,1f); 
+        rb.velocity = new Vector2(0,2f); 
          player.enabled = false; 
+         fade[0].enabled = false;
+         fade[1].enabled = false;
     }
 
     void Update()
@@ -23,8 +26,8 @@ public class ElevatorTran : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
              player.enabled = true; 
-             black[0].SetActive(false);
-              black[1].SetActive(false);
+             fade[0].enabled = true;
+             fade[1].enabled = true;
         }
     }
 }
