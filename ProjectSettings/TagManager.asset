@@ -10,6 +10,7 @@ TagManager:
   - hitblock
   - Enemy
   - slash
+  - savePoint
   layers:
   - Default
   - TransparentFX
