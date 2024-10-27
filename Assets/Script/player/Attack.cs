@@ -180,15 +180,15 @@ public class Attack : Movement
 
     protected void IAISLASH()
     {
-        Vector2 bulletDirection = facingRight ? Vector2.right : Vector2.left;
+        Vector2 slahDirection = facingRight ? Vector2.right : Vector2.left;
 
-        GameObject bullet = Instantiate(SonicBlow, transform.position, Quaternion.identity);
+        GameObject slash = Instantiate(SonicBlow, transform.position, Quaternion.identity);
 
-        bullet.GetComponent<Rigidbody2D>().velocity = bulletDirection * bulletSpeed;
+        slash.GetComponent<Rigidbody2D>().velocity = slahDirection * bulletSpeed;
 
         if (!facingRight)
         {
-            bullet.transform.localScale = new Vector2(-1, 1);
+            slash.transform.localScale = new Vector2(-1, 1);
         }
     }
 }

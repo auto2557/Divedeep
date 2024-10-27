@@ -53,3 +53,6 @@ TagManager:
   - name: background
     uniqueID: 246720365
     locked: 0
+  - name: Hydra
+    uniqueID: 719147783
+    locked: 0
