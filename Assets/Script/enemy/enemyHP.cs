@@ -21,16 +21,15 @@ public class enemyHP : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("hitblock") && !isDead && !isHit)
+        if ((collision.CompareTag("hitblock") || collision.CompareTag("slash")) && !isDead && !isHit)
         {
-            isHit = true;  // Set isHit to true immediately to prevent repeated damage
+            isHit = true; 
 
             int damageAmount = Playerscript.damage;  
             hp -= damageAmount;
 
             ShowDamagePopup(damageAmount);
 
-            // Apply knockback based on player's facing direction
             if (Playerscript.facingRight)
             {
                 rb.velocity = new Vector2(3.5f, 3f);
@@ -40,7 +39,6 @@ public class enemyHP : MonoBehaviour
                 rb.velocity = new Vector2(-3.5f, 3f);
             }
 
-            // Check if the enemy is dead
             if (hp <= 0)
             {
                 isDead = true;

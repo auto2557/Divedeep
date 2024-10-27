@@ -2355,11 +2355,11 @@ GameObject:
   - component: {fileID: 1440035786}
   m_Layer: 0
   m_Name: EME3
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1440035783
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2572,7 +2572,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 675832853990493656, guid: 4b40d046b75cfb44598d5fc409cf1d6e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.74
+      value: 8.37
       objectReference: {fileID: 0}
     - target: {fileID: 675832853990493656, guid: 4b40d046b75cfb44598d5fc409cf1d6e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2610,6 +2610,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4613804016571150366, guid: 4b40d046b75cfb44598d5fc409cf1d6e, type: 3}
+      propertyPath: Sonicblow
+      value: 
+      objectReference: {fileID: 7107174542558178293, guid: adbef17b76658104d8bcf4adf74f47f7, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -5,11 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-  - firepoint
   - dashMode
   - Wall
   - hitblock
   - Enemy
+  - slash
   layers:
   - Default
   - TransparentFX

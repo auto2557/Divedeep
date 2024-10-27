@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Attack : Movement
@@ -10,18 +11,12 @@ public class Attack : Movement
     protected float lastAttackTime;
     protected bool isAttacking = false;
     protected bool inputBuffered = false;
+    protected bool canSlash = true;
 
     public GameObject hitBlockRight;
     public GameObject hitBlockLeft;
 
-    public GameObject SonicBlow;
-    public float bulletSpeed = 5f;
-
-    protected void Update()
-    {
-        UpdateHitBlockPosition();
-        HandleAttack();
-    }
+    public GameObject Sonicblow;
 
     protected void UpdateHitBlockPosition()
     {
@@ -62,9 +57,13 @@ public class Attack : Movement
             StartAttackSequence();
         }
 
-        if (Input.GetKeyDown(KeyCode.U))
+        if (Input.GetKeyDown(KeyCode.U) && canSlash)
         {
+            animator.SetBool("isSlash", true);
             IAISLASH();
+            canSlash = false;
+            StartCoroutine(cooldownSlash());
+            StartCoroutine(waitForSlash());
         }
     }
 
@@ -180,15 +179,29 @@ public class Attack : Movement
 
     protected void IAISLASH()
     {
+         int randomDmg = Random.Range(5, 12);
+        damage = randomDmg;
+        Debug.Log("dmg = " + damage);
+        
         Vector2 slahDirection = facingRight ? Vector2.right : Vector2.left;
 
-        GameObject slash = Instantiate(SonicBlow, transform.position, Quaternion.identity);
+        GameObject slash = Instantiate(Sonicblow, transform.position, Quaternion.identity);
 
-        slash.GetComponent<Rigidbody2D>().velocity = slahDirection * bulletSpeed;
+        slash.GetComponent<Rigidbody2D>().velocity = slahDirection * 6f;
 
         if (!facingRight)
         {
             slash.transform.localScale = new Vector2(-1, 1);
         }
+    }
+    protected IEnumerator cooldownSlash()
+    {
+        yield return new WaitForSeconds(1.75f);
+        canSlash = true;
+    }
+    protected IEnumerator waitForSlash()
+    {
+        yield return new WaitForSeconds(0.5f);
+         animator.SetBool("isSlash", false);
     }
 }
