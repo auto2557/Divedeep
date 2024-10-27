@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class Attack : Movement
 {
-    protected int attackCount = 0; 
+    protected int attackCount = 0;
     public int damage;
-    protected float comboResetTime = 1.5f; 
+    protected float comboResetTime = 1.5f;
     protected float lastAttackTime;
     protected bool isAttacking = false;
     protected bool inputBuffered = false;
 
-    public GameObject hitBlockRight; 
+    public GameObject hitBlockRight;
     public GameObject hitBlockLeft;
+
+    public GameObject SonicBlow;
+    public float bulletSpeed = 5f;
+
+    protected void Update()
+    {
+        UpdateHitBlockPosition();
+        HandleAttack();
+    }
 
     protected void UpdateHitBlockPosition()
     {
@@ -52,6 +61,11 @@ public class Attack : Movement
             inputBuffered = false;
             StartAttackSequence();
         }
+
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            IAISLASH();
+        }
     }
 
     private void StartAttackSequence()
@@ -62,35 +76,32 @@ public class Attack : Movement
 
         rb.velocity = Vector2.zero;
 
-    
         if (Time.time - lastAttackTime > comboResetTime)
         {
             attackCount = 0;
         }
 
-        attackCount++; 
+        attackCount++;
         lastAttackTime = Time.time;
 
-      
         if (attackCount > 3)
         {
             attackCount = 1;
         }
 
-     
         if (!isGrounded)
         {
             PlayJumpAttack();
         }
         else
         {
-            PlayAttackAnimation(attackCount); 
+            PlayAttackAnimation(attackCount);
         }
     }
 
     protected void PlayJumpAttack()
     {
-        isAttacking = true; 
+        isAttacking = true;
         animator.Play("JumpAttack");
 
         if (!facingRight)
@@ -113,15 +124,15 @@ public class Attack : Movement
         {
             case 1:
                 animator.Play("Attack4");
-                AdjustHitBlockSize(new Vector2(0.7f,0.7f));
+                AdjustHitBlockSize(new Vector2(0.7f, 0.7f));
                 break;
             case 2:
                 animator.Play("Attack2");
-             AdjustHitBlockSize(new Vector2(0.9f,0.9f));
+                AdjustHitBlockSize(new Vector2(0.9f, 0.9f));
                 break;
             case 3:
                 animator.Play("Attack3");
-                  if (!facingRight)
+                if (!facingRight)
                 {
                     rb.velocity = Vector2.left;
                 }
@@ -129,11 +140,10 @@ public class Attack : Movement
                 {
                     rb.velocity = Vector2.one;
                 }
-                AdjustHitBlockSize(new Vector2(1.2f,1.2f));
+                AdjustHitBlockSize(new Vector2(1.2f, 1.2f));
                 break;
         }
 
-      
         StartCoroutine(ResetAttackState(animator.GetCurrentAnimatorStateInfo(0).length));
     }
 
@@ -161,11 +171,24 @@ public class Attack : Movement
         yield return new WaitForSeconds(animationDuration);
         isAttacking = false;
 
-     
         if (inputBuffered)
         {
             inputBuffered = false;
             StartAttackSequence();
+        }
+    }
+
+    protected void IAISLASH()
+    {
+        Vector2 bulletDirection = facingRight ? Vector2.right : Vector2.left;
+
+        GameObject bullet = Instantiate(SonicBlow, transform.position, Quaternion.identity);
+
+        bullet.GetComponent<Rigidbody2D>().velocity = bulletDirection * bulletSpeed;
+
+        if (!facingRight)
+        {
+            bullet.transform.localScale = new Vector2(-1, 1);
         }
     }
 }
