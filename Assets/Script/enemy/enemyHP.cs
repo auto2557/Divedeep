@@ -19,7 +19,7 @@ public class enemyHP : MonoBehaviour
         Destroy(gameObject); 
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    public virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if ((collision.CompareTag("hitblock") || collision.CompareTag("slash")) && !isDead && !isHit)
         {
@@ -49,13 +49,13 @@ public class enemyHP : MonoBehaviour
         }
     }
 
-    private void ShowDamagePopup(int damageAmount)
+    protected void ShowDamagePopup(int damageAmount)
     {
         GameObject damagePopup = Instantiate(damagePopupPrefab, transform.position, Quaternion.identity);
         damagePopup.GetComponent<DamagePopup>().Setup(damageAmount);
     }
 
-    IEnumerator ResetHit()
+    public IEnumerator ResetHit()
     {
         yield return new WaitForSeconds(0.3f); 
         isHit = false;  

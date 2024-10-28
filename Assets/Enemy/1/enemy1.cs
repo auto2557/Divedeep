@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemy : EnemyPatrolByDistance
+public class enemy1 : EnemyPatrolByDistance
 {
     void Start()
     {
