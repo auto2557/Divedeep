@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Attack : Movement
 {
-    protected int attackCount = 0; 
+    protected int attackCount = 0;
     public int damage;
-    protected float comboResetTime = 1.5f; 
+    protected float comboResetTime = 1.5f;
     protected float lastAttackTime;
     protected bool isAttacking = false;
     protected bool inputBuffered = false;
+    protected bool canSlash = true;
 
-    public GameObject hitBlockRight; 
+    public GameObject hitBlockRight;
     public GameObject hitBlockLeft;
+
+    public GameObject Sonicblow;
 
     protected void UpdateHitBlockPosition()
     {
@@ -37,63 +41,66 @@ public class Attack : Movement
     {
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
-        // Input buffering: Allow input buffering for smooth combo chaining
         if (Input.GetKeyDown(KeyCode.J))
         {
             inputBuffered = true;
         }
 
-        // If already attacking and animation is not finished, wait
         if (isAttacking && stateInfo.normalizedTime < 1f)
         {
             return;
         }
 
-        // Handle the attack only if input is buffered and not currently attacking
         if (inputBuffered && !isAttacking)
         {
             inputBuffered = false;
             StartAttackSequence();
         }
+
+        if (Input.GetKeyDown(KeyCode.U) && canSlash)
+        {
+            animator.SetBool("isSlash", true);
+            IAISLASH();
+            canSlash = false;
+            StartCoroutine(cooldownSlash());
+            StartCoroutine(waitForSlash());
+        }
     }
 
     private void StartAttackSequence()
     {
-        int randomDmg = Random.Range(9, 20);
+        int randomDmg = Random.Range(5, 12);
         damage = randomDmg;
         Debug.Log("dmg = " + damage);
 
         rb.velocity = Vector2.zero;
 
-    
         if (Time.time - lastAttackTime > comboResetTime)
         {
             attackCount = 0;
         }
 
-        attackCount++; 
+        attackCount++;
         lastAttackTime = Time.time;
 
-      
         if (attackCount > 3)
         {
             attackCount = 1;
         }
 
-     
         if (!isGrounded)
         {
             PlayJumpAttack();
         }
         else
         {
-            PlayAttackAnimation(attackCount); 
+            PlayAttackAnimation(attackCount);
         }
     }
 
     protected void PlayJumpAttack()
     {
-        isAttacking = true; 
+        isAttacking = true;
         animator.Play("JumpAttack");
 
         if (!facingRight)
@@ -116,15 +123,15 @@ public class Attack : Movement
         {
             case 1:
                 animator.Play("Attack4");
-                ResetHitBlockSize(); 
+                AdjustHitBlockSize(new Vector2(0.7f, 0.7f));
                 break;
             case 2:
                 animator.Play("Attack2");
-             AdjustHitBlockSize(new Vector2(1.2f,1.2f));
+                AdjustHitBlockSize(new Vector2(0.9f, 0.9f));
                 break;
             case 3:
                 animator.Play("Attack3");
-                  if (!facingRight)
+                if (!facingRight)
                 {
                     rb.velocity = Vector2.left;
                 }
@@ -132,11 +139,10 @@ public class Attack : Movement
                 {
                     rb.velocity = Vector2.one;
                 }
-                AdjustHitBlockSize(new Vector2(1.4f,1.4f));
+                AdjustHitBlockSize(new Vector2(1.2f, 1.2f));
                 break;
         }
 
-      
         StartCoroutine(ResetAttackState(animator.GetCurrentAnimatorStateInfo(0).length));
     }
 
@@ -164,11 +170,38 @@ public class Attack : Movement
         yield return new WaitForSeconds(animationDuration);
         isAttacking = false;
 
-     
         if (inputBuffered)
         {
             inputBuffered = false;
             StartAttackSequence();
         }
+    }
+
+    protected void IAISLASH()
+    {
+         int randomDmg = Random.Range(5, 12);
+        damage = randomDmg;
+        Debug.Log("dmg = " + damage);
+        
+        Vector2 slahDirection = facingRight ? Vector2.right : Vector2.left;
+
+        GameObject slash = Instantiate(Sonicblow, transform.position, Quaternion.identity);
+
+        slash.GetComponent<Rigidbody2D>().velocity = slahDirection * 6f;
+
+        if (!facingRight)
+        {
+            slash.transform.localScale = new Vector2(-1, 1);
+        }
+    }
+    protected IEnumerator cooldownSlash()
+    {
+        yield return new WaitForSeconds(1.75f);
+        canSlash = true;
+    }
+    protected IEnumerator waitForSlash()
+    {
+        yield return new WaitForSeconds(0.5f);
+         animator.SetBool("isSlash", false);
     }
 }

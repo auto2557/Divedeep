@@ -9,6 +9,7 @@ public class EnemyPatrolByDistance : enemyHP
     public float waitTime; 
     public float detectionRange = 5f; 
     public float returnSpeed = 3f; 
+    public float separationDistance = 1.5f; 
     public Animator animator; 
     public SpriteRenderer spriteRenderer; 
 
@@ -18,17 +19,18 @@ public class EnemyPatrolByDistance : enemyHP
     public Vector2 patrolStartPoint; 
     public bool movingRight = true; 
 
+    public LayerMask enemyLayer; 
+
     public IEnumerator Patrol()
     {
         int randomWaittime = Random.Range(1, 5);
         waitTime = randomWaittime;
         while (true)
         {
-            // Stop patrol if the enemy is dead
             if (isDead) 
             {
                 animator.SetBool("isWalking", false);
-                yield break;  // Exit the coroutine
+                yield break;  
             }
 
             if (!isChasingPlayer && !isReturningToPatrol)
@@ -37,25 +39,19 @@ public class EnemyPatrolByDistance : enemyHP
 
                 FlipSprite(movingRight ? 1 : -1);
 
-                if (movingRight)
+                Vector2 targetPosition = movingRight 
+                    ? patrolStartPoint + Vector2.right * patrolDistance 
+                    : patrolStartPoint;
+
+                Vector2 adjustedPosition = AvoidOverlap(targetPosition);
+
+                transform.position = Vector2.MoveTowards(transform.position, adjustedPosition, speed * Time.deltaTime);
+
+                if (Vector2.Distance(transform.position, adjustedPosition) < 0.1f)
                 {
-                    transform.position = Vector2.MoveTowards(transform.position, patrolStartPoint + Vector2.right * patrolDistance, speed * Time.deltaTime);
-                    if (Vector2.Distance(transform.position, patrolStartPoint + Vector2.right * patrolDistance) < 0.1f)
-                    {
-                        movingRight = false;
-                        animator.SetBool("isWalking", false);
-                        yield return new WaitForSeconds(waitTime);
-                    }
-                }
-                else
-                {
-                    transform.position = Vector2.MoveTowards(transform.position, patrolStartPoint, speed * Time.deltaTime);
-                    if (Vector2.Distance(transform.position, patrolStartPoint) < 0.1f)
-                    {
-                        movingRight = true;
-                        animator.SetBool("isWalking", false);
-                        yield return new WaitForSeconds(waitTime);
-                    }
+                    movingRight = !movingRight;
+                    animator.SetBool("isWalking", false);
+                    yield return new WaitForSeconds(waitTime);
                 }
             }
 
@@ -65,7 +61,6 @@ public class EnemyPatrolByDistance : enemyHP
 
     public void ChasePlayer()
     {
- 
         if (isDead) 
         {
             animator.SetBool("isWalking", false);
@@ -78,13 +73,14 @@ public class EnemyPatrolByDistance : enemyHP
 
             FlipSprite(player.position.x - transform.position.x);
 
-            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+            Vector2 adjustedPosition = AvoidOverlap(player.position);
+
+            transform.position = Vector2.MoveTowards(transform.position, adjustedPosition, speed * Time.deltaTime);
         }
     }
 
     public IEnumerator ReturnToPatrol()
     {
-   
         if (isDead) 
         {
             animator.SetBool("isWalking", false);
@@ -98,9 +94,10 @@ public class EnemyPatrolByDistance : enemyHP
 
         while (Vector2.Distance(transform.position, targetPoint) > 0.1f && isReturningToPatrol)
         {
-            transform.position = Vector2.MoveTowards(transform.position, targetPoint, returnSpeed * Time.deltaTime);
+            Vector2 adjustedPosition = AvoidOverlap(targetPoint);
 
-           
+            transform.position = Vector2.MoveTowards(transform.position, adjustedPosition, returnSpeed * Time.deltaTime);
+
             if (isDead)
             {
                 animator.SetBool("isWalking", false);
@@ -130,11 +127,30 @@ public class EnemyPatrolByDistance : enemyHP
         }
     }
 
+    private Vector2 AvoidOverlap(Vector2 targetPosition)
+    {
+        Collider2D[] nearbyEnemies = Physics2D.OverlapCircleAll(transform.position, separationDistance, enemyLayer);
+
+        foreach (Collider2D enemy in nearbyEnemies)
+        {
+            if (enemy.gameObject != gameObject)
+            {
+                Vector2 separationDirection = (transform.position - enemy.transform.position).normalized;
+                targetPosition += separationDirection * 0.5f; 
+            }
+        }
+
+        return targetPosition;
+    }
+
     public void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRange);
         Gizmos.color = Color.green;
         Gizmos.DrawLine(transform.position - Vector3.right * patrolDistance, transform.position + Vector3.right * patrolDistance);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, separationDistance);
     }
 }

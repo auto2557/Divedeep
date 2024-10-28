@@ -5,10 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-  - firepoint
   - dashMode
   - Wall
   - hitblock
+  - Enemy
+  - slash
+  - savePoint
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
+  - Enemy1
   - 
   - 
   - 
@@ -51,4 +53,7 @@ TagManager:
     locked: 0
   - name: background
     uniqueID: 246720365
+    locked: 0
+  - name: Hydra
+    uniqueID: 719147783
     locked: 0

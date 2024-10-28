@@ -75,7 +75,7 @@ public class MenuController : MonoBehaviour
         switch (selectedIndex)
         {
             case 0:
-                SceneManager.LoadScene("DemoScene"); 
+                SceneManager.LoadScene("CutSceneBeforeGame"); 
                 break;
             case 1:
                 Debug.Log("Setting selected");
