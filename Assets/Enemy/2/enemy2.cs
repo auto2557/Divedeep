@@ -10,11 +10,13 @@ public class enemy2 : enemyHP
     public float fireRate = 1f; 
     public float shootingRangeX = 10f; 
     public float bulletSpeed = 10f; 
+    private enemy2 enem2;
     private float nextFireTime;
     private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
+        enem2 = GetComponent<enemy2>();
          hp = 40;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -74,5 +76,14 @@ public class enemy2 : enemyHP
 
             StartCoroutine(ResetHit()); 
         }
+    }
+
+     public override IEnumerator Die()
+    {
+        anim.SetTrigger("Die");
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        gameObject.GetComponent<Rigidbody2D>().simulated = false;
+        enem2.enabled = false;
+        yield return new WaitForSeconds(2f); 
     }
 }
