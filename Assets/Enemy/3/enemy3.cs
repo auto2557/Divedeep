@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class enemy3 : EnemyPatrolByDistance
 {
+    public GameObject meleeATK;
+
    void Start()
     {
         hp = 5;
@@ -49,6 +51,23 @@ public class enemy3 : EnemyPatrolByDistance
         }
     }
 
+
+   void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.CompareTag("Player"))
+        {
+        meleeATK.SetActive(true);
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D coll)
+    {
+        if (coll.gameObject.CompareTag("Player"))
+        {
+        meleeATK.SetActive(false);
+        }
+    }
+
     public override IEnumerator Die()
     {
         anim.SetTrigger("Die");
@@ -56,6 +75,8 @@ public class enemy3 : EnemyPatrolByDistance
         gameObject.GetComponent<Rigidbody2D>().simulated = false;
         yield return new WaitForSeconds(2f); 
     }
+
+
 
 
 }
