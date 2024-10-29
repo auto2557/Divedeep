@@ -72,7 +72,7 @@ public class enemy3 : EnemyPatrolByDistance
                 meleeCoroutine = null;
             }
             meleeATK.SetActive(false);
-             anim.ResetTrigger("Attack"); 
+             anim.SetBool("isAttack",false); 
         }
     }
 
@@ -80,11 +80,16 @@ public class enemy3 : EnemyPatrolByDistance
     {
         while (true)
         {
-           meleeATK.SetActive(true);
-            anim.SetTrigger("Attack"); 
-            yield return new WaitForSeconds(2f);
+            rb.velocity = Vector2.zero;
+            yield return new WaitForSeconds(1f);
+            meleeATK.SetActive(true);
+           anim.SetBool("isAttack",true);
+
+
+            
+            yield return new WaitForSeconds(1.5f);
+            anim.SetBool("isAttack",false); 
             meleeATK.SetActive(false);
-            yield return new WaitForSeconds(2f);
         
         }
     }
