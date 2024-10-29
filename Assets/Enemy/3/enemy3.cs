@@ -5,8 +5,9 @@ using UnityEngine;
 public class enemy3 : EnemyPatrolByDistance
 {
     public GameObject meleeATK;
+    private Coroutine meleeCoroutine;
 
-   void Start()
+    void Start()
     {
         hp = 5;
         rb = GetComponent<Rigidbody2D>();
@@ -33,7 +34,6 @@ public class enemy3 : EnemyPatrolByDistance
             StartCoroutine(Die());
         }
 
-
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
         if (distanceToPlayer <= detectionRange)
@@ -51,12 +51,14 @@ public class enemy3 : EnemyPatrolByDistance
         }
     }
 
-
-   void OnCollisionEnter2D(Collision2D coll)
+    void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.CompareTag("Player"))
         {
-        meleeATK.SetActive(true);
+            if (meleeCoroutine == null)
+            {
+                meleeCoroutine = StartCoroutine(ToggleMeleeAttack());
+            }
         }
     }
 
@@ -64,19 +66,34 @@ public class enemy3 : EnemyPatrolByDistance
     {
         if (coll.gameObject.CompareTag("Player"))
         {
-        meleeATK.SetActive(false);
+            if (meleeCoroutine != null)
+            {
+                StopCoroutine(meleeCoroutine);
+                meleeCoroutine = null;
+            }
+            meleeATK.SetActive(false);
+             anim.ResetTrigger("Attack"); 
+        }
+    }
+
+    private IEnumerator ToggleMeleeAttack()
+    {
+        while (true)
+        {
+           meleeATK.SetActive(true);
+            anim.SetTrigger("Attack"); 
+            yield return new WaitForSeconds(2f);
+            meleeATK.SetActive(false);
+            yield return new WaitForSeconds(2f);
+        
         }
     }
 
     public override IEnumerator Die()
     {
         anim.SetTrigger("Die");
-         gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
         gameObject.GetComponent<Rigidbody2D>().simulated = false;
-        yield return new WaitForSeconds(2f); 
+        yield return new WaitForSeconds(2f);
     }
-
-
-
-
 }

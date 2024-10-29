@@ -1325,6 +1325,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  animator: {fileID: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -3248,6 +3249,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  animator: {fileID: 0}
 --- !u!1 &1594359978
 GameObject:
   m_ObjectHideFlags: 0
@@ -3627,6 +3629,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  animator: {fileID: 0}
 --- !u!1 &1935974945
 GameObject:
   m_ObjectHideFlags: 0
@@ -4095,7 +4098,7 @@ PrefabInstance:
       objectReference: {fileID: 7594088303279087093, guid: 1a62194cfdaf0f14b9d314630510227a, type: 3}
     - target: {fileID: 797990017070010739, guid: 3824b08f9f7d2694a82b8ee1a32468fa, type: 3}
       propertyPath: m_SortingLayer
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 797990017070010739, guid: 3824b08f9f7d2694a82b8ee1a32468fa, type: 3}
       propertyPath: m_SortingLayerID
@@ -4103,7 +4106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1032169142112454758, guid: 3824b08f9f7d2694a82b8ee1a32468fa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.46
+      value: 1.99
       objectReference: {fileID: 0}
     - target: {fileID: 1032169142112454758, guid: 3824b08f9f7d2694a82b8ee1a32468fa, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4139,6 +4142,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1032169142112454758, guid: 3824b08f9f7d2694a82b8ee1a32468fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219509248449315900, guid: 3824b08f9f7d2694a82b8ee1a32468fa, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6322320699656808118, guid: 3824b08f9f7d2694a82b8ee1a32468fa, type: 3}
