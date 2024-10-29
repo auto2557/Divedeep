@@ -11,7 +11,7 @@ public class enemy3 : EnemyPatrolByDistance
     {
         hp = 5;
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
 
         GameObject Player = GameObject.FindWithTag("Player");
         Playerscript = Player.GetComponent<player>();
@@ -66,6 +66,7 @@ public class enemy3 : EnemyPatrolByDistance
     {
         if (coll.gameObject.CompareTag("Player"))
         {
+            
             if (meleeCoroutine != null)
             {
                 StopCoroutine(meleeCoroutine);
@@ -80,15 +81,14 @@ public class enemy3 : EnemyPatrolByDistance
     {
         while (true)
         {
-            rb.velocity = Vector2.zero;
             yield return new WaitForSeconds(1f);
             meleeATK.SetActive(true);
-           anim.SetBool("isAttack",true);
+           animator.SetBool("isAttack",true);
 
 
             
             yield return new WaitForSeconds(1.5f);
-            anim.SetBool("isAttack",false); 
+            animator.SetBool("isAttack",false); 
             meleeATK.SetActive(false);
         
         }
@@ -96,7 +96,7 @@ public class enemy3 : EnemyPatrolByDistance
 
     public override IEnumerator Die()
     {
-        anim.SetTrigger("Die");
+        animator.SetTrigger("Die");
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         gameObject.GetComponent<Rigidbody2D>().simulated = false;
         yield return new WaitForSeconds(2f);
