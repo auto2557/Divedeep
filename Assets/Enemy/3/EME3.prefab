@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6558263047881816768}
   - component: {fileID: 2570796641771560803}
   - component: {fileID: 595002492252611247}
-  - component: {fileID: 8519555437979068331}
+  - component: {fileID: -3563695271784455432}
   m_Layer: 0
   m_Name: EME3
   m_TagString: Enemy
@@ -74,9 +74,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1549764679
+  m_SortingLayer: 4
+  m_SortingOrder: 15
   m_Sprite: {fileID: -450410980, guid: 3a05ab5e3816cec409cc5d8759d9084e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -181,7 +181,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5819416, y: 0.98}
   m_EdgeRadius: 0
---- !u!114 &8519555437979068331
+--- !u!114 &-3563695271784455432
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -190,23 +190,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 6322320699656808118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a633d38614883d40ab0f1b1a2f3e1a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b735629e2d842e4986fdb19390ff98f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 0
   rb: {fileID: 0}
   Playerscript: {fileID: 0}
-  anim: {fileID: 6558263047881816768}
+  anim: {fileID: 0}
   isDead: 0
-  damagePopupPrefab: {fileID: 7594088303279087093, guid: 1a62194cfdaf0f14b9d314630510227a, type: 3}
-  patrolDistance: 3
-  speed: 1
-  waitTime: 2
+  damagePopupPrefab: {fileID: 0}
+  patrolDistance: 5
+  speed: 2
+  waitTime: 0
   detectionRange: 5
   returnSpeed: 3
   separationDistance: 1.5
-  animator: {fileID: 6558263047881816768}
-  spriteRenderer: {fileID: 797990017070010739}
+  animator: {fileID: 0}
+  spriteRenderer: {fileID: 0}
   player: {fileID: 0}
   isChasingPlayer: 0
   isReturningToPatrol: 0
@@ -214,4 +214,5 @@ MonoBehaviour:
   movingRight: 1
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
+  die: {fileID: 4559489562016315733, guid: 18f16d4a677f38445a1bf49f28640362, type: 3}

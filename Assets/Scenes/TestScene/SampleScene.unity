@@ -1362,7 +1362,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 000000000753dd2a
+  m_ApplyToSortingLayers: 000000000753dd2a47885f5c
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -4089,13 +4089,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3563695271784455432, guid: 3824b08f9f7d2694a82b8ee1a32468fa, type: 3}
+      propertyPath: damagePopupPrefab
+      value: 
+      objectReference: {fileID: 7594088303279087093, guid: 1a62194cfdaf0f14b9d314630510227a, type: 3}
+    - target: {fileID: 797990017070010739, guid: 3824b08f9f7d2694a82b8ee1a32468fa, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 797990017070010739, guid: 3824b08f9f7d2694a82b8ee1a32468fa, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1549764679
+      objectReference: {fileID: 0}
     - target: {fileID: 1032169142112454758, guid: 3824b08f9f7d2694a82b8ee1a32468fa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.15
+      value: -2.46
       objectReference: {fileID: 0}
     - target: {fileID: 1032169142112454758, guid: 3824b08f9f7d2694a82b8ee1a32468fa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.821
+      value: -5.74
       objectReference: {fileID: 0}
     - target: {fileID: 1032169142112454758, guid: 3824b08f9f7d2694a82b8ee1a32468fa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4135,17 +4147,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6322320699656808118, guid: 3824b08f9f7d2694a82b8ee1a32468fa, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8519555437979068331, guid: 3824b08f9f7d2694a82b8ee1a32468fa, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 193427716}
-    - target: {fileID: 8519555437979068331, guid: 3824b08f9f7d2694a82b8ee1a32468fa, type: 3}
-      propertyPath: Playerscript
-      value: 
-      objectReference: {fileID: 1753212893}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4169,6 +4174,14 @@ PrefabInstance:
     - target: {fileID: 4716628055356983545, guid: 0271c8fe3d77ab5438a09daf1ad90577, type: 3}
       propertyPath: m_Name
       value: eme2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716628055356983545, guid: 0271c8fe3d77ab5438a09daf1ad90577, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6348499461439953765, guid: 0271c8fe3d77ab5438a09daf1ad90577, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6971037895946186836, guid: 0271c8fe3d77ab5438a09daf1ad90577, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4214,6 +4227,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 193427716}
+    - target: {fileID: 8195593861755385756, guid: 0271c8fe3d77ab5438a09daf1ad90577, type: 3}
+      propertyPath: fireRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195593861755385756, guid: 0271c8fe3d77ab5438a09daf1ad90577, type: 3}
+      propertyPath: bulletSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8195593861755385756, guid: 0271c8fe3d77ab5438a09daf1ad90577, type: 3}
       propertyPath: damagePopupPrefab
       value: 

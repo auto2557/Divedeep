@@ -48,12 +48,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
-    uniqueID: 324692233
-    locked: 0
   - name: background
     uniqueID: 246720365
     locked: 0
   - name: Hydra
     uniqueID: 719147783
+    locked: 0
+  - name: Enemy
+    uniqueID: 1549764679
+    locked: 0
+  - name: Player
+    uniqueID: 324692233
     locked: 0
