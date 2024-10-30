@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
-    public float rotationSpeed = 5f;   
-    public float speed = 10f;          
-    public float delayBeforeLaunch = 1f;
+    public float rotationSpeed;   
+    public float speed;          
+    public float delayBeforeLaunch;
 
     public Transform target;
     private Rigidbody2D rb;
