@@ -148,9 +148,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd124c8a138cc7647bb72b65a423f3d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 5
-  speed: 10
-  delayBeforeLaunch: 1
+  rotationSpeed: 500
+  speed: 5
+  delayBeforeLaunch: 3
+  target: {fileID: 0}
 --- !u!61 &2231601723275854335
 BoxCollider2D:
   m_ObjectHideFlags: 0

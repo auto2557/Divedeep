@@ -7,7 +7,7 @@ public class Missile : MonoBehaviour
     public float speed = 10f;          
     public float delayBeforeLaunch = 1f;
 
-    private Transform target;
+    public Transform target;
     private Rigidbody2D rb;
     private Animator anim;
     private bool isLaunched = false;
