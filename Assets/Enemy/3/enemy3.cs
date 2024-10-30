@@ -22,10 +22,10 @@ public class enemy3 : EnemyPatrolByDistance
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
-        cooldownTime = 20f;
+        cooldownTime = 15f;
         speed = 0.5f;
         returnSpeed = 0.5f;
-        detectionRange = 7f;
+        detectionRange = 8f;
 
         GameObject Player = GameObject.FindWithTag("Player");
         Playerscript = Player.GetComponent<player>();
@@ -65,7 +65,7 @@ public class enemy3 : EnemyPatrolByDistance
         }
 
       
-        if (distanceToPlayer <= 4f && canFireMissiles)
+        if (distanceToPlayer <= 5f && canFireMissiles)
         {
             if (missileCoroutine == null)
             {
@@ -145,7 +145,8 @@ public class enemy3 : EnemyPatrolByDistance
         animator.SetTrigger("Die");
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         gameObject.GetComponent<Rigidbody2D>().simulated = false;
+       
         yield return new WaitForSeconds(2f);
-        Destroy(gameObject);
+         gameObject.GetComponent<enemy3>().enabled = false;
     }
 }
