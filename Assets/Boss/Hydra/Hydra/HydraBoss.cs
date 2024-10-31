@@ -59,4 +59,5 @@ public class HydraBoss : enemyHP
             StartCoroutine(ResetHit()); 
         }
     }
+
 }
