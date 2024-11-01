@@ -9,7 +9,7 @@ public class HydraBoss : enemyHP
     private Animator animator;
     void Start()
     {
-        speed = 0.3f;
+        speed = 1f;
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject != null)
         {
