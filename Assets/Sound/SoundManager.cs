@@ -119,15 +119,18 @@ public class SoundManager : MonoBehaviour
     }
 
     private void LoadVolumeSettings()
+{
+    string path = Application.persistentDataPath + "/volumeSettings.json";
+    if (File.Exists(path))
     {
-        string path = Application.persistentDataPath + "/volumeSettings.json";
-        if (File.Exists(path))
-        {
-            string json = File.ReadAllText(path);
-            VolumeSettings settings = JsonUtility.FromJson<VolumeSettings>(json);
-            masterVolume = settings.masterVolume;
-            bgmVolume = settings.bgmVolume;
-            sfxVolume = settings.sfxVolume;
-        }
+        string json = File.ReadAllText(path);
+        VolumeSettings settings = JsonUtility.FromJson<VolumeSettings>(json);
+        masterVolume = settings.masterVolume;
+        bgmVolume = settings.bgmVolume;
+        sfxVolume = settings.sfxVolume;
+
+        UpdateAllVolumes();
     }
+}
+
 }
