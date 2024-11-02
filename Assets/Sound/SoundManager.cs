@@ -2,33 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
-    public AudioSource bgmSource;  // สำหรับเล่นเพลงพื้นหลัง
-    public AudioSource sfxSource;  // สำหรับเล่นเสียงเอฟเฟกต์
+    public AudioSource bgmSource;  
+    public AudioSource sfxSource;  
 
     [SerializeField]
-    private AudioClip[] bgmClips;  // Array สำหรับเก็บเพลงพื้นหลัง
+    private AudioClip[] bgmClips;  
     
-    public AudioClip[] sfxClips;  // Array สำหรับเก็บเสียงเอฟเฟกต์
+    public AudioClip[] sfxClips;  
+    private float masterVolume = 0.5f;
+    private float bgmVolume = 0.5f;
+    private float sfxVolume = 0.5f;
 
-    private float masterVolume = 0.5f;  // Master Volume เริ่มต้นที่ 100%
-    private float bgmVolume = 0.5f;     // BGM Volume เริ่มต้นที่ 100%
-    private float sfxVolume = 0.5f;     // SFX Volume เริ่มต้นที่ 100%
-
-    public Slider masterSlider;   // Slider สำหรับ Master Volume
-    public Slider bgmSlider;      // Slider สำหรับ BGM Volume
-    public Slider sfxSlider;      // Slider สำหรับ SFX Volume
+    public Slider masterSlider;
+    public Slider bgmSlider;
+    public Slider sfxSlider;
 
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);  // รักษา SoundManager เมื่อเปลี่ยนฉาก
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -38,20 +38,20 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        PlayBGM(0);  // เล่นเพลงพื้นหลัง index 0 เมื่อเริ่มฉาก
+        LoadVolumeSettings();
+        PlayBGM(0);
 
-        // กำหนดค่าจาก Slider
+    
         masterSlider.onValueChanged.AddListener(SetMasterVolume);
         bgmSlider.onValueChanged.AddListener(SetBGMVolume);
         sfxSlider.onValueChanged.AddListener(SetSFXVolume);
 
-        // ตั้งค่าเริ่มต้นให้กับ Sliders
+       
         masterSlider.value = masterVolume;
         bgmSlider.value = bgmVolume;
         sfxSlider.value = sfxVolume;
     }
 
-    // ฟังก์ชันสำหรับเล่นเพลงพื้นหลัง
     public void PlayBGM(int index)
     {
         if (index < bgmClips.Length)
@@ -61,7 +61,6 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    // ฟังก์ชันสำหรับเล่นเสียงเอฟเฟกต์
     public void PlaySFX(int index)
     {
         if (index < sfxClips.Length)
@@ -70,31 +69,65 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    // ปรับระดับเสียงของเพลงพื้นหลัง
     public void SetBGMVolume(float volume)
     {
         bgmVolume = volume;
-        bgmSource.volume = bgmVolume * masterVolume;  // คูณด้วย Master Volume
+        bgmSource.volume = bgmVolume * masterVolume;
+        SaveVolumeSettings();
     }
 
-    // ปรับระดับเสียงของเสียงเอฟเฟกต์
     public void SetSFXVolume(float volume)
     {
         sfxVolume = volume;
-        sfxSource.volume = sfxVolume * masterVolume;  // คูณด้วย Master Volume
+        sfxSource.volume = sfxVolume * masterVolume;
+        SaveVolumeSettings();
     }
 
-    // ฟังก์ชันสำหรับปรับ Master Volume
     public void SetMasterVolume(float volume)
     {
-        masterVolume = Mathf.Clamp(volume, 0f, 1f);  // จำกัดค่าให้อยู่ระหว่าง 0 และ 1
+        masterVolume = Mathf.Clamp(volume, 0f, 1f);
         UpdateAllVolumes();
+        SaveVolumeSettings();
     }
 
-    // ฟังก์ชันสำหรับอัพเดตระดับเสียงทั้งหมด
     private void UpdateAllVolumes()
     {
         bgmSource.volume = bgmVolume * masterVolume;
         sfxSource.volume = sfxVolume * masterVolume;
+    }
+
+
+    [System.Serializable]
+    private class VolumeSettings
+    {
+        public float masterVolume;
+        public float bgmVolume;
+        public float sfxVolume;
+    }
+
+    private void SaveVolumeSettings()
+    {
+        VolumeSettings settings = new VolumeSettings
+        {
+            masterVolume = masterVolume,
+            bgmVolume = bgmVolume,
+            sfxVolume = sfxVolume
+        };
+        
+        string json = JsonUtility.ToJson(settings);
+        File.WriteAllText(Application.persistentDataPath + "/volumeSettings.json", json);
+    }
+
+    private void LoadVolumeSettings()
+    {
+        string path = Application.persistentDataPath + "/volumeSettings.json";
+        if (File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+            VolumeSettings settings = JsonUtility.FromJson<VolumeSettings>(json);
+            masterVolume = settings.masterVolume;
+            bgmVolume = settings.bgmVolume;
+            sfxVolume = settings.sfxVolume;
+        }
     }
 }

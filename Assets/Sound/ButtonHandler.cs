@@ -1,25 +1,25 @@
 using UnityEngine;
-using UnityEngine.UI; // สำหรับการใช้งาน UI
+using UnityEngine.UI; 
 
 public class ButtonHandler: MonoBehaviour
 {
-    public Image targetImage; // อ้างอิง Image ที่ต้องการเปลี่ยน
-    public Sprite image1; // ภาพแรก
-    public Sprite image2; // ภาพที่สอง
+    public Image targetImage; 
+    public Sprite image1; 
+    public Sprite image2; 
 
-    private bool isUsingImage1 = true; // ติดตามสถานะภาพปัจจุบัน
+    private bool isUsingImage1 = true; 
 
-    // ฟังก์ชันที่จะเรียกใช้เมื่อกดปุ่ม
+   
     public void SwitchImage()
     {
         if (isUsingImage1)
         {
-            targetImage.sprite = image2; // เปลี่ยนไปใช้ image2
+            targetImage.sprite = image2; 
         }
         else
         {
-            targetImage.sprite = image1; // เปลี่ยนกลับไปใช้ image1
+            targetImage.sprite = image1; 
         }
-        isUsingImage1 = !isUsingImage1; // เปลี่ยนสถานะ
+        isUsingImage1 = !isUsingImage1; 
     }
 }
