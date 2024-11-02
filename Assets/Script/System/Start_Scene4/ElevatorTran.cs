@@ -9,6 +9,7 @@ public class ElevatorTran : MonoBehaviour
     public player player;
     public FadeImageAlpha[] fade;
     public GameObject[] black;
+    public GameObject UIplayer;
 
 
     void Start()
@@ -28,6 +29,7 @@ public class ElevatorTran : MonoBehaviour
              player.enabled = true; 
              fade[0].enabled = true;
              fade[1].enabled = true;
+             UIplayer.gameObject.SetActive(true);
         }
     }
 }
