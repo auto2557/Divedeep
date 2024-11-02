@@ -22,7 +22,8 @@ public class PauseGameController : MenuController
             isPaused = !isPaused;
             Time.timeScale = isPaused ? 0 : 1;
              pauseMenuUI.SetActive(isPaused);
-
+            Tab[0].gameObject.SetActive(false);
+                Tab[1].gameObject.SetActive(false);
          
             if (isPaused)
             {
@@ -46,13 +47,13 @@ public class PauseGameController : MenuController
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             selectedIndex = (selectedIndex + 1) % menuButtons.Length;
-            SoundManager.instance.PlaySFX(0);
+            SoundManager.instance.PlaySFX("other", 0);
             UpdateMenuUI();
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             selectedIndex = (selectedIndex - 1 + menuButtons.Length) % menuButtons.Length;
-            SoundManager.instance.PlaySFX(0);
+            SoundManager.instance.PlaySFX("other", 0);
             UpdateMenuUI();
         }
 
@@ -96,6 +97,8 @@ public class PauseGameController : MenuController
                 isPaused = false;
                 Time.timeScale = 1;
                 pauseMenuUI.SetActive(false);
+                Tab[0].gameObject.SetActive(false);
+                Tab[1].gameObject.SetActive(false);
                 break;
             case 1:
                 Tab[0].gameObject.SetActive(true);

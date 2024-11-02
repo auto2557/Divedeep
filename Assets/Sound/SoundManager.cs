@@ -14,7 +14,15 @@ public class SoundManager : MonoBehaviour
     [SerializeField]
     private AudioClip[] bgmClips;  
     
-    public AudioClip[] sfxClips;  
+    [SerializeField] private List<AudioClip> playerSFXClips;
+    [SerializeField] private List<AudioClip> AquaStingerSFXClips;
+    [SerializeField] private List<AudioClip> AquaAnemoneSFXClips;
+    [SerializeField] private List<AudioClip> RustyColossusSFXClips;
+    [SerializeField] private List<AudioClip> HydraSFXClips;
+    [SerializeField] private List<AudioClip> otherSFXClips;
+
+    private Dictionary<string, List<AudioClip>> sfxClips;  
+    
     private float masterVolume = 0.5f;
     private float bgmVolume = 0.5f;
     private float sfxVolume = 0.5f;
@@ -22,6 +30,11 @@ public class SoundManager : MonoBehaviour
     public Slider masterSlider;
     public Slider bgmSlider;
     public Slider sfxSlider;
+
+    public Button muteMasterButton;
+    public Button muteBGMButton;
+    public Button muteSFXButton;
+    public Button resetVolumeButton;
 
     private void Awake()
     {
@@ -39,17 +52,34 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         LoadVolumeSettings();
+        InitializeSFXCategories();
         PlayBGM(0);
 
-    
         masterSlider.onValueChanged.AddListener(SetMasterVolume);
         bgmSlider.onValueChanged.AddListener(SetBGMVolume);
         sfxSlider.onValueChanged.AddListener(SetSFXVolume);
 
-       
         masterSlider.value = masterVolume;
         bgmSlider.value = bgmVolume;
         sfxSlider.value = sfxVolume;
+
+        muteMasterButton.onClick.AddListener(MuteMasterVolume);
+        muteBGMButton.onClick.AddListener(MuteBGMVolume);
+        muteSFXButton.onClick.AddListener(MuteSFXVolume);
+        resetVolumeButton.onClick.AddListener(ResetAllVolumes);
+    }
+
+    private void InitializeSFXCategories()
+    {
+        sfxClips = new Dictionary<string, List<AudioClip>>
+        {
+            { "player", playerSFXClips },
+            { "enemy1", AquaStingerSFXClips },
+            { "enemy2", AquaAnemoneSFXClips },
+            { "enemy3", RustyColossusSFXClips },
+            { "boss", HydraSFXClips },
+            { "other", otherSFXClips }
+        };
     }
 
     public void PlayBGM(int index)
@@ -61,11 +91,11 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlaySFX(int index)
+    public void PlaySFX(string category, int index)
     {
-        if (index < sfxClips.Length)
+        if (sfxClips.ContainsKey(category) && index < sfxClips[category].Count)
         {
-            sfxSource.PlayOneShot(sfxClips[index]);
+            sfxSource.PlayOneShot(sfxClips[category][index]);
         }
     }
 
@@ -96,7 +126,6 @@ public class SoundManager : MonoBehaviour
         sfxSource.volume = sfxVolume * masterVolume;
     }
 
-
     [System.Serializable]
     private class VolumeSettings
     {
@@ -119,18 +148,47 @@ public class SoundManager : MonoBehaviour
     }
 
     private void LoadVolumeSettings()
-{
-    string path = Application.persistentDataPath + "/volumeSettings.json";
-    if (File.Exists(path))
     {
-        string json = File.ReadAllText(path);
-        VolumeSettings settings = JsonUtility.FromJson<VolumeSettings>(json);
-        masterVolume = settings.masterVolume;
-        bgmVolume = settings.bgmVolume;
-        sfxVolume = settings.sfxVolume;
+        string path = Application.persistentDataPath + "/volumeSettings.json";
+        if (File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+            VolumeSettings settings = JsonUtility.FromJson<VolumeSettings>(json);
+            masterVolume = settings.masterVolume;
+            bgmVolume = settings.bgmVolume;
+            sfxVolume = settings.sfxVolume;
 
-        UpdateAllVolumes();
+            UpdateAllVolumes();
+        }
     }
-}
 
+    // Button functions
+    public void MuteMasterVolume()
+    {
+        SetMasterVolume(0f);
+        masterSlider.value = 0f;
+    }
+
+    public void MuteBGMVolume()
+    {
+        SetBGMVolume(0f);
+        bgmSlider.value = 0f;
+    }
+
+    public void MuteSFXVolume()
+    {
+        SetSFXVolume(0f);
+        sfxSlider.value = 0f;
+    }
+
+    public void ResetAllVolumes()
+    {
+        SetMasterVolume(0.5f);
+        SetBGMVolume(0.5f);
+        SetSFXVolume(0.5f);
+
+        masterSlider.value = 0.5f;
+        bgmSlider.value = 0.5f;
+        sfxSlider.value = 0.5f;
+    }
 }
