@@ -63,6 +63,9 @@ TagManager:
   - name: ms eme
     uniqueID: 839924821
     locked: 0
-  - name: fornt-asset
+  - name: front-asset
     uniqueID: 3470575111
+    locked: 0
+  - name: front-shilleulette
+    uniqueID: 3683340617
     locked: 0
