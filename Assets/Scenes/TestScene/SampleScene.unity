@@ -2398,6 +2398,11 @@ MonoBehaviour:
   minIntensity: 5
   maxIntensity: 15
   flickerSpeed: 10
+--- !u!82 &1030943112 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 923404792288142770, guid: 11876c32b42966e4da41f9f4fe659711, type: 3}
+  m_PrefabInstance: {fileID: 1937751343}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1060452993
 GameObject:
   m_ObjectHideFlags: 0
@@ -3732,7 +3737,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1631010560
 Transform:
   m_ObjectHideFlags: 0
@@ -4306,6 +4311,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 698279234094747690, guid: 11876c32b42966e4da41f9f4fe659711, type: 3}
+      propertyPath: sfxSources.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 698279234094747690, guid: 11876c32b42966e4da41f9f4fe659711, type: 3}
       propertyPath: bgmClips.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 87868368af210c54b81fffa50c69ba11, type: 3}
@@ -4321,6 +4330,18 @@ PrefabInstance:
       propertyPath: bgmSources.Array.data[1]
       value: 
       objectReference: {fileID: 788157191}
+    - target: {fileID: 698279234094747690, guid: 11876c32b42966e4da41f9f4fe659711, type: 3}
+      propertyPath: otherSFXClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 698279234094747690, guid: 11876c32b42966e4da41f9f4fe659711, type: 3}
+      propertyPath: sfxSources.Array.data[0]
+      value: 
+      objectReference: {fileID: 1030943112}
+    - target: {fileID: 698279234094747690, guid: 11876c32b42966e4da41f9f4fe659711, type: 3}
+      propertyPath: otherSFXClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: fedb389382848c24abc05898a76e159f, type: 3}
     - target: {fileID: 5692735761765271868, guid: 11876c32b42966e4da41f9f4fe659711, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1800.1575
@@ -9977,6 +9998,9 @@ MonoBehaviour:
   healthSlider1: {fileID: 1907928883}
   healthSlider2: {fileID: 1715674014}
   healthSlider3: {fileID: 243763571}
+  head1: {fileID: 127240695}
+  head2: {fileID: 1960815207}
+  head3: {fileID: 1304954031}
 --- !u!61 &2091358599
 BoxCollider2D:
   m_ObjectHideFlags: 0
