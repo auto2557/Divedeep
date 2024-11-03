@@ -20,6 +20,7 @@ TagManager:
   - red1
   - red2
   - red3
+  - hydrabeam
   layers:
   - Default
   - TransparentFX

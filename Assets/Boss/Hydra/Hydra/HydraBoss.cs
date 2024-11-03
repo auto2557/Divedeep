@@ -18,7 +18,6 @@ public class HydraBoss : enemyHP
     public GameObject[] hydra;
     public GameObject[] redzone;
     public GameObject[] hitblock;
-    public LaserSpawner laserspawn;
 
 
     private const int maxHPPerSlider = 1000; 
@@ -129,7 +128,7 @@ IEnumerator waitTime()
         hitblock[1].SetActive(false);
         hitblock[2].SetActive(false);
 
-        laserspawn.enabled = false;
+    
         Camera.main.orthographicSize = 2.409138f;
 
 
@@ -149,6 +148,12 @@ IEnumerator waitTime()
         if (scriptToRemove3 != null)
         {
             Destroy(scriptToRemove3);
+        }
+
+         LaserSpawner scriptToRemove4 = gameObject.GetComponent<LaserSpawner>();
+        if (scriptToRemove4 != null)
+        {
+            Destroy(scriptToRemove4);
         }
 
     StartCoroutine(coolDownskill());
@@ -211,7 +216,7 @@ IEnumerator waitTime()
             break;
 
             case 5:
-            laserspawn.enabled = true;
+            gameObject.AddComponent<LaserSpawner>();
             break;
         }
     }
