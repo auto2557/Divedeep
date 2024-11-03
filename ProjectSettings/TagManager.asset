@@ -11,6 +11,8 @@ TagManager:
   - Enemy
   - slash
   - savePoint
+  - missile1
+  - misssile2
   layers:
   - Default
   - TransparentFX

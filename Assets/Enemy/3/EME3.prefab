@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 1571452787166381354}
   m_Layer: 0
   m_Name: Set1
-  m_TagString: Untagged
+  m_TagString: missile1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -594,6 +594,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   meleeATK: {fileID: 1219509248449315900}
+  missilePrefab1: {fileID: 753468076945122742, guid: b1e8c64117105a742bd5f74095c24ef8, type: 3}
+  missilePrefab2: {fileID: 753468076945122742, guid: b1e8c64117105a742bd5f74095c24ef8, type: 3}
+  missileSpawnPoint1: {fileID: 0}
+  missileSpawnPoint2: {fileID: 0}
 --- !u!1 &6470364514917477868
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,7 +609,7 @@ GameObject:
   - component: {fileID: 8450190939078740074}
   m_Layer: 0
   m_Name: Set2
-  m_TagString: Untagged
+  m_TagString: missile2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

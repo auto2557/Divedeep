@@ -30,13 +30,13 @@ public class MenuController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             selectedIndex = (selectedIndex + 1) % menuButtons.Length;
-            SoundManager.instance.PlaySFX("other", 0);
+            SoundManager.instance.PlaySFX("other", 0,0);
             UpdateMenuUI();
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             selectedIndex = (selectedIndex - 1 + menuButtons.Length) % menuButtons.Length;
-            SoundManager.instance.PlaySFX("other", 0);
+            SoundManager.instance.PlaySFX("other", 0,0);
             UpdateMenuUI();
         }
 

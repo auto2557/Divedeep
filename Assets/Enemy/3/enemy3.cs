@@ -31,6 +31,9 @@ public class enemy3 : EnemyPatrolByDistance
         Playerscript = Player.GetComponent<player>();
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
+         missileSpawnPoint1 = GameObject.FindGameObjectWithTag("missile1").transform;
+         missileSpawnPoint2 = GameObject.FindGameObjectWithTag("missile2").transform;
+
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();

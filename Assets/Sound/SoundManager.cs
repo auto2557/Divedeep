@@ -8,11 +8,11 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
-    public List<AudioSource> bgmSources;  
-    public AudioSource sfxSource;  
+    public List<AudioSource> bgmSources;
+    public List<AudioSource> sfxSources; 
 
     [SerializeField]
-    private AudioClip[] bgmClips;  
+    private AudioClip[] bgmClips;
     
     [SerializeField] private List<AudioClip> playerSFXClips;
     [SerializeField] private List<AudioClip> AquaStingerSFXClips;
@@ -21,8 +21,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private List<AudioClip> HydraSFXClips;
     [SerializeField] private List<AudioClip> otherSFXClips;
 
-    private Dictionary<string, List<AudioClip>> sfxClips;  
-    
+    private Dictionary<string, List<AudioClip>> sfxClips;
+
     private float masterVolume = 0.5f;
     private float bgmVolume = 0.5f;
     private float sfxVolume = 0.5f;
@@ -66,8 +66,6 @@ public class SoundManager : MonoBehaviour
         muteBGMButton.onClick.AddListener(MuteBGMVolume);
         muteSFXButton.onClick.AddListener(MuteSFXVolume);
         resetVolumeButton.onClick.AddListener(ResetAllVolumes);
-
-
     }
 
     private void InitializeSFXCategories()
@@ -90,28 +88,23 @@ public class SoundManager : MonoBehaviour
             int sourceIndex = pair.Key;
             int clipIndex = pair.Value;
 
-      
             if (sourceIndex < bgmSources.Count && clipIndex < bgmClips.Length)
             {
-                bgmSources[sourceIndex].Stop();  
+                bgmSources[sourceIndex].Stop();
 
-             
                 bgmSources[sourceIndex].clip = bgmClips[clipIndex];
                 bgmSources[sourceIndex].volume = bgmVolume * masterVolume;
-                
-           
+
                 bgmSources[sourceIndex].Play();
             }
         }
     }
 
-    
-
-    public void PlaySFX(string category, int index)
+    public void PlaySFX(string category, int index, int sourceIndex)
     {
-        if (sfxClips.ContainsKey(category) && index < sfxClips[category].Count)
+        if (sfxClips.ContainsKey(category) && index < sfxClips[category].Count && sourceIndex < sfxSources.Count)
         {
-            sfxSource.PlayOneShot(sfxClips[category][index]);
+            sfxSources[sourceIndex].PlayOneShot(sfxClips[category][index]);
         }
     }
 
@@ -125,7 +118,7 @@ public class SoundManager : MonoBehaviour
     public void SetSFXVolume(float volume)
     {
         sfxVolume = volume;
-        sfxSource.volume = sfxVolume * masterVolume;
+        UpdateAllVolumes();
         SaveVolumeSettings();
     }
 
@@ -142,7 +135,10 @@ public class SoundManager : MonoBehaviour
         {
             source.volume = bgmVolume * masterVolume;
         }
-        sfxSource.volume = sfxVolume * masterVolume;
+        foreach (var source in sfxSources)
+        {
+            source.volume = sfxVolume * masterVolume;
+        }
     }
 
     [System.Serializable]
@@ -181,7 +177,6 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    
     public void MuteMasterVolume()
     {
         SetMasterVolume(0f);
