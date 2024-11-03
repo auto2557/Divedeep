@@ -9,15 +9,24 @@ public class HydraBoss : enemyHP
     public float speed;
     private Animator animator;
     
-    // Add references to the three health sliders
+  
     public Slider healthSlider1;
     public Slider healthSlider2;
     public Slider healthSlider3;
 
-    private const int maxHPPerSlider = 1000; // Each slider represents 1000 HP
+    private const int maxHPPerSlider = 1000; 
     
     void Start()
     {
+        Dictionary<int, int> bgmSelections = new Dictionary<int, int>
+        {
+            { 0, 0 },  
+            { 1, 1 }   
+        };
+
+       
+        SoundManager.instance.PlayMultipleBGM(bgmSelections);
+
         speed = 1f;
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject != null)

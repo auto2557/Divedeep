@@ -8,7 +8,7 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
-    public AudioSource bgmSource;  
+    public List<AudioSource> bgmSources;  
     public AudioSource sfxSource;  
 
     [SerializeField]
@@ -53,7 +53,6 @@ public class SoundManager : MonoBehaviour
     {
         LoadVolumeSettings();
         InitializeSFXCategories();
-        PlayBGM(0);
 
         masterSlider.onValueChanged.AddListener(SetMasterVolume);
         bgmSlider.onValueChanged.AddListener(SetBGMVolume);
@@ -67,6 +66,8 @@ public class SoundManager : MonoBehaviour
         muteBGMButton.onClick.AddListener(MuteBGMVolume);
         muteSFXButton.onClick.AddListener(MuteSFXVolume);
         resetVolumeButton.onClick.AddListener(ResetAllVolumes);
+
+
     }
 
     private void InitializeSFXCategories()
@@ -82,14 +83,29 @@ public class SoundManager : MonoBehaviour
         };
     }
 
-    public void PlayBGM(int index)
+    public void PlayMultipleBGM(Dictionary<int, int> sourceClipPairs)
     {
-        if (index < bgmClips.Length)
+        foreach (var pair in sourceClipPairs)
         {
-            bgmSource.clip = bgmClips[index];
-            bgmSource.Play();
+            int sourceIndex = pair.Key;
+            int clipIndex = pair.Value;
+
+      
+            if (sourceIndex < bgmSources.Count && clipIndex < bgmClips.Length)
+            {
+                bgmSources[sourceIndex].Stop();  
+
+             
+                bgmSources[sourceIndex].clip = bgmClips[clipIndex];
+                bgmSources[sourceIndex].volume = bgmVolume * masterVolume;
+                
+           
+                bgmSources[sourceIndex].Play();
+            }
         }
     }
+
+    
 
     public void PlaySFX(string category, int index)
     {
@@ -102,7 +118,7 @@ public class SoundManager : MonoBehaviour
     public void SetBGMVolume(float volume)
     {
         bgmVolume = volume;
-        bgmSource.volume = bgmVolume * masterVolume;
+        UpdateAllVolumes();
         SaveVolumeSettings();
     }
 
@@ -122,7 +138,10 @@ public class SoundManager : MonoBehaviour
 
     private void UpdateAllVolumes()
     {
-        bgmSource.volume = bgmVolume * masterVolume;
+        foreach (var source in bgmSources)
+        {
+            source.volume = bgmVolume * masterVolume;
+        }
         sfxSource.volume = sfxVolume * masterVolume;
     }
 
@@ -162,7 +181,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    // Button functions
+    
     public void MuteMasterVolume()
     {
         SetMasterVolume(0f);
