@@ -1,32 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
-public class HeadAtk : MonoBehaviour
+public class Head2atk : HeadAtk
 {
-    public GameObject redZone;
-    public GameObject atkHitblock;
-    public float cooldownTime;
-    protected Animator hydra;
-
     void Start()
     {
-        cooldownTime = 2f;
+        cooldownTime = 0.5f;
         hydra = GetComponent<Animator>();
         redZone.SetActive(false);
         StartCoroutine(redZonealert());
     }
 
 
-    public virtual IEnumerator redZonealert()
+    public override IEnumerator redZonealert()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         redZone.SetActive(true);
           StartCoroutine(attack());
     }
 
-    public virtual IEnumerator attack()
+    public override IEnumerator attack()
     {
         yield return new WaitForSeconds(3f);
         redZone.SetActive(false);
@@ -36,13 +30,13 @@ public class HeadAtk : MonoBehaviour
        
     }
 
-    public virtual IEnumerator attackhitblock()
+    public override IEnumerator attackhitblock()
     {
-         yield return new WaitForSeconds(1.5f);
+         yield return new WaitForSeconds(0.4f);
             atkHitblock.SetActive(true);
     }
 
-    public virtual IEnumerator cooldown()
+    public override IEnumerator cooldown()
     {
         yield return new WaitForSeconds(cooldownTime);
         atkHitblock.SetActive(false);
