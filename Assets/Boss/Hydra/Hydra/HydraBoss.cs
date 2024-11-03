@@ -16,7 +16,7 @@ public class HydraBoss : enemyHP
             player = playerObject.transform;
         }
 
-        hp = 2000;
+        hp = 3000;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 

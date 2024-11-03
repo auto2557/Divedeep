@@ -30,6 +30,8 @@ public class LaserController : MonoBehaviour
     {
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.positionCount = 2;
+
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
