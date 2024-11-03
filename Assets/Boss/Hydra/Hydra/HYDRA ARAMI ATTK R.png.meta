@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -95,7 +95,238 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: HYDRA ARAMI ATTK R_0
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 18
+        width: 120
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c889e80b0e124d744b489621ec20ffaf
+      internalID: 392300246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HYDRA ARAMI ATTK R_1
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 18
+        width: 119
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d2502ed8b1bea04fa9156af51003dc0
+      internalID: -1771386963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HYDRA ARAMI ATTK R_2
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 18
+        width: 121
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8441514e072e1c48bda10630502a8c4
+      internalID: 7097825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HYDRA ARAMI ATTK R_3
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 51
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a91dbf405ede1944b3b5ad1cdf4bbc6
+      internalID: 1866850050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HYDRA ARAMI ATTK R_4
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 12
+        width: 146
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5eef9eec271f4a4cbabfe84e9cf5d0c
+      internalID: 1153262738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HYDRA ARAMI ATTK R_5
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 18
+        width: 154
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88a2c3c80ba4a9b469ba3a3091df3711
+      internalID: -88125681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HYDRA ARAMI ATTK R_6
+      rect:
+        serializedVersion: 2
+        x: 922
+        y: 18
+        width: 120
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac9d21a8ab360344d9b2ef976d87f750
+      internalID: -1876981481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HYDRA ARAMI ATTK R_7
+      rect:
+        serializedVersion: 2
+        x: 1098
+        y: 18
+        width: 120
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0464fb7ad8a9bf04abc566e7ddbaa72f
+      internalID: -249717910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HYDRA ARAMI ATTK R_8
+      rect:
+        serializedVersion: 2
+        x: 1274
+        y: 18
+        width: 120
+        height: 218
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d81fb7d91dd1154b9d3260f314692b1
+      internalID: 790256297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HYDRA ARAMI ATTK R_9
+      rect:
+        serializedVersion: 2
+        x: 1450
+        y: 18
+        width: 120
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a52fb1fbdbc0f845a8a2d41da21925a
+      internalID: -1311673687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HYDRA ARAMI ATTK R_10
+      rect:
+        serializedVersion: 2
+        x: 1626
+        y: 18
+        width: 120
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22368c42ab856c34199384fc69b8fe2d
+      internalID: 978816331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +337,18 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      HYDRA ARAMI ATTK R_0: 392300246
+      HYDRA ARAMI ATTK R_1: -1771386963
+      HYDRA ARAMI ATTK R_10: 978816331
+      HYDRA ARAMI ATTK R_2: 7097825
+      HYDRA ARAMI ATTK R_3: 1866850050
+      HYDRA ARAMI ATTK R_4: 1153262738
+      HYDRA ARAMI ATTK R_5: -88125681
+      HYDRA ARAMI ATTK R_6: -1876981481
+      HYDRA ARAMI ATTK R_7: -249717910
+      HYDRA ARAMI ATTK R_8: 790256297
+      HYDRA ARAMI ATTK R_9: -1311673687
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
