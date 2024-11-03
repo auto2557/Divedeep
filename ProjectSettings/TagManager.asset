@@ -14,6 +14,12 @@ TagManager:
   - missile1
   - misssile2
   - missile2
+  - block1
+  - block2
+  - block3
+  - red1
+  - red2
+  - red3
   layers:
   - Default
   - TransparentFX

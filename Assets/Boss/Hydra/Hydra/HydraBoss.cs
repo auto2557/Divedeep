@@ -18,6 +18,7 @@ public class HydraBoss : enemyHP
     public GameObject[] hydra;
     public GameObject[] redzone;
     public GameObject[] hitblock;
+    public LaserSpawner laserspawn;
 
 
     private const int maxHPPerSlider = 1000; 
@@ -40,7 +41,7 @@ public class HydraBoss : enemyHP
 
         SoundManager.instance.PlayMultipleBGM(bgmSelections);
 
-        speed = 1f;
+        speed = 0.8f;
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject != null)
         {
@@ -119,7 +120,7 @@ public class HydraBoss : enemyHP
 
 IEnumerator waitTime()
 {
-    yield return new WaitForSeconds(10f);
+    yield return new WaitForSeconds(15f);
 
       redzone[0].SetActive(false);
          redzone[1].SetActive(false);
@@ -127,6 +128,10 @@ IEnumerator waitTime()
         hitblock[0].SetActive(false);
         hitblock[1].SetActive(false);
         hitblock[2].SetActive(false);
+
+        laserspawn.enabled = false;
+        Camera.main.orthographicSize = 2.409138f;
+
 
             Head1atk scriptToRemove = hydra[0].GetComponent<Head1atk>();
         if (scriptToRemove != null)
@@ -153,7 +158,7 @@ IEnumerator waitTime()
     {
         yield return new WaitForSeconds(5f);
        
-        int patternSkill = Random.Range(1, 5);
+        int patternSkill = Random.Range(1, 6);
         skillNumber = patternSkill;
         patternBoss();
         StartCoroutine(waitTime());
@@ -203,6 +208,10 @@ IEnumerator waitTime()
             hydra[1].AddComponent<Head2atk>();
              hydra[2].AddComponent<Head3atk>();
              Debug.Log("4");
+            break;
+
+            case 5:
+            laserspawn.enabled = true;
             break;
         }
     }

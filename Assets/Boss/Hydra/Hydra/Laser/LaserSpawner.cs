@@ -29,23 +29,11 @@ public class LaserSpawner : MonoBehaviour
 
     void Start()
     {
-        //Camera.main.orthographicSize = 7;
-
+        Camera.main.orthographicSize = 7;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         ScheduleNextSpawn();
     }
 
-    void Update()
-    {
-        CameraModeSwitch();
-    }
-
-    void CameraModeSwitch()
-    {
-        for(float i = 2.409138f; i <= 7;i++)
-        {
-            Camera.main.orthographicSize = i;
-        }
-    }
 
     void ScheduleNextSpawn()
     {

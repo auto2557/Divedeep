@@ -155,7 +155,6 @@ GameObject:
   - component: {fileID: 127240694}
   - component: {fileID: 127240693}
   - component: {fileID: 127240692}
-  - component: {fileID: 127240695}
   m_Layer: 0
   m_Name: hydraH1
   m_TagString: Untagged
@@ -253,21 +252,6 @@ Transform:
   - {fileID: 998663683}
   m_Father: {fileID: 2091358597}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &127240695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 127240691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f7c05e8f9d8f42409ae40dec8334121, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  redZone: {fileID: 998663682}
-  atkHitblock: {fileID: 1884055779}
-  cooldownTime: 0
 --- !u!114 &179564370 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 795511659739337724, guid: 89dba110e224959438f7fc42a6c29d6b, type: 3}
@@ -1651,7 +1635,7 @@ GameObject:
   - component: {fileID: 742225287}
   m_Layer: 0
   m_Name: head3hitblock
-  m_TagString: Untagged
+  m_TagString: block3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2312,11 +2296,11 @@ GameObject:
   - component: {fileID: 998663686}
   m_Layer: 0
   m_Name: redH1
-  m_TagString: Untagged
+  m_TagString: red1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &998663683
 Transform:
   m_ObjectHideFlags: 0
@@ -2869,7 +2853,6 @@ GameObject:
   - component: {fileID: 1304954030}
   - component: {fileID: 1304954029}
   - component: {fileID: 1304954028}
-  - component: {fileID: 1304954031}
   m_Layer: 0
   m_Name: hydraH3
   m_TagString: Untagged
@@ -2967,21 +2950,6 @@ Transform:
   - {fileID: 1772300280}
   m_Father: {fileID: 2091358597}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1304954031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1304954027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e838751be4f6be45a3b53c741ddc096, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  redZone: {fileID: 1772300279}
-  atkHitblock: {fileID: 742225285}
-  cooldownTime: 0
 --- !u!114 &1338001293 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7378747127018015279, guid: 70995bb773789a44ba9af7cd35397867, type: 3}
@@ -3721,63 +3689,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5692735761765271868, guid: 11876c32b42966e4da41f9f4fe659711, type: 3}
   m_PrefabInstance: {fileID: 1937751343}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1631010558
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1631010560}
-  - component: {fileID: 1631010561}
-  m_Layer: 0
-  m_Name: system
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1631010560
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1631010558}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.11883389, y: 1.1517003, z: -0.12730008}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1631010561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1631010558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5edbde2aa2de454b9ca653ac5a27b67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  laserPrefab: {fileID: 505043268768848886, guid: ae7a322dc8b0a0d4da301b97b1a882d2, type: 3}
-  player: {fileID: 193427716}
-  minXDistance: 4
-  maxXDistance: 5
-  yDistance: 7
-  minSpawnInterval: 1
-  maxSpawnInterval: 3
-  straightLineCount: 10
-  spreadCount: 5
-  rapidFireCount: 25
-  straightLineInterval: 2
-  spreadInterval: 2
-  rapidFireInterval: 1
 --- !u!1001 &1631899251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3980,11 +3891,11 @@ GameObject:
   - component: {fileID: 1772300281}
   m_Layer: 0
   m_Name: redH3
-  m_TagString: Untagged
+  m_TagString: red3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1772300280
 Transform:
   m_ObjectHideFlags: 0
@@ -4078,7 +3989,7 @@ GameObject:
   - component: {fileID: 1884055781}
   m_Layer: 0
   m_Name: head1hitblock
-  m_TagString: Untagged
+  m_TagString: block1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4405,7 +4316,6 @@ GameObject:
   - component: {fileID: 1960815206}
   - component: {fileID: 1960815205}
   - component: {fileID: 1960815204}
-  - component: {fileID: 1960815207}
   m_Layer: 0
   m_Name: hydraH2
   m_TagString: Untagged
@@ -4503,21 +4413,6 @@ Transform:
   - {fileID: 2012782006}
   m_Father: {fileID: 2091358597}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1960815207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1960815203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6b84d6bd12e020488c6b4434d4a7573, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  redZone: {fileID: 2012782005}
-  atkHitblock: {fileID: 2047948582}
-  cooldownTime: 0
 --- !u!1 &1960969826
 GameObject:
   m_ObjectHideFlags: 0
@@ -9604,11 +9499,11 @@ GameObject:
   - component: {fileID: 2012782007}
   m_Layer: 0
   m_Name: redH2
-  m_TagString: Untagged
+  m_TagString: red2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2012782006
 Transform:
   m_ObjectHideFlags: 0
@@ -9718,7 +9613,7 @@ GameObject:
   - component: {fileID: 2047948584}
   m_Layer: 0
   m_Name: head2hitblock
-  m_TagString: Untagged
+  m_TagString: block2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9946,6 +9841,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2091358597}
   - component: {fileID: 2091358598}
+  - component: {fileID: 2091358600}
   - component: {fileID: 2091358599}
   m_Layer: 0
   m_Name: Hydra
@@ -9998,9 +9894,19 @@ MonoBehaviour:
   healthSlider1: {fileID: 1907928883}
   healthSlider2: {fileID: 1715674014}
   healthSlider3: {fileID: 243763571}
-  head1: {fileID: 127240695}
-  head2: {fileID: 1960815207}
-  head3: {fileID: 1304954031}
+  hydra:
+  - {fileID: 127240691}
+  - {fileID: 1960815203}
+  - {fileID: 1304954027}
+  redzone:
+  - {fileID: 998663682}
+  - {fileID: 2012782005}
+  - {fileID: 1772300279}
+  hitblock:
+  - {fileID: 1884055779}
+  - {fileID: 2047948582}
+  - {fileID: 742225285}
+  laserspawn: {fileID: 2091358600}
 --- !u!61 &2091358599
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10046,6 +9952,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.4363055, y: 4.13629}
   m_EdgeRadius: 0
+--- !u!114 &2091358600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091358596}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5edbde2aa2de454b9ca653ac5a27b67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laserPrefab: {fileID: 505043268768848886, guid: ae7a322dc8b0a0d4da301b97b1a882d2, type: 3}
+  player: {fileID: 0}
+  minXDistance: 2
+  maxXDistance: 5
+  yDistance: 10
+  minSpawnInterval: 1
+  maxSpawnInterval: 3
+  straightLineCount: 10
+  spreadCount: 5
+  rapidFireCount: 25
+  straightLineInterval: 2
+  spreadInterval: 2
+  rapidFireInterval: 1
 --- !u!4 &2145559558 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4573824659752690390, guid: 3824b08f9f7d2694a82b8ee1a32468fa, type: 3}
@@ -10342,7 +10273,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
-  - {fileID: 1631010560}
   - {fileID: 619394802}
   - {fileID: 396137270}
   - {fileID: 1990494207}
