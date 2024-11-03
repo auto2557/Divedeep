@@ -11,7 +11,7 @@ public class EnemyAttack : MonoBehaviour
     public LayerMask playerLayer; 
 
     private enemyHP enemyHpScript; 
-    private Animator animator;
+    public Animator animator;
 
     void Start()
     {

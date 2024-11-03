@@ -12,7 +12,7 @@ public class enemyHP : MonoBehaviour
 
     public GameObject damagePopupPrefab;  
 
-    public IEnumerator Die()
+    public virtual IEnumerator Die()
     {
         anim.SetTrigger("Die");
         yield return new WaitForSeconds(2f); 
