@@ -3,33 +3,33 @@ using System.Collections;
 
 public class LaserSpawner : MonoBehaviour
 {
-    public GameObject laserPrefab; // Prefab ของเลเซอร์
-    public Transform player; // ตำแหน่งของผู้เล่น
+    public GameObject laserPrefab; 
+    public Transform player; 
 
-    // ระยะห่างสำหรับสุ่มแกน X
+  
     public float minXDistance = 2f;
     public float maxXDistance = 5f;
 
-    // ระยะห่างในแกน Y ที่เลเซอร์จะเริ่มจากด้านบน
+    
     public float yDistance = 10f;
 
-    // เวลาในการสุ่ม interval ของ pattern
+   
     public float minSpawnInterval = 1f;
     public float maxSpawnInterval = 3f;
 
-    // จำนวนการยิงสำหรับแต่ละ Pattern
+    
     public int straightLineCount = 10;
     public int spreadCount = 5;
     public int rapidFireCount = 25;
 
-    // เวลาระหว่างการยิงในแต่ละ Pattern
+   
     public float straightLineInterval = 2f;
     public float spreadInterval = 2f;
     public float rapidFireInterval = 1f;
 
     void Start()
     {
-        yDistance = 6f;
+        yDistance = 7.5f;
         Camera.main.orthographicSize = 7;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         laserPrefab = GameObject.FindGameObjectWithTag("hydrabeam");
@@ -42,7 +42,6 @@ public class LaserSpawner : MonoBehaviour
         
         float spawnInterval = Random.Range(minSpawnInterval, maxSpawnInterval);
 
-        // เลือก Pattern
         int pattern = Random.Range(0, 3); 
 
         switch (pattern)
@@ -122,7 +121,7 @@ public class LaserSpawner : MonoBehaviour
         ScheduleNextSpawn();
     }
 
-    // ฟังก์ชันสำหรับการยิงเลเซอร์
+   
     void SpawnLaser(Vector2 position)
     {
        
