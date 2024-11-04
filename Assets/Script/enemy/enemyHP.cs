@@ -32,11 +32,11 @@ public class enemyHP : MonoBehaviour
 
             if (Playerscript.facingRight)
             {
-                rb.velocity = new Vector2(3.5f, 3f);
+                rb.velocity = new Vector2(1f, 1f);
             }
             else
             {
-                rb.velocity = new Vector2(-3.5f, 3f);
+                rb.velocity = new Vector2(-1f, 1f);
             }
 
             if (hp <= 0)

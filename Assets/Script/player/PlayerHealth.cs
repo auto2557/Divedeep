@@ -29,6 +29,16 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("savePoint"))
+        {
+            currentHealth = 100;
+            healthSlider.value = currentHealth; 
+            healthSlider.maxValue = maxHealth; 
+        }
+    }
+
     void Die()
     {
          SceneManager.LoadScene(SceneManager.GetActiveScene().name);

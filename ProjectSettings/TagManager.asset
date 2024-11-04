@@ -21,6 +21,8 @@ TagManager:
   - red2
   - red3
   - hydrabeam
+  - deadblock
+  - dmgPOP
   layers:
   - Default
   - TransparentFX
