@@ -10,33 +10,28 @@ public class HydraBoss : enemyHP
     private Animator animator;
     private int skillNumber = 0;
     
-  
-    public Slider healthSlider1;
-    public Slider healthSlider2;
-    public Slider healthSlider3;
+    public Slider healthSlider;
 
     public GameObject[] hydra;
     public GameObject[] redzone;
     public GameObject[] hitblock;
 
+    private const int maxHP = 6000;
 
-    private const int maxHPPerSlider = 1000; 
-    
     void Start()
     {
         redzone[0].SetActive(false);
-         redzone[1].SetActive(false);
-          redzone[2].SetActive(false);
+        redzone[1].SetActive(false);
+        redzone[2].SetActive(false);
         hitblock[0].SetActive(false);
         hitblock[1].SetActive(false);
         hitblock[2].SetActive(false);
 
         Dictionary<int, int> bgmSelections = new Dictionary<int, int>
         {
-            { 0, 0 },  
-            { 1, 1 }   
+            { 0, 0 },
+            { 1, 1 }
         };
-
 
         SoundManager.instance.PlayMultipleBGM(bgmSelections);
 
@@ -47,7 +42,7 @@ public class HydraBoss : enemyHP
             player = playerObject.transform;
         }
 
-        hp = 3000; 
+        hp = maxHP;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 
@@ -58,15 +53,10 @@ public class HydraBoss : enemyHP
 
         animator = GetComponent<Animator>();
 
-        healthSlider1.maxValue = maxHPPerSlider;
-        healthSlider2.maxValue = maxHPPerSlider;
-        healthSlider3.maxValue = maxHPPerSlider;
+        healthSlider.maxValue = maxHP;
+        healthSlider.value = maxHP;
 
-        healthSlider1.value = maxHPPerSlider;
-        healthSlider2.value = maxHPPerSlider;
-        healthSlider3.value = maxHPPerSlider;
-
-          StartCoroutine(waitTime());
+        StartCoroutine(waitTime());
     }
 
     void Update()
@@ -76,22 +66,20 @@ public class HydraBoss : enemyHP
             Vector2 targetPosition = new Vector2(player.position.x, transform.position.y);
             transform.position = Vector2.Lerp(transform.position, targetPosition, speed * Time.deltaTime);
         }
-
-        
     }
 
     public override void OnTriggerEnter2D(Collider2D collision)
     {
         if ((collision.CompareTag("hitblock") || collision.CompareTag("slash")) && !isDead && !isHit)
         {
-            isHit = true; 
+            isHit = true;
 
-            int damageAmount = Playerscript.damage;  
+            int damageAmount = Playerscript.damage;
             hp -= damageAmount;
 
             ShowDamagePopup(damageAmount);
 
-            UpdateHealthSliders();
+            UpdateHealthSlider();
 
             if (hp <= 0)
             {
@@ -99,125 +87,116 @@ public class HydraBoss : enemyHP
                 StartCoroutine(Die());
             }
 
-            StartCoroutine(ResetHit()); 
+            StartCoroutine(ResetHit());
         }
     }
 
-    private void UpdateHealthSliders()
+    private void UpdateHealthSlider()
     {
-        int remainingHP = hp;
-
-        healthSlider1.value = Mathf.Clamp(remainingHP, 0, maxHPPerSlider);
-        remainingHP -= maxHPPerSlider;
-
-        healthSlider2.value = Mathf.Clamp(remainingHP, 0, maxHPPerSlider);
-        remainingHP -= maxHPPerSlider;
-
-        healthSlider3.value = Mathf.Clamp(remainingHP, 0, maxHPPerSlider);
+        healthSlider.value = Mathf.Clamp(hp, 0, maxHP);
     }
 
+    IEnumerator waitTime()
+    {
+        yield return new WaitForSeconds(15f);
 
-IEnumerator waitTime()
-{
-    yield return new WaitForSeconds(15f);
-
-      redzone[0].SetActive(false);
-         redzone[1].SetActive(false);
-          redzone[2].SetActive(false);
+        redzone[0].SetActive(false);
+        redzone[1].SetActive(false);
+        redzone[2].SetActive(false);
         hitblock[0].SetActive(false);
         hitblock[1].SetActive(false);
         hitblock[2].SetActive(false);
 
-    
         Camera.main.orthographicSize = 2.409138f;
 
-
-            Head1atk scriptToRemove = hydra[0].GetComponent<Head1atk>();
+        Head1atk scriptToRemove = hydra[0].GetComponent<Head1atk>();
         if (scriptToRemove != null)
         {
             Destroy(scriptToRemove);
         }
 
-             Head2atk scriptToRemove2 = hydra[1].GetComponent<Head2atk>();
+        Head2atk scriptToRemove2 = hydra[1].GetComponent<Head2atk>();
         if (scriptToRemove2 != null)
         {
             Destroy(scriptToRemove2);
         }
 
-              Head3atk scriptToRemove3 = hydra[2].GetComponent<Head3atk>();
+        Head3atk scriptToRemove3 = hydra[2].GetComponent<Head3atk>();
         if (scriptToRemove3 != null)
         {
             Destroy(scriptToRemove3);
         }
 
-         LaserSpawner scriptToRemove4 = gameObject.GetComponent<LaserSpawner>();
+        LaserSpawner scriptToRemove4 = gameObject.GetComponent<LaserSpawner>();
         if (scriptToRemove4 != null)
         {
             Destroy(scriptToRemove4);
         }
 
-    StartCoroutine(coolDownskill());
-}
+        StartCoroutine(coolDownskill());
+    }
 
     IEnumerator coolDownskill()
     {
         yield return new WaitForSeconds(5f);
-       
-        int patternSkill = Random.Range(1, 6);
+
+            if(hp > 5000)
+            {
+        int patternSkill = Random.Range(1, 5);
         skillNumber = patternSkill;
+            }
+            else if(hp <= 5000)
+            {
+                int patternSkill = Random.Range(1, 6);
+        skillNumber = patternSkill;
+            }
+        
         patternBoss();
         StartCoroutine(waitTime());
-
     }
 
-     private void patternBoss()
+    private void patternBoss()
     {
- 
-    
-        switch(skillNumber)
+        switch (skillNumber)
         {
-            case 1: 
-            redzone[0].SetActive(true);
-            hitblock[0].SetActive(true);
-            hydra[0].AddComponent<Head1atk>();
+            case 1:
+                redzone[0].SetActive(true);
+                hitblock[0].SetActive(true);
+                hydra[0].AddComponent<Head1atk>();
+                Debug.Log("1");
+                break;
 
-            Debug.Log("1");
-            break;
+            case 2:
+                redzone[1].SetActive(true);
+                hitblock[1].SetActive(true);
+                hydra[1].AddComponent<Head2atk>();
+                Debug.Log("2");
+                break;
 
-            case 2: 
-            redzone[1].SetActive(true);
-            hitblock[1].SetActive(true);
-          hydra[1].AddComponent<Head2atk>();
-          
-             Debug.Log("2");
-            break;
-
-            case 3: 
-            redzone[2].SetActive(true);
-            hitblock[2].SetActive(true);
-           hydra[2].AddComponent<Head3atk>();
-             Debug.Log("3");
-            break;
+            case 3:
+                redzone[2].SetActive(true);
+                hitblock[2].SetActive(true);
+                hydra[2].AddComponent<Head3atk>();
+                Debug.Log("3");
+                break;
 
             case 4:
-             redzone[0].SetActive(true);
-            hitblock[0].SetActive(true);
+                redzone[0].SetActive(true);
+                hitblock[0].SetActive(true);
+                redzone[1].SetActive(true);
+                hitblock[1].SetActive(true);
+                redzone[2].SetActive(true);
+                hitblock[2].SetActive(true);
 
-             redzone[1].SetActive(true);
-            hitblock[1].SetActive(true);
-
-            redzone[2].SetActive(true);
-            hitblock[2].SetActive(true);
-
-            hydra[0].AddComponent<Head1atk>();
-            hydra[1].AddComponent<Head2atk>();
-             hydra[2].AddComponent<Head3atk>();
-             Debug.Log("4");
-            break;
+                hydra[0].AddComponent<Head1atk>();
+                hydra[1].AddComponent<Head2atk>();
+                hydra[2].AddComponent<Head3atk>();
+                Debug.Log("4");
+                break;
 
             case 5:
-            gameObject.AddComponent<LaserSpawner>();
-            break;
+                gameObject.AddComponent<LaserSpawner>();
+                break;
         }
     }
 }
