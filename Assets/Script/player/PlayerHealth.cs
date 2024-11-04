@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth;
     [SerializeField] private int currentHealth;
     public Slider healthSlider; 
+    public GameObject lowHP;
 
     void Start()
     {
@@ -14,6 +15,16 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
         healthSlider.maxValue = maxHealth; 
         healthSlider.value = currentHealth; 
+    }
+    void Update()
+    {
+        if(currentHealth <= 20)
+        {
+            lowHP.SetActive(true);
+        }
+        else{
+            lowHP.SetActive(false);
+        }
     }
 
     public void TakeDamage(int damage)

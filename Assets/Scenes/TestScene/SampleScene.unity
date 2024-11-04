@@ -2295,7 +2295,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1360345079
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2638,6 +2638,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   healthSlider: {fileID: 1338001293}
+  lowHP: {fileID: 0}
 --- !u!114 &1753212893 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4613804016571150366, guid: 4b40d046b75cfb44598d5fc409cf1d6e, type: 3}

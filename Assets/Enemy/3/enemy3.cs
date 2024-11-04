@@ -18,7 +18,7 @@ public class enemy3 : EnemyPatrolByDistance
 
     void Start()
     {
-        hp = 100;
+        hp = 80;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
@@ -31,8 +31,8 @@ public class enemy3 : EnemyPatrolByDistance
         Playerscript = Player.GetComponent<player>();
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
-         missileSpawnPoint1 = GameObject.FindGameObjectWithTag("missile1").transform;
-         missileSpawnPoint2 = GameObject.FindGameObjectWithTag("missile2").transform;
+         //missileSpawnPoint1 = GameObject.FindGameObjectWithTag("missile1").transform;
+         //missileSpawnPoint2 = GameObject.FindGameObjectWithTag("missile2").transform;
 
 
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -107,12 +107,12 @@ public class enemy3 : EnemyPatrolByDistance
         while (true)
         {
             yield return new WaitForSeconds(1.5f);
-            animator.SetBool("isAttack", true);
+            animator.SetTrigger("isAttack");
             meleeATK.SetActive(true);
 
             yield return new WaitForSeconds(1.5f);
             meleeATK.SetActive(false);
-            animator.SetBool("isAttack", false);
+           
         }
     }
 
