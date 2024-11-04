@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int currentHealth;
     public Slider healthSlider; 
     public GameObject lowHP;
+    public GameObject healEffect;
 
     void Start()
     {
@@ -42,8 +43,9 @@ public class PlayerHealth : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("savePoint"))
+        if(collision.CompareTag("savePoint") && currentHealth < 100)
         {
+            Instantiate(healEffect,transform.position , transform.rotation);
             currentHealth = 100;
             healthSlider.value = currentHealth; 
             healthSlider.maxValue = maxHealth; 

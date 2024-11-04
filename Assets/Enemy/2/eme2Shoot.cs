@@ -9,6 +9,7 @@ public class eme2Shoot : MonoBehaviour
    void Start()
    {
     damage = 10;
+    Destroy(gameObject,6f);
    }
 
     private void OnTriggerEnter2D(Collider2D other)

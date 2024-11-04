@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class openA : MonoBehaviour
 {
     private Animator anim;
+    public GameObject UnlockDanger;
     public Image finishQuetsA;       
     public Sprite newSprite;           
     public bool GenA = false;
@@ -25,7 +26,7 @@ public class openA : MonoBehaviour
             anim.SetBool("On", true);
             GenA = true;
             lightPower.SetActive(true);
-
+            Destroy(UnlockDanger);
          
             if (newSprite != null)
             {
