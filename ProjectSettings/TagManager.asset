@@ -11,6 +11,19 @@ TagManager:
   - Enemy
   - slash
   - savePoint
+  - missile1
+  - misssile2
+  - missile2
+  - block1
+  - block2
+  - block3
+  - red1
+  - red2
+  - red3
+  - hydrabeam
+  - deadblock
+  - dmgPOP
+  - hydra
   layers:
   - Default
   - TransparentFX
@@ -63,6 +76,9 @@ TagManager:
   - name: ms eme
     uniqueID: 839924821
     locked: 0
-  - name: fornt-asset
+  - name: front-asset
     uniqueID: 3470575111
+    locked: 0
+  - name: front-shilleulette
+    uniqueID: 3683340617
     locked: 0

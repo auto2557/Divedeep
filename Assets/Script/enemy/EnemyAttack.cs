@@ -17,6 +17,7 @@ public class EnemyAttack : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         enemyHpScript = GetComponent<enemyHP>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
@@ -48,7 +49,7 @@ public class EnemyAttack : MonoBehaviour
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
             if (playerHealth != null) 
             {
-                int randomDamage = Random.Range(1,3);
+                int randomDamage = Random.Range(3,7);
                 attackDamage = randomDamage;
                 playerHealth.TakeDamage(attackDamage);
             }

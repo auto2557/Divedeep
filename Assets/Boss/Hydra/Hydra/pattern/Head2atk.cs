@@ -6,8 +6,11 @@ public class Head2atk : HeadAtk
 {
     void Start()
     {
+        redZone = GameObject.FindGameObjectWithTag("red2");
+        atkHitblock = GameObject.FindGameObjectWithTag("block2");
         cooldownTime = 0.5f;
         hydra = GetComponent<Animator>();
+        atkHitblock.SetActive(false);
         redZone.SetActive(false);
         StartCoroutine(redZonealert());
     }

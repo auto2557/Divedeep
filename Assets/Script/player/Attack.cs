@@ -20,12 +20,12 @@ public class Attack : Movement
 
     protected void UpdateHitBlockPosition()
     {
-        if (facingRight && Input.GetKeyDown(KeyCode.J))
+        if (facingRight && Input.GetKeyDown(KeyCode.X))
         {
             hitBlockRight.SetActive(true);
             hitBlockLeft.SetActive(false);
         }
-        else if (!facingRight && Input.GetKeyDown(KeyCode.J))
+        else if (!facingRight && Input.GetKeyDown(KeyCode.X))
         {
             hitBlockRight.SetActive(false);
             hitBlockLeft.SetActive(true);
@@ -41,7 +41,7 @@ public class Attack : Movement
     {
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             inputBuffered = true;
         }
@@ -57,7 +57,7 @@ public class Attack : Movement
             StartAttackSequence();
         }
 
-        if (Input.GetKeyDown(KeyCode.U) && canSlash)
+        if (Input.GetKeyDown(KeyCode.S) && canSlash)
         {
             animator.SetBool("isSlash", true);
             IAISLASH();
@@ -69,7 +69,7 @@ public class Attack : Movement
 
     private void StartAttackSequence()
     {
-        int randomDmg = Random.Range(5, 12);
+        int randomDmg = Random.Range(7, 18);
         damage = randomDmg;
         Debug.Log("dmg = " + damage);
 

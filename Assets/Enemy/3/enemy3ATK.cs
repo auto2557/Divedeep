@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class enemy3ATK : MonoBehaviour
 {
-    
     void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
@@ -16,6 +15,7 @@ public class enemy3ATK : MonoBehaviour
                 playerHealth.TakeDamage(damageMelee);
             }
         }
-        }
+    }
+
     
 }

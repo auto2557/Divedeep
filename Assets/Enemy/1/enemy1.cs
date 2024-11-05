@@ -6,7 +6,7 @@ public class enemy1 : EnemyPatrolByDistance
 {
     void Start()
     {
-        hp = 30;
+        hp = 40;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 
@@ -47,6 +47,14 @@ public class enemy1 : EnemyPatrolByDistance
             isChasingPlayer = false;
             isReturningToPatrol = true;
             StartCoroutine(ReturnToPatrol());
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if(col.gameObject.CompareTag("deadblock"))
+        {
+            Destroy(gameObject);
         }
     }
 

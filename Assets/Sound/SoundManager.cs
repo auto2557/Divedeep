@@ -8,11 +8,11 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
-    public AudioSource bgmSource;  
-    public AudioSource sfxSource;  
+    public List<AudioSource> bgmSources;
+    public List<AudioSource> sfxSources;
 
     [SerializeField]
-    private AudioClip[] bgmClips;  
+    private AudioClip[] bgmClips;
     
     [SerializeField] private List<AudioClip> playerSFXClips;
     [SerializeField] private List<AudioClip> AquaStingerSFXClips;
@@ -21,8 +21,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private List<AudioClip> HydraSFXClips;
     [SerializeField] private List<AudioClip> otherSFXClips;
 
-    private Dictionary<string, List<AudioClip>> sfxClips;  
-    
+    private Dictionary<string, List<AudioClip>> sfxClips;
+
     private float masterVolume = 0.5f;
     private float bgmVolume = 0.5f;
     private float sfxVolume = 0.5f;
@@ -53,7 +53,6 @@ public class SoundManager : MonoBehaviour
     {
         LoadVolumeSettings();
         InitializeSFXCategories();
-        PlayBGM(0);
 
         masterSlider.onValueChanged.AddListener(SetMasterVolume);
         bgmSlider.onValueChanged.AddListener(SetBGMVolume);
@@ -82,34 +81,81 @@ public class SoundManager : MonoBehaviour
         };
     }
 
-    public void PlayBGM(int index)
+    public void PlayMultipleBGM(Dictionary<int, int> sourceClipPairs)
+{
+    foreach (var pair in sourceClipPairs)
     {
-        if (index < bgmClips.Length)
+        int sourceIndex = pair.Key;
+        int clipIndex = pair.Value;
+
+        if (sourceIndex < bgmSources.Count && clipIndex < bgmClips.Length)
         {
-            bgmSource.clip = bgmClips[index];
-            bgmSource.Play();
+            AudioSource bgmSource = bgmSources[sourceIndex];
+            AudioClip bgmClip = bgmClips[clipIndex];
+
+            // Check if this clip is already playing to avoid restarting
+            if (bgmSource.clip != bgmClip || !bgmSource.isPlaying)
+            {
+                bgmSource.Stop();
+                bgmSource.clip = bgmClip;
+                bgmSource.volume = bgmVolume * masterVolume;
+                bgmSource.Play();
+            }
+        }
+    }
+}
+
+    public void PlaySFX(string category, int index, int sourceIndex)
+    {
+        if (sfxClips.ContainsKey(category) && index < sfxClips[category].Count && sourceIndex < sfxSources.Count)
+        {
+            sfxSources[sourceIndex].PlayOneShot(sfxClips[category][index]);
         }
     }
 
-    public void PlaySFX(string category, int index)
+    public void StopAllBGM()
     {
-        if (sfxClips.ContainsKey(category) && index < sfxClips[category].Count)
+        foreach (var source in bgmSources)
         {
-            sfxSource.PlayOneShot(sfxClips[category][index]);
+            source.Stop();
+        }
+    }
+
+    public void StopAllSFX()
+    {
+        foreach (var source in sfxSources)
+        {
+            source.Stop();
+        }
+    }
+
+    public void StopSpecificBGM(int sourceIndex)
+    {
+        if (sourceIndex < bgmSources.Count)
+        {
+            bgmSources[sourceIndex].Stop();
+        }
+    }
+
+    public void StopSpecificSFX(int sourceIndex)
+    {
+        if (sourceIndex < sfxSources.Count)
+        {
+            sfxSources[sourceIndex].Stop();
         }
     }
 
     public void SetBGMVolume(float volume)
     {
         bgmVolume = volume;
-        bgmSource.volume = bgmVolume * masterVolume;
+        UpdateAllVolumes();
         SaveVolumeSettings();
     }
 
     public void SetSFXVolume(float volume)
     {
         sfxVolume = volume;
-        sfxSource.volume = sfxVolume * masterVolume;
+        UpdateAllVolumes();
         SaveVolumeSettings();
     }
 
@@ -122,8 +168,14 @@ public class SoundManager : MonoBehaviour
 
     private void UpdateAllVolumes()
     {
-        bgmSource.volume = bgmVolume * masterVolume;
-        sfxSource.volume = sfxVolume * masterVolume;
+        foreach (var source in bgmSources)
+        {
+            source.volume = bgmVolume * masterVolume;
+        }
+        foreach (var source in sfxSources)
+        {
+            source.volume = sfxVolume * masterVolume;
+        }
     }
 
     [System.Serializable]
@@ -162,7 +214,22 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    // Button functions
+    public void StopBGM(params int[] sourceIndices)
+{
+    foreach (int sourceIndex in sourceIndices)
+    {
+        if (sourceIndex < bgmSources.Count)
+        {
+            AudioSource bgmSource = bgmSources[sourceIndex];
+            if (bgmSource.isPlaying)
+            {
+                bgmSource.Stop();
+            }
+        }
+    }
+}
+
+
     public void MuteMasterVolume()
     {
         SetMasterVolume(0f);

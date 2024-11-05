@@ -16,7 +16,9 @@ public class enemy2 : enemyHP
 
     private void Start()
     {
+
         enem2 = GetComponent<enemy2>();
+        bulletSpeed = 5f;
          hp = 40;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();

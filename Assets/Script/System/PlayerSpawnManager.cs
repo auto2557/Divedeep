@@ -12,18 +12,29 @@ public class PlayerSpawnManager : MonoBehaviour
     private Animator anim;
 
     void Start()
+{
+    anim = GetComponent<Animator>();
+
+    // Attempt to find the player GameObject and assign it to the player variable
+    GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+    if (playerObject != null)
     {
-        anim = GetComponent<Animator>();
-        LoadPlayerPosition();
-        
-        #if UNITY_EDITOR
-        EditorApplication.wantsToQuit += OnEditorQuit;
-        #endif
+        player = playerObject.transform;
+        LoadPlayerPosition();  // Call this only if player is successfully assigned
     }
+    else
+    {
+        Debug.LogWarning("Player GameObject with tag 'Player' not found. Make sure it exists in the scene.");
+    }
+
+    #if UNITY_EDITOR
+    EditorApplication.wantsToQuit += OnEditorQuit;
+    #endif
+}
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") || collision.CompareTag("dashMode"))
         {
             anim.SetBool("isSave", true);
             SavePlayerPosition();
@@ -33,7 +44,7 @@ public class PlayerSpawnManager : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") || collision.CompareTag("dashMode"))
         {
             anim.SetBool("isSave", false);
         }

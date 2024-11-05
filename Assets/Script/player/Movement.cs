@@ -51,21 +51,24 @@ public class Movement : MonoBehaviour
             canDoubleJump = true; 
         }
 
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             if (isGrounded)
             {
                 Jump(firstJumpForce);  
+                SoundManager.instance.PlaySFX("player", 1,4);
             }
             else if (canDoubleJump)
             {
                 Jump(secondJumpForce); 
                 canDoubleJump = false;  
+                SoundManager.instance.PlaySFX("player", 2,2);
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.L) && canDash)
+        if (Input.GetKeyDown(KeyCode.C) && canDash)
         {
+            SoundManager.instance.PlaySFX("player", 0,0);
             StartCoroutine(Dash());
         }
     }

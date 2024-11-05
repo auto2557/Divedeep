@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -21,6 +23,13 @@ public class MenuController : MonoBehaviour
 
     void Start()
     {
+        Dictionary<int, int> bgmSelections = new Dictionary<int, int>
+        {
+            { 0, 0 }
+          
+        };
+
+        SoundManager.instance.PlayMultipleBGM(bgmSelections);
         UpdateMenuUI();
         currentArrowPosition = arrowIcon.transform.position;  
     }
@@ -30,19 +39,20 @@ public class MenuController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             selectedIndex = (selectedIndex + 1) % menuButtons.Length;
-            SoundManager.instance.PlaySFX("other", 0);
+            SoundManager.instance.PlaySFX("other", 0,0);
             UpdateMenuUI();
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             selectedIndex = (selectedIndex - 1 + menuButtons.Length) % menuButtons.Length;
-            SoundManager.instance.PlaySFX("other", 0);
+            SoundManager.instance.PlaySFX("other", 0,0);
             UpdateMenuUI();
         }
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
             ExecuteSelectedOption();
+            SoundManager.instance.PlaySFX("other", 0,0);
         }
 
     
@@ -84,6 +94,7 @@ public class MenuController : MonoBehaviour
                 selectedIndex = 1;
                 break;
             case 2:
+            SceneManager.LoadScene("credits");
                 Debug.Log("Credit selected");
                 break;
             case 3:
