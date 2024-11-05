@@ -51,7 +51,7 @@ public class Movement : MonoBehaviour
             canDoubleJump = true; 
         }
 
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             if (isGrounded)
             {
@@ -66,7 +66,7 @@ public class Movement : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.L) && canDash)
+        if (Input.GetKeyDown(KeyCode.C) && canDash)
         {
             SoundManager.instance.PlaySFX("player", 0,0);
             StartCoroutine(Dash());

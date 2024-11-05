@@ -38,7 +38,7 @@ public class HydraBoss : enemyHP
         StartCoroutine(startFight());
         
         Dimension.SetActive(false);
-        waitTimes = 15f;
+        waitTimes = 10f;
 
         redzone[0].SetActive(false);
         redzone[1].SetActive(false);
@@ -106,23 +106,12 @@ public class HydraBoss : enemyHP
         }
         else if(hp <= 1000 && hp > 500 && !hasSwitchedBGM)
         {
-              hasSwitchedBGM = true; 
-           
-           
-                    Dictionary<int, int> bgmSelections = new Dictionary<int, int>
-        {
-            { 0, 3 }
-          
-        };
-
-        SoundManager.instance.PlayMultipleBGM(bgmSelections);
             head[1].SetActive(false);
             part[1].SetTrigger("die");
 
             head2 = false;
            StartCoroutine(head2Die());
 
-           spawnMissile[1].SetActive(true);
 
         }
         else if (hp<=0)
@@ -163,7 +152,7 @@ public class HydraBoss : enemyHP
     {
         yield return new WaitForSeconds(waitTimes);
        
-        waitTimes = 15f;
+        waitTimes = 10f;
 
         Dimension.SetActive(false);
         isMoving = true;
