@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; // Required for using UI elements like Slider
+using UnityEngine.SceneManagement;
 
 public class HydraBoss : enemyHP
 {
@@ -55,7 +56,7 @@ public class HydraBoss : enemyHP
 
         SoundManager.instance.PlayMultipleBGM(bgmSelections);
 
-        speed = 0.8f;
+        speed = 1.2f;
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject != null)
         {
@@ -68,6 +69,9 @@ public class HydraBoss : enemyHP
 
         GameObject Player = GameObject.FindWithTag("Player");
         Playerscript = Player.GetComponent<player>();
+
+        GameObject hydraslider = GameObject.FindWithTag("hydra");
+        healthSlider = hydraslider.GetComponent<Slider>();
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -96,6 +100,13 @@ public class HydraBoss : enemyHP
             StartCoroutine(head1Die());
             spawnMissile[0].SetActive(true);
         
+                Dictionary<int, int> bgmSelections = new Dictionary<int, int>
+        {
+            { 0, 3 }
+          
+        };
+
+        SoundManager.instance.PlayMultipleBGM(bgmSelections);
        
         }
         else if(hp <= 1000 && hp > 500)
@@ -105,10 +116,20 @@ public class HydraBoss : enemyHP
 
             head2 = false;
            StartCoroutine(head2Die());
+
            spawnMissile[1].SetActive(true);
 
         }
+        else if (hp<=0)
+        {
+            StartCoroutine(dead());
+        }   
     }
+
+  public void UpdateHealthSlider()
+{
+    healthSlider.value = Mathf.Clamp(hp, 0, maxHP);
+}
 
     public override void OnTriggerEnter2D(Collider2D collision)
     {
@@ -133,10 +154,6 @@ public class HydraBoss : enemyHP
         }
     }
 
-  public void UpdateHealthSlider()
-{
-    healthSlider.value = Mathf.Clamp(hp, 0, maxHP);
-}
     IEnumerator waitTime()
     {
         yield return new WaitForSeconds(waitTimes);
@@ -249,7 +266,7 @@ public class HydraBoss : enemyHP
             break;
 
         case 3:
-            isMoving = false;
+            isMoving = true;
             if (head3)
             {
                 redzone[2].SetActive(true);
@@ -294,7 +311,7 @@ public class HydraBoss : enemyHP
             if (head1 || head2 || head3)
             {
                 Dimension.SetActive(true);
-                waitTimes = 30f;
+                waitTimes = 18f;
                 isMoving = false;
                 ULTboss.SetActive(true);
                 for (int i = 0; i < part.Length; i++)
@@ -326,6 +343,12 @@ public class HydraBoss : enemyHP
         yield return new WaitForSeconds(3f);
 
         hydra[1].SetActive(false);
+    }
+
+    IEnumerator dead()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("EndCutSCENE"); 
     }
 
     public void TakeDamage(int damageAmount)
