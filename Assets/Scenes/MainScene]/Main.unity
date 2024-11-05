@@ -243,6 +243,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75bb23b5f7857214ca6aee9b55e04464, type: 3}
+--- !u!82 &180833734 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1842899113278893526, guid: 11876c32b42966e4da41f9f4fe659711, type: 3}
+  m_PrefabInstance: {fileID: 8423064576743305367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &323092840
 GameObject:
   m_ObjectHideFlags: 0
@@ -2230,6 +2235,11 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!82 &1777239328 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 923404792288142770, guid: 11876c32b42966e4da41f9f4fe659711, type: 3}
+  m_PrefabInstance: {fileID: 8423064576743305367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1823410719
 GameObject:
   m_ObjectHideFlags: 0
@@ -3481,9 +3491,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 583158020}
     - target: {fileID: 698279234094747690, guid: 11876c32b42966e4da41f9f4fe659711, type: 3}
+      propertyPath: bgmSources.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 698279234094747690, guid: 11876c32b42966e4da41f9f4fe659711, type: 3}
+      propertyPath: sfxSources.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 698279234094747690, guid: 11876c32b42966e4da41f9f4fe659711, type: 3}
+      propertyPath: bgmSources.Array.data[0]
+      value: 
+      objectReference: {fileID: 180833734}
+    - target: {fileID: 698279234094747690, guid: 11876c32b42966e4da41f9f4fe659711, type: 3}
       propertyPath: otherSFXClips.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 698279234094747690, guid: 11876c32b42966e4da41f9f4fe659711, type: 3}
+      propertyPath: sfxSources.Array.data[0]
+      value: 
+      objectReference: {fileID: 1777239328}
     - target: {fileID: 698279234094747690, guid: 11876c32b42966e4da41f9f4fe659711, type: 3}
       propertyPath: otherSFXClips.Array.data[0]
       value: 

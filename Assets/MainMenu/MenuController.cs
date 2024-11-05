@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -21,6 +23,13 @@ public class MenuController : MonoBehaviour
 
     void Start()
     {
+        Dictionary<int, int> bgmSelections = new Dictionary<int, int>
+        {
+            { 0, 0 }
+          
+        };
+
+        SoundManager.instance.PlayMultipleBGM(bgmSelections);
         UpdateMenuUI();
         currentArrowPosition = arrowIcon.transform.position;  
     }
@@ -43,6 +52,7 @@ public class MenuController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
             ExecuteSelectedOption();
+            SoundManager.instance.PlaySFX("other", 0,0);
         }
 
     

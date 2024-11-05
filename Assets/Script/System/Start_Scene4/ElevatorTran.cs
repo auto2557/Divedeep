@@ -49,7 +49,6 @@ public class ElevatorTran : MonoBehaviour
             fade[0].enabled = true;
             fade[1].enabled = true;
             UIplayer.SetActive(true);
-
             SaveState();
         }
     }

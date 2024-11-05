@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; // Required for using UI elements like Slider
+using UnityEngine.UI; 
 using UnityEngine.SceneManagement;
 
 public class HydraBoss : enemyHP
@@ -30,6 +30,7 @@ public class HydraBoss : enemyHP
 
     public float waitTimes;
      private bool isMoving = false;
+      private bool hasSwitchedBGM = false;
 
     void Start()
     {
@@ -91,8 +92,9 @@ public class HydraBoss : enemyHP
             transform.position = Vector2.Lerp(transform.position, targetPosition, speed * Time.deltaTime);
         }
 
-        if(hp <= 2000 && hp > 1000)
+       if (hp <= 2000 && hp>1000)
         {
+      
             part[0].SetTrigger("die");
             head[0].SetActive(false);
             head1 = false;
@@ -100,17 +102,20 @@ public class HydraBoss : enemyHP
             StartCoroutine(head1Die());
             spawnMissile[0].SetActive(true);
         
-                Dictionary<int, int> bgmSelections = new Dictionary<int, int>
+       
+        }
+        else if(hp <= 1000 && hp > 500 && !hasSwitchedBGM)
+        {
+              hasSwitchedBGM = true; 
+           
+           
+                    Dictionary<int, int> bgmSelections = new Dictionary<int, int>
         {
             { 0, 3 }
           
         };
 
         SoundManager.instance.PlayMultipleBGM(bgmSelections);
-       
-        }
-        else if(hp <= 1000 && hp > 500)
-        {
             head[1].SetActive(false);
             part[1].SetTrigger("die");
 

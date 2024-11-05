@@ -9,7 +9,7 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance;
 
     public List<AudioSource> bgmSources;
-    public List<AudioSource> sfxSources; 
+    public List<AudioSource> sfxSources;
 
     [SerializeField]
     private AudioClip[] bgmClips;
@@ -82,29 +82,66 @@ public class SoundManager : MonoBehaviour
     }
 
     public void PlayMultipleBGM(Dictionary<int, int> sourceClipPairs)
+{
+    foreach (var pair in sourceClipPairs)
     {
-        foreach (var pair in sourceClipPairs)
+        int sourceIndex = pair.Key;
+        int clipIndex = pair.Value;
+
+        if (sourceIndex < bgmSources.Count && clipIndex < bgmClips.Length)
         {
-            int sourceIndex = pair.Key;
-            int clipIndex = pair.Value;
+            AudioSource bgmSource = bgmSources[sourceIndex];
+            AudioClip bgmClip = bgmClips[clipIndex];
 
-            if (sourceIndex < bgmSources.Count && clipIndex < bgmClips.Length)
+            // Check if this clip is already playing to avoid restarting
+            if (bgmSource.clip != bgmClip || !bgmSource.isPlaying)
             {
-                bgmSources[sourceIndex].Stop();
-
-                bgmSources[sourceIndex].clip = bgmClips[clipIndex];
-                bgmSources[sourceIndex].volume = bgmVolume * masterVolume;
-
-                bgmSources[sourceIndex].Play();
+                bgmSource.Stop();
+                bgmSource.clip = bgmClip;
+                bgmSource.volume = bgmVolume * masterVolume;
+                bgmSource.Play();
             }
         }
     }
+}
 
     public void PlaySFX(string category, int index, int sourceIndex)
     {
         if (sfxClips.ContainsKey(category) && index < sfxClips[category].Count && sourceIndex < sfxSources.Count)
         {
             sfxSources[sourceIndex].PlayOneShot(sfxClips[category][index]);
+        }
+    }
+
+    public void StopAllBGM()
+    {
+        foreach (var source in bgmSources)
+        {
+            source.Stop();
+        }
+    }
+
+    public void StopAllSFX()
+    {
+        foreach (var source in sfxSources)
+        {
+            source.Stop();
+        }
+    }
+
+    public void StopSpecificBGM(int sourceIndex)
+    {
+        if (sourceIndex < bgmSources.Count)
+        {
+            bgmSources[sourceIndex].Stop();
+        }
+    }
+
+    public void StopSpecificSFX(int sourceIndex)
+    {
+        if (sourceIndex < sfxSources.Count)
+        {
+            sfxSources[sourceIndex].Stop();
         }
     }
 
@@ -176,6 +213,22 @@ public class SoundManager : MonoBehaviour
             UpdateAllVolumes();
         }
     }
+
+    public void StopBGM(params int[] sourceIndices)
+{
+    foreach (int sourceIndex in sourceIndices)
+    {
+        if (sourceIndex < bgmSources.Count)
+        {
+            AudioSource bgmSource = bgmSources[sourceIndex];
+            if (bgmSource.isPlaying)
+            {
+                bgmSource.Stop();
+            }
+        }
+    }
+}
+
 
     public void MuteMasterVolume()
     {

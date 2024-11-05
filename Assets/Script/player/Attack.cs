@@ -69,7 +69,7 @@ public class Attack : Movement
 
     private void StartAttackSequence()
     {
-        int randomDmg = Random.Range(5, 12);
+        int randomDmg = Random.Range(7, 18);
         damage = randomDmg;
         Debug.Log("dmg = " + damage);
 
