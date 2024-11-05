@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth;
-    [SerializeField] private int currentHealth;
+    public int currentHealth;
     public Slider healthSlider; 
     public GameObject lowHP;
     public GameObject healEffect;

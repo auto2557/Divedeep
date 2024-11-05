@@ -19,8 +19,13 @@ public class HydraBoss : enemyHP
     public GameObject[] redzone;
     public GameObject[] hitblock;
     public GameObject ULTboss;
+    public GameObject[] spawnMissile;
 
-    private const int maxHP = 6000;
+    public bool head1 = true;
+    public bool head2 = true;
+    private bool head3 = true;
+
+    private const int maxHP = 4000;
 
     public float waitTimes;
      private bool isMoving = false;
@@ -44,8 +49,8 @@ public class HydraBoss : enemyHP
 
         Dictionary<int, int> bgmSelections = new Dictionary<int, int>
         {
-            { 0, 0 },
-            { 1, 1 }
+            { 0, 1 },
+            { 1, 2 }
         };
 
         SoundManager.instance.PlayMultipleBGM(bgmSelections);
@@ -84,15 +89,24 @@ public class HydraBoss : enemyHP
 
         if(hp <= 2000 && hp > 1000)
         {
-            Destroy(head[0]);
             part[0].SetTrigger("die");
-            Destroy(hydra[0],2f);
+            head[0].SetActive(false);
+            head1 = false;
+
+            StartCoroutine(head1Die());
+            spawnMissile[0].SetActive(true);
+        
+       
         }
         else if(hp <= 1000 && hp > 500)
         {
-            Destroy(head[1]);
+            head[1].SetActive(false);
             part[1].SetTrigger("die");
-            Destroy(hydra[1],2f);
+
+            head2 = false;
+           StartCoroutine(head2Die());
+           spawnMissile[1].SetActive(true);
+
         }
     }
 
@@ -119,17 +133,18 @@ public class HydraBoss : enemyHP
         }
     }
 
-    private void UpdateHealthSlider()
-    {
-        healthSlider.value = Mathf.Clamp(hp, 0, maxHP);
-    }
-
+  public void UpdateHealthSlider()
+{
+    healthSlider.value = Mathf.Clamp(hp, 0, maxHP);
+}
     IEnumerator waitTime()
     {
         yield return new WaitForSeconds(waitTimes);
-
+       
         waitTimes = 15f;
+
         Dimension.SetActive(false);
+        isMoving = true;
 
         redzone[0].SetActive(false);
         redzone[1].SetActive(false);
@@ -147,18 +162,21 @@ public class HydraBoss : enemyHP
          ULTboss.SetActive(false);
 
         Camera.main.orthographicSize = 2.409138f;
-
+        
+    
         Head1atk scriptToRemove = hydra[0].GetComponent<Head1atk>();
         if (scriptToRemove != null)
         {
             Destroy(scriptToRemove);
         }
+        
 
         Head2atk scriptToRemove2 = hydra[1].GetComponent<Head2atk>();
         if (scriptToRemove2 != null)
         {
             Destroy(scriptToRemove2);
         }
+        
 
         Head3atk scriptToRemove3 = hydra[2].GetComponent<Head3atk>();
         if (scriptToRemove3 != null)
@@ -179,22 +197,22 @@ public class HydraBoss : enemyHP
     {
         yield return new WaitForSeconds(5f);
 
-            if(hp > 5000)
+            if(hp > 3000 && head1 == true && head2 == true && head3 == true)
             {
         int patternSkill = Random.Range(1, 5);
         skillNumber = patternSkill;
             }
-            else if(hp <= 5000)
+            else if(hp <= 3000 && hp > 2000 && head1 == true && head2 == true && head3 == true)
             {
                 int patternSkill = Random.Range(1, 6);
         skillNumber = patternSkill;
             }
-            else if(hp<= 3000)
+            else if(hp<= 2000 && hp > 1000 && head1 == false && head2 == true && head3 == true)
             {
-                int patternSkill = Random.Range(1, 7);
+                int patternSkill = Random.Range(2, 7);
         skillNumber = patternSkill;
             }
-            else if(hp <= 1000)
+            else if(hp < 1000 && head1 == false && head2 == false && head3 == true)
             {
                 int patternSkill = Random.Range(4, 7);
         skillNumber = patternSkill;
@@ -205,70 +223,120 @@ public class HydraBoss : enemyHP
     }
 
     private void patternBoss()
+{
+    switch (skillNumber)
     {
-        switch (skillNumber)
-        {
-            case 1:
-             isMoving = true;
+        case 1:
+            isMoving = false;
+            if (head1)
+            {
                 redzone[0].SetActive(true);
                 hitblock[0].SetActive(true);
                 hydra[0].AddComponent<Head1atk>();
                 Debug.Log("1");
-                break;
+            }
+            break;
 
-            case 2:
-             isMoving = true;
+        case 2:
+            isMoving = false;
+            if (head2)
+            {
                 redzone[1].SetActive(true);
                 hitblock[1].SetActive(true);
                 hydra[1].AddComponent<Head2atk>();
                 Debug.Log("2");
-                break;
+            }
+            break;
 
-            case 4:
-             isMoving = true;
+        case 3:
+            isMoving = false;
+            if (head3)
+            {
                 redzone[2].SetActive(true);
                 hitblock[2].SetActive(true);
                 hydra[2].AddComponent<Head3atk>();
                 Debug.Log("3");
-                break;
+            }
+            break;
 
-            case 3:
-             isMoving = true;
+        case 4:
+            isMoving = true;
+            if (head1)
+            {
                 redzone[0].SetActive(true);
                 hitblock[0].SetActive(true);
+                hydra[0].AddComponent<Head1atk>();
+            }
+            if (head2)
+            {
                 redzone[1].SetActive(true);
                 hitblock[1].SetActive(true);
+                hydra[1].AddComponent<Head2atk>();
+            }
+            if (head3)
+            {
                 redzone[2].SetActive(true);
                 hitblock[2].SetActive(true);
-
-                hydra[0].AddComponent<Head1atk>();
-                hydra[1].AddComponent<Head2atk>();
                 hydra[2].AddComponent<Head3atk>();
-                Debug.Log("4");
-                break;
+            }
+            Debug.Log("4");
+            break;
 
-            case 5:
-             isMoving = true;
+        case 5:
+            if (head1 || head2 || head3)
+            {
+                isMoving = true;
                 gameObject.AddComponent<LaserSpawner>();
-                break;
+            }
+            break;
 
-                case 6:
+        case 6:
+            if (head1 || head2 || head3)
+            {
                 Dimension.SetActive(true);
-                 waitTimes = 30f;
-                 isMoving = false;
+                waitTimes = 30f;
+                isMoving = false;
                 ULTboss.SetActive(true);
-                    part[0].SetBool("ult",true);
-                    part[1].SetBool("ult",true);
-                    part[2].SetBool("ult",true);
-                    part[3].SetBool("ult",true);
-                    part[4].SetBool("ult",true);
-                break;
-        }
+                for (int i = 0; i < part.Length; i++)
+                {
+                    part[i].SetBool("ult", true);
+                }
+            }
+            break;
     }
+}
+
+
 
     IEnumerator startFight()
     {
         yield return new WaitForSeconds(10f);
         isMoving = true;
     }
+
+    IEnumerator head1Die()
+    {
+        yield return new WaitForSeconds(3f);
+
+        hydra[0].SetActive(false);
+    }
+
+    IEnumerator head2Die()
+    {
+        yield return new WaitForSeconds(3f);
+
+        hydra[1].SetActive(false);
+    }
+
+    public void TakeDamage(int damageAmount)
+{
+    hp -= damageAmount;
+    UpdateHealthSlider(); 
+    if (hp <= 0 && !isDead)
+    {
+        isDead = true;
+        StartCoroutine(Die()); 
+    }
+}
+
 }

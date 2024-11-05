@@ -10,6 +10,7 @@ public class Head3atk : HeadAtk
         atkHitblock = GameObject.FindGameObjectWithTag("block3");
         cooldownTime = 1f;
         hydra = GetComponent<Animator>();
+        atkHitblock.SetActive(false);
         redZone.SetActive(false);
         StartCoroutine(redZonealert());
     }

@@ -83,12 +83,6 @@ public class LaserController : MonoBehaviour
                         hasDealtDamage = true; 
                     }
                 }
-                else if (hit.collider.CompareTag("Block"))
-                {
-                    lineRenderer.SetPosition(1, hit.point);
-                    currentLaserLength = Vector2.Distance(transform.position, hit.point);
-                    break;
-                }
             }
 
             yield return null;

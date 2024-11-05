@@ -8,7 +8,8 @@ public class openA : MonoBehaviour
     private Animator anim;
     public GameObject UnlockDanger;
     public Image finishQuetsA;       
-    public Sprite newSprite;           
+    public Sprite newSprite;     
+    public GameObject E1;      
     public bool GenA = false;
     public GameObject lightPower;
     private bool isInTrigger = false;
@@ -27,6 +28,7 @@ public class openA : MonoBehaviour
             GenA = true;
             lightPower.SetActive(true);
             Destroy(UnlockDanger);
+            Destroy(E1);
          
             if (newSprite != null)
             {

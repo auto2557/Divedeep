@@ -9,6 +9,7 @@ public class openB : MonoBehaviour
     public Image finishQuetsB;       
     public Sprite newSprite;           
     public bool GenB = false;
+    public GameObject E2;
     public GameObject lightPower;
     private bool isInTrigger = false;
 
@@ -25,6 +26,7 @@ public class openB : MonoBehaviour
             anim.SetBool("On", true);
             GenB = true;
             lightPower.SetActive(true);
+            Destroy(E2);
 
          
             if (newSprite != null)

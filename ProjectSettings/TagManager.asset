@@ -23,6 +23,7 @@ TagManager:
   - hydrabeam
   - deadblock
   - dmgPOP
+  - hydra
   layers:
   - Default
   - TransparentFX

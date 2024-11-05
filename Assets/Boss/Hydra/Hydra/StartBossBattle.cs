@@ -5,6 +5,7 @@ using UnityEngine;
 public class StartBossBattle : MonoBehaviour
 {
     public GameObject bossArea;
+    public GameObject allEnemy;
   
   void OnTriggerEnter2D(Collider2D collision)
   {
@@ -12,6 +13,7 @@ public class StartBossBattle : MonoBehaviour
     {
         bossArea.SetActive(true);
         Destroy(gameObject,5f);
+        Destroy(allEnemy);
     }
   }
 }
