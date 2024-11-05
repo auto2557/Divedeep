@@ -84,6 +84,7 @@ public class MenuController : MonoBehaviour
                 selectedIndex = 1;
                 break;
             case 2:
+            SceneManager.LoadScene("credits");
                 Debug.Log("Credit selected");
                 break;
             case 3:
