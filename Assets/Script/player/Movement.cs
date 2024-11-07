@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class Movement : MonoBehaviour
 {
@@ -18,13 +19,15 @@ public class Movement : MonoBehaviour
     public bool facingRight = true;
     protected SpriteRenderer spriteRenderer;
 
-    // Dash
+ 
     protected bool canDash = true;
     protected bool isDashing;
     public float dashingPower = 24f;
     protected float dashingTime = 0.4f;
     public float dashingCooldown = 1f;
     [SerializeField] protected TrailRenderer tr;
+
+    public TextMeshProUGUI cooldownDash; 
 
     void Update()
     {
@@ -122,25 +125,44 @@ public class Movement : MonoBehaviour
         spriteRenderer.flipX = !facingRight;
     }
 
-    public IEnumerator Dash()
+     public IEnumerator Dash()
     {
         canDash = false;
         isDashing = true;
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
-        
+
         rb.velocity = new Vector2((facingRight ? 1 : -1) * dashingPower, 0f);
-        
+
         tr.emitting = true;
         yield return new WaitForSeconds(dashingTime);
-        
+
         rb.velocity = new Vector2(0f, rb.velocity.y);
-        
+
         tr.emitting = false;
         rb.gravityScale = originalGravity;
         isDashing = false;
-        
+
+       
+        StartCoroutine(ShowCooldownText(dashingCooldown));
+
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }
+
+   private IEnumerator ShowCooldownText(float cooldown)
+{
+    float currentTime = cooldown;
+
+    while (currentTime > 0)
+    {
+      
+        cooldownDash.text = currentTime.ToString("F1");
+        currentTime -= Time.deltaTime;
+        yield return null;
+    }
+
+    cooldownDash.text = "Ready"; 
+}
+
 }
