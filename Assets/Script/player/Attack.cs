@@ -18,6 +18,14 @@ public class Attack : Movement
 
     public GameObject Sonicblow;
 
+    private AudioSource audioSource;
+
+protected  void Awake()
+{
+    Awake();
+    audioSource = gameObject.AddComponent<AudioSource>();
+}
+
     protected void UpdateHitBlockPosition()
     {
         if (facingRight && Input.GetKeyDown(KeyCode.X))
@@ -67,9 +75,9 @@ public class Attack : Movement
         }
     }
 
-    private void StartAttackSequence()
+    protected void StartAttackSequence()
     {
-        int randomDmg = Random.Range(7, 18);
+        int randomDmg = Random.Range(10, 20);
         damage = randomDmg;
         Debug.Log("dmg = " + damage);
 

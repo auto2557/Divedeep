@@ -2,35 +2,48 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO; // สำหรับการจัดการไฟล์
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
+
+[Serializable]
+public class PlayerPositionData
+{
+    public float x;
+    public float y;
+    public float z;
+}
 
 public class PlayerSpawnManager : MonoBehaviour
 {
     public Transform player;
     private Animator anim;
+    private string saveFilePath;
 
     void Start()
-{
-    anim = GetComponent<Animator>();
-
-    // Attempt to find the player GameObject and assign it to the player variable
-    GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-    if (playerObject != null)
     {
-        player = playerObject.transform;
-        LoadPlayerPosition();  // Call this only if player is successfully assigned
-    }
-    else
-    {
-        Debug.LogWarning("Player GameObject with tag 'Player' not found. Make sure it exists in the scene.");
-    }
+        anim = GetComponent<Animator>();
 
-    #if UNITY_EDITOR
-    EditorApplication.wantsToQuit += OnEditorQuit;
-    #endif
-}
+        // กำหนดเส้นทางสำหรับไฟล์ JSON ใน Application.persistentDataPath
+        saveFilePath = Path.Combine(Application.persistentDataPath, "PlayerPosition.json");
+
+        // Attempt to find the player GameObject and assign it to the player variable
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        if (playerObject != null)
+        {
+            player = playerObject.transform;
+            LoadPlayerPosition();  // Call this only if player is successfully assigned
+        }
+        else
+        {
+            Debug.LogWarning("Player GameObject with tag 'Player' not found. Make sure it exists in the scene.");
+        }
+
+        #if UNITY_EDITOR
+        EditorApplication.wantsToQuit += OnEditorQuit;
+        #endif
+    }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -38,7 +51,7 @@ public class PlayerSpawnManager : MonoBehaviour
         {
             anim.SetBool("isSave", true);
             SavePlayerPosition();
-            Debug.Log("Position saved");
+            Debug.Log("Position saved to JSON file");
         }
     }
 
@@ -52,22 +65,35 @@ public class PlayerSpawnManager : MonoBehaviour
 
     public void LoadPlayerPosition()
     {
-        if (PlayerPrefs.HasKey("PlayerPosX") && PlayerPrefs.HasKey("PlayerPosY") && PlayerPrefs.HasKey("PlayerPosZ"))
+        if (File.Exists(saveFilePath))
         {
-            float x = PlayerPrefs.GetFloat("PlayerPosX");
-            float y = PlayerPrefs.GetFloat("PlayerPosY");
-            float z = PlayerPrefs.GetFloat("PlayerPosZ");
+            string json = File.ReadAllText(saveFilePath);
+            PlayerPositionData data = JsonUtility.FromJson<PlayerPositionData>(json);
 
-            player.position = new Vector3(x, y, z);
+            if (data != null)
+            {
+                player.position = new Vector3(data.x, data.y, data.z);
+                Debug.Log("Position loaded from JSON file");
+            }
+        }
+        else
+        {
+            Debug.Log("Save file not found, starting at default position");
         }
     }
 
     public void SavePlayerPosition()
     {
-        PlayerPrefs.SetFloat("PlayerPosX", player.position.x);
-        PlayerPrefs.SetFloat("PlayerPosY", player.position.y);
-        PlayerPrefs.SetFloat("PlayerPosZ", player.position.z);
-        PlayerPrefs.Save();
+        PlayerPositionData data = new PlayerPositionData
+        {
+            x = player.position.x,
+            y = player.position.y,
+            z = player.position.z
+        };
+
+        string json = JsonUtility.ToJson(data);
+        File.WriteAllText(saveFilePath, json);
+        Debug.Log("Position saved to JSON file at: " + saveFilePath);
     }
 
     private bool OnEditorQuit()
@@ -83,11 +109,11 @@ public class PlayerSpawnManager : MonoBehaviour
 
     private void ResetPlayerPosition()
     {
-        PlayerPrefs.DeleteKey("PlayerPosX");
-        PlayerPrefs.DeleteKey("PlayerPosY");
-        PlayerPrefs.DeleteKey("PlayerPosZ");
-        PlayerPrefs.Save();
-        Debug.Log("Position reset on exiting game or editor");
+        if (File.Exists(saveFilePath))
+        {
+            File.Delete(saveFilePath);
+            Debug.Log("Position reset and JSON file deleted on exiting game or editor");
+        }
     }
 
     void OnDestroy()

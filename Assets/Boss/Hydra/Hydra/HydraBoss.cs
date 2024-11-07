@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class HydraBoss : enemyHP
 {
     public Transform player; 
+    private player playerscript;
     public float speed;
     private Animator animator;
     public Animator[] part;
@@ -69,7 +70,7 @@ public class HydraBoss : enemyHP
         anim = GetComponent<Animator>();
 
         GameObject Player = GameObject.FindWithTag("Player");
-        Playerscript = Player.GetComponent<player>();
+        playerscript = Player.GetComponent<player>();
 
         GameObject hydraslider = GameObject.FindWithTag("hydra");
         healthSlider = hydraslider.GetComponent<Slider>();

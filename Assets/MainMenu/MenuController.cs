@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class MenuController : MonoBehaviour
 {
@@ -85,6 +86,12 @@ public class MenuController : MonoBehaviour
         switch (selectedIndex)
         {
             case 0:
+             string[] jsonFiles = Directory.GetFiles(Application.persistentDataPath, "*.json");
+            foreach (string file in jsonFiles)
+            {
+                File.Delete(file);
+                Debug.Log("Deleted save file: " + file);
+            }
                 SceneManager.LoadScene("CutSceneBeforeGame"); 
                 break;
             case 1:
