@@ -30,6 +30,7 @@ public class LaserController : MonoBehaviour
         lineRenderer.positionCount = 2;
 
         target = GameObject.FindGameObjectWithTag("Player").transform;
+         target = GameObject.FindGameObjectWithTag("dashMode").transform;
     }
 
     void Update()
