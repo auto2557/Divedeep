@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class HydraBoss : enemyHP
 {
     public Transform player; 
+    private player playerscript;
     public float speed;
     private Animator animator;
     public Animator[] part;
@@ -26,63 +27,75 @@ public class HydraBoss : enemyHP
     public bool head2 = true;
     private bool head3 = true;
 
-    private const int maxHP = 4000;
+    private  int maxHP = 4000;
 
     public float waitTimes;
      private bool isMoving = false;
       private bool hasSwitchedBGM = false;
 
+      private bool phase1;
+      private bool phase2;
+      public GameObject LightPhase2;
+
     void Start()
+{
+    phase1 = true;
+    phase2 = false;
+
+    isMoving = false;
+    StartCoroutine(startFight());
+
+    Dimension.SetActive(false);
+    waitTimes = 10f;
+
+    redzone[0].SetActive(false);
+    redzone[1].SetActive(false);
+    redzone[2].SetActive(false);
+    hitblock[0].SetActive(false);
+    hitblock[1].SetActive(false);
+    hitblock[2].SetActive(false);
+
+    ULTboss.SetActive(false);
+
+    Dictionary<int, int> bgmSelections = new Dictionary<int, int>
     {
-        isMoving = false;
-        StartCoroutine(startFight());
-        
-        Dimension.SetActive(false);
-        waitTimes = 10f;
+        { 0, 1 },
+        { 1, 2 }
+    };
 
-        redzone[0].SetActive(false);
-        redzone[1].SetActive(false);
-        redzone[2].SetActive(false);
-        hitblock[0].SetActive(false);
-        hitblock[1].SetActive(false);
-        hitblock[2].SetActive(false);
+    SoundManager.instance.PlayMultipleBGM(bgmSelections);
 
-        ULTboss.SetActive(false);
+    speed = 1.2f;
 
-        Dictionary<int, int> bgmSelections = new Dictionary<int, int>
-        {
-            { 0, 1 },
-            { 1, 2 }
-        };
-
-        SoundManager.instance.PlayMultipleBGM(bgmSelections);
-
-        speed = 1.2f;
-        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-        if (playerObject != null)
-        {
-            player = playerObject.transform;
-        }
-
-        hp = maxHP;
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-
-        GameObject Player = GameObject.FindWithTag("Player");
-        Playerscript = Player.GetComponent<player>();
-
-        GameObject hydraslider = GameObject.FindWithTag("hydra");
-        healthSlider = hydraslider.GetComponent<Slider>();
-
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-
-        animator = GetComponent<Animator>();
-
-        healthSlider.maxValue = maxHP;
-        healthSlider.value = maxHP;
-
-        StartCoroutine(waitTime());
+  
+    GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+    if (playerObject != null)
+    {
+        player = playerObject.transform;
+        playerscript = playerObject.GetComponent<player>();  
     }
+
+   
+    GameObject dashModeObject = GameObject.FindGameObjectWithTag("dashMode");
+    if (dashModeObject != null)
+    {
+        player = dashModeObject.transform;  
+        playerscript = playerObject.GetComponent<player>(); 
+    }
+
+    hp = maxHP;
+    rb = GetComponent<Rigidbody2D>();
+    anim = GetComponent<Animator>();
+
+    GameObject hydraslider = GameObject.FindWithTag("hydra");
+    healthSlider = hydraslider.GetComponent<Slider>();
+
+    healthSlider.maxValue = maxHP;
+    healthSlider.value = maxHP;
+
+    StartCoroutine(waitTime());
+}
+
 
     void Update()
     {
@@ -92,7 +105,7 @@ public class HydraBoss : enemyHP
             transform.position = Vector2.Lerp(transform.position, targetPosition, speed * Time.deltaTime);
         }
 
-       if (hp <= 2000 && hp>1000)
+       if (hp <= 2000 && hp>1000 && phase1 == true)
         {
       
             part[0].SetTrigger("die");
@@ -104,7 +117,7 @@ public class HydraBoss : enemyHP
         
        
         }
-        else if(hp <= 1000 && hp > 500 && !hasSwitchedBGM)
+        else if(hp <= 1000 && hp > 500 && phase1 == true)
         {
             head[1].SetActive(false);
             part[1].SetTrigger("die");
@@ -114,10 +127,16 @@ public class HydraBoss : enemyHP
 
 
         }
-        else if (hp<=0)
-        {
-            StartCoroutine(dead());
-        }   
+        else if ((hp <= 0 && phase1 == true) && !hasSwitchedBGM)
+{
+    LightPhase2.SetActive(true);
+    phase1 = false;
+    phase2 = true;
+    maxHP = 1500;
+    hp = maxHP;
+    healthSlider.maxValue = maxHP;
+    healthSlider.value = maxHP;
+} 
     }
 
   public void UpdateHealthSlider()
@@ -137,13 +156,6 @@ public class HydraBoss : enemyHP
             ShowDamagePopup(damageAmount);
 
             UpdateHealthSlider();
-
-            if (hp <= 0)
-            {
-                isDead = true;
-                StartCoroutine(Die());
-            }
-
             StartCoroutine(ResetHit());
         }
     }
@@ -208,26 +220,43 @@ public class HydraBoss : enemyHP
     {
         yield return new WaitForSeconds(5f);
 
-            if(hp > 3000 && head1 == true && head2 == true && head3 == true)
-            {
-        int patternSkill = Random.Range(1, 5);
-        skillNumber = patternSkill;
-            }
-            else if(hp <= 3000 && hp > 2000 && head1 == true && head2 == true && head3 == true)
-            {
-                int patternSkill = Random.Range(1, 6);
-        skillNumber = patternSkill;
-            }
-            else if(hp<= 2000 && hp > 1000 && head1 == false && head2 == true && head3 == true)
-            {
+         if (phase1)
+    {
+      
+        if (hp > 3000 && head1 && head2 && head3)
+        {
+               int patternSkill = Random.Range(1, 5);
+            skillNumber = patternSkill;
+        }
+        else if (hp <= 3000 && hp > 2000 && head1 && head2 && head3)
+        {
+               int patternSkill = Random.Range(1, 6);
+            skillNumber = patternSkill;
+        }
+        else if(hp<= 2000 && hp > 1000 && head1 == false && head2 == true && head3 == true)
+        {
                 int patternSkill = Random.Range(2, 7);
-        skillNumber = patternSkill;
-            }
-            else if(hp < 1000 && head1 == false && head2 == false && head3 == true)
-            {
-                int patternSkill = Random.Range(4, 7);
-        skillNumber = patternSkill;
-            }
+             skillNumber = patternSkill;
+        }       
+        else if(hp < 1000 && head1 == false && head2 == false && head3 == true)
+        {
+               int patternSkill = Random.Range(4, 7);
+            skillNumber = patternSkill;
+        }
+
+          else if (phase2)
+    {
+       
+        if (hp <= 1500 && head1 == false && head2 == false)
+        {
+               int patternSkill = Random.Range(4, 7); 
+            skillNumber = patternSkill;
+            speed = 15f;
+            waitTimes = 6f;
+        }
+        
+    }
+    }
         
         patternBoss();
         StartCoroutine(waitTime());
@@ -349,11 +378,6 @@ public class HydraBoss : enemyHP
 {
     hp -= damageAmount;
     UpdateHealthSlider(); 
-    if (hp <= 0 && !isDead)
-    {
-        isDead = true;
-        StartCoroutine(Die()); 
-    }
 }
 
 }

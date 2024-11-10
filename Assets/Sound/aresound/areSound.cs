@@ -28,7 +28,7 @@ public class areSound : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") || collision.CompareTag("dashMode"))
         {
            
             SoundManager.instance.StopBGM(1, 2);

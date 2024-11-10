@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 
 public class Attack : Movement
@@ -17,6 +18,7 @@ public class Attack : Movement
     public GameObject hitBlockLeft;
 
     public GameObject Sonicblow;
+    public TextMeshProUGUI cooldownslash;
 
     protected void UpdateHitBlockPosition()
     {
@@ -59,6 +61,7 @@ public class Attack : Movement
 
         if (Input.GetKeyDown(KeyCode.S) && canSlash)
         {
+            SoundManager.instance.PlaySFX("player", 1,6);
             animator.SetBool("isSlash", true);
             IAISLASH();
             canSlash = false;
@@ -67,9 +70,9 @@ public class Attack : Movement
         }
     }
 
-    private void StartAttackSequence()
+    protected void StartAttackSequence()
     {
-        int randomDmg = Random.Range(7, 18);
+        int randomDmg = Random.Range(10, 20);
         damage = randomDmg;
         Debug.Log("dmg = " + damage);
 
@@ -179,7 +182,7 @@ public class Attack : Movement
 
     protected void IAISLASH()
     {
-         int randomDmg = Random.Range(5, 12);
+         int randomDmg = Random.Range(9, 12);
         damage = randomDmg;
         Debug.Log("dmg = " + damage);
         
@@ -194,11 +197,24 @@ public class Attack : Movement
             slash.transform.localScale = new Vector2(-1, 1);
         }
     }
-    protected IEnumerator cooldownSlash()
+     protected IEnumerator cooldownSlash()
     {
-        yield return new WaitForSeconds(1.75f);
+        float cooldownDuration = 1.5f;
+        float remainingTime = cooldownDuration;
+
+        while (remainingTime > 0)
+        {
+            cooldownslash.text = $"{remainingTime:F1}";
+            yield return new WaitForSeconds(0.1f);
+            remainingTime -= 0.1f;
+        }
+
+        cooldownslash.text = "Ready";
         canSlash = true;
     }
+
+    
+
     protected IEnumerator waitForSlash()
     {
         yield return new WaitForSeconds(0.5f);

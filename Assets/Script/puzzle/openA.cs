@@ -41,7 +41,7 @@ public class openA : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") || collision.CompareTag("dashMode"))
         {
             isInTrigger = true;
         }
@@ -49,7 +49,7 @@ public class openA : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") || collision.CompareTag("dashMode"))
         {
             isInTrigger = false;
         }
