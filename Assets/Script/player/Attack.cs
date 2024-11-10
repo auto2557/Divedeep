@@ -61,7 +61,7 @@ public class Attack : Movement
 
         if (Input.GetKeyDown(KeyCode.S) && canSlash)
         {
-            SoundManager.instance.PlaySFX("player", 1,6);
+            SoundManager.instance.PlaySFX("player", 3,0);
             animator.SetBool("isSlash", true);
             IAISLASH();
             canSlash = false;
@@ -104,6 +104,7 @@ public class Attack : Movement
     protected void PlayJumpAttack()
     {
         isAttacking = true;
+         SoundManager.instance.PlaySFX("player", 3,0);
         animator.Play("JumpAttack");
 
         if (!facingRight)
@@ -126,10 +127,12 @@ public class Attack : Movement
         {
             case 1:
                 animator.Play("Attack4");
+                SoundManager.instance.PlaySFX("player", 4,0);
                 AdjustHitBlockSize(new Vector2(0.7f, 0.7f));
                 break;
             case 2:
                 animator.Play("Attack2");
+                SoundManager.instance.PlaySFX("player", 5,0);
                 AdjustHitBlockSize(new Vector2(0.9f, 0.9f));
                 break;
             case 3:
@@ -142,6 +145,7 @@ public class Attack : Movement
                 {
                     rb.velocity = Vector2.one;
                 }
+                SoundManager.instance.PlaySFX("player", 6,0);
                 AdjustHitBlockSize(new Vector2(1.2f, 1.2f));
                 break;
         }
