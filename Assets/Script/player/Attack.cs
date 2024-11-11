@@ -186,7 +186,7 @@ public class Attack : Movement
 
     protected void IAISLASH()
     {
-         int randomDmg = Random.Range(9, 12);
+         int randomDmg = Random.Range(25, 35);
         damage = randomDmg;
         Debug.Log("dmg = " + damage);
         

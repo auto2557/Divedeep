@@ -24,7 +24,7 @@ public class LaserController : MonoBehaviour
 
     private void Start()
     {
-        int Randomdmg = Random.Range(2, 6);
+        int Randomdmg = Random.Range(4, 6);
         laserDamage = Randomdmg;
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.positionCount = 2;

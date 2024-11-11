@@ -30,7 +30,7 @@ public class Novabeam : MonoBehaviour
 
     public virtual IEnumerator attack()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         redZone.SetActive(false);
         novabeam.SetTrigger("attack");
         atkHitblock.SetActive(true);

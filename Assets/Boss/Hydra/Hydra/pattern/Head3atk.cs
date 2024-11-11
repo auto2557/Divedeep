@@ -18,14 +18,14 @@ public class Head3atk : HeadAtk
 
     public override IEnumerator redZonealert()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         redZone.SetActive(true);
           StartCoroutine(attack());
     }
 
     public override IEnumerator attack()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         redZone.SetActive(false);
           StartCoroutine(attackhitblock());
         hydra.SetTrigger("attack");

@@ -134,7 +134,7 @@ public class HydraBoss : enemyHP
 
         }
         else if ((hp <= 0 && phase1 == true) && !hasSwitchedBGM)
-{
+        {
     LightPhase2.SetActive(true);
             Halo.SetActive(true);
     phase1 = false;
@@ -144,7 +144,11 @@ public class HydraBoss : enemyHP
     healthSlider.maxValue = maxHP;
     healthSlider.value = maxHP;
             spawnMissile[1].SetActive(true);
-        } 
+        }
+        else if (hp <= 0 && phase2 == true)
+        {
+            StartCoroutine(dead());
+        }
     }
 
   public void UpdateHealthSlider()
@@ -187,6 +191,10 @@ public class HydraBoss : enemyHP
         hitblock[0].SetActive(false);
         hitblock[1].SetActive(false);
         hitblock[2].SetActive(false);
+        hitblock[3].SetActive(false);
+        hitblock[4].SetActive(false);
+        hitblock[5].SetActive(false);
+        hitblock[6].SetActive(false);
 
         part[0].SetBool("ult",false);
          part[1].SetBool("ult",false);
@@ -196,6 +204,9 @@ public class HydraBoss : enemyHP
 
         skill7.SetActive(false);
         skill8.SetActive(false);
+
+       
+
 
         ULTboss.SetActive(false);
 
@@ -294,6 +305,13 @@ public class HydraBoss : enemyHP
                 speed = 3f;
                 waitTimes = 8f;
             }
+            else if (hp <= 2500 && head1 == false && head2 == false)
+            {
+                int patternSkill = Random.Range(7, 9);
+                skillNumber = patternSkill;
+                speed = 3f;
+                waitTimes = 8f;
+            }
             else if (hp <= 2000 && head1 == false && head2 == false)
             {
                 int patternSkill = Random.Range(5, 9);
@@ -307,10 +325,6 @@ public class HydraBoss : enemyHP
                 skillNumber = patternSkill;
                 speed = 3f;
                 waitTimes = 8f;
-            }
-            else if (hp <= 0 && head1 == false && head2 == false)
-            {
-                StartCoroutine(dead());
             }
 
         }
@@ -330,7 +344,7 @@ public class HydraBoss : enemyHP
     switch (skillNumber)
     {
         case 1:
-            isMoving = false;
+            isMoving = true;
             if (head1)
             {
                 redzone[0].SetActive(true);
@@ -341,7 +355,7 @@ public class HydraBoss : enemyHP
             break;
 
         case 2:
-            isMoving = false;
+            isMoving = true;
             if (head2)
             {
                 redzone[1].SetActive(true);
@@ -351,7 +365,7 @@ public class HydraBoss : enemyHP
             }
             break;
 
-        case 3:
+        case 4:
             isMoving = true;
             if (head3)
             {
@@ -362,9 +376,9 @@ public class HydraBoss : enemyHP
             }
             break;
 
-        case 4:
-            isMoving = true;
-            if (head1)
+        case 3:
+                isMoving = false;
+                if (head1)
             {
                 redzone[0].SetActive(true);
                 hitblock[0].SetActive(true);
@@ -389,7 +403,8 @@ public class HydraBoss : enemyHP
             if (head1 || head2 || head3)
             {
                 isMoving = true;
-                gameObject.AddComponent<LaserSpawner>();
+                    Camera.main.orthographicSize = 9;
+                    StartCoroutine(laserspawn());
             }
             break;
 
@@ -397,7 +412,7 @@ public class HydraBoss : enemyHP
             if (head1 || head2 || head3)
             {
                 Dimension.SetActive(true);
-                waitTimes = 18f;
+                waitTimes = 10f;
                 isMoving = false;
                 ULTboss.SetActive(true);
                 for (int i = 0; i < part.Length; i++)
@@ -409,27 +424,39 @@ public class HydraBoss : enemyHP
             case 7:
                 if(head1 || head2 || head3)
                 {
-                    Camera.main.orthographicSize = 3f;
+                    Camera.main.orthographicSize = 4f;
+                    skill7.SetActive(true);
                     redzone[3].SetActive(true);
                     redzone[4].SetActive(true);
-                    skill7.SetActive(true);
+                    hitblock[3].SetActive(true);
+                    hitblock[4].SetActive(true);
+
                     hydra[5].AddComponent<Novabeam>();
                     hydra[6].AddComponent<Novabeam2>();
-                    waitTimes = 8f;
+
+                    waitTimes = 4f;
                     isMoving = false;
+
+                   
                 }
                 break;
             case 8:
                 if (head1 || head2 || head3)
                 {
-                    Camera.main.orthographicSize = 3f;
+                    Camera.main.orthographicSize = 4f;
+                 
+                    skill8.SetActive(true);
                     redzone[5].SetActive(true);
                     redzone[6].SetActive(true);
-                    skill8.SetActive(true);
+                    hitblock[5].SetActive(true);
+                    hitblock[6].SetActive(true);
+
                     hydra[7].AddComponent<Novabeam>();
                     hydra[8].AddComponent<Novabeam2>();
-                    waitTimes = 8f;
+                    waitTimes = 4f;
                     isMoving = false;
+
+                  
                 }
                 break;
         }
@@ -461,6 +488,12 @@ public class HydraBoss : enemyHP
     {
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene("EndCutSCENE"); 
+    }
+
+    IEnumerator laserspawn()
+    {
+        yield return new WaitForSeconds(1f);
+        gameObject.AddComponent<LaserSpawner>();
     }
 
     public void TakeDamage(int damageAmount)
