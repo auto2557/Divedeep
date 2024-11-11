@@ -30,7 +30,7 @@ public class HydraBoss : enemyHP
     public bool head2 = true;
     private bool head3 = true;
 
-    private  int maxHP = 4000;
+    private  int maxHP = 3000;
 
     public float waitTimes;
      private bool isMoving = false;
@@ -143,7 +143,8 @@ public class HydraBoss : enemyHP
     hp = maxHP;
     healthSlider.maxValue = maxHP;
     healthSlider.value = maxHP;
-} 
+            spawnMissile[1].SetActive(true);
+        } 
     }
 
   public void UpdateHealthSlider()
@@ -248,7 +249,7 @@ public class HydraBoss : enemyHP
         LaserSpawner scriptToRemove8 = gameObject.GetComponent<LaserSpawner>();
         if (scriptToRemove8 != null)
         {
-            Destroy(scriptToRemove4);
+            Destroy(scriptToRemove8);
         }
 
         StartCoroutine(coolDownskill());
@@ -258,65 +259,71 @@ public class HydraBoss : enemyHP
     {
         yield return new WaitForSeconds(4f);
 
-         if (phase1)
-    {
-      
-        if (hp > 3000 && head1 && head2 && head3)
+        if (phase1)
         {
-               int patternSkill = Random.Range(1, 5);
-            skillNumber = patternSkill;
-        }
-        else if (hp <= 3000 && hp > 2000 && head1 && head2 && head3)
-        {
-               int patternSkill = Random.Range(4, 6);
-            skillNumber = patternSkill;
-        }
-        else if(hp<= 2000 && hp > 1000 && head1 == false && head2 == true && head3 == true)
-        {
+
+            if (hp >= 3000 && head1 && head2 && head3)
+            {
+                int patternSkill = Random.Range(1, 9);
+                skillNumber = patternSkill;
+            }
+            else if (hp <= 3000 && hp > 2000 && head1 && head2 && head3)
+            {
+                int patternSkill = Random.Range(4, 6);
+                skillNumber = patternSkill;
+            }
+            else if (hp <= 2000 && hp > 1000 && head1 == false && head2 == true && head3 == true)
+            {
                 int patternSkill = Random.Range(2, 7);
-             skillNumber = patternSkill;
-        }       
-        else if(hp < 1000 && head1 == false && head2 == false && head3 == true)
-        {
-               int patternSkill = Random.Range(4, 7);
-            skillNumber = patternSkill;
+                skillNumber = patternSkill;
+            }
+            else if (hp < 1000 && head1 == false && head2 == false && head3 == true)
+            {
+                int patternSkill = Random.Range(4, 7);
+                skillNumber = patternSkill;
+            }
         }
 
-          else if (phase2)
-    {
-       
-        if (hp <= 3000 && head1 == false && head2 == false)
+        else if (phase2)
         {
-               int patternSkill = Random.Range(4, 9); 
-            skillNumber = patternSkill;
-            speed = 15f;
-            waitTimes = 6f;
-        }
-        else if (hp <= 2000 && head1 == false && head2 == false)
-                {
-                    int patternSkill = Random.Range(5, 9);
-                    skillNumber = patternSkill;
-                    speed = 15f;
-                    waitTimes = 6f;
-                }
 
-
-           }
+            if (hp <= 3000 && head1 == false && head2 == false)
+            {
+                int patternSkill = Random.Range(4, 9);
+                skillNumber = patternSkill;
+                speed = 3f;
+                waitTimes = 8f;
+            }
+            else if (hp <= 2000 && head1 == false && head2 == false)
+            {
+                int patternSkill = Random.Range(5, 9);
+                skillNumber = patternSkill;
+                speed = 3f;
+                waitTimes = 8f;
+            }
             else if (hp <= 1000 && head1 == false && head2 == false)
             {
                 int patternSkill = Random.Range(6, 9);
                 skillNumber = patternSkill;
-                speed = 15f;
-                waitTimes = 6f;
+                speed = 3f;
+                waitTimes = 8f;
+            }
+            else if (hp <= 0 && head1 == false && head2 == false)
+            {
+                StartCoroutine(dead());
             }
 
+        }
 
-        
-    }
-        
+
+
+
+
+
         patternBoss();
         StartCoroutine(waitTime());
     }
+    
 
     private void patternBoss()
 {
@@ -400,7 +407,7 @@ public class HydraBoss : enemyHP
             }
             break;
             case 7:
-                if(phase2)
+                if(head1 || head2 || head3)
                 {
                     Camera.main.orthographicSize = 3f;
                     redzone[3].SetActive(true);
@@ -413,7 +420,7 @@ public class HydraBoss : enemyHP
                 }
                 break;
             case 8:
-                if (phase2)
+                if (head1 || head2 || head3)
                 {
                     Camera.main.orthographicSize = 3f;
                     redzone[5].SetActive(true);

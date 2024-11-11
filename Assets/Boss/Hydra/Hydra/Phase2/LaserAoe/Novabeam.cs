@@ -23,14 +23,14 @@ public class Novabeam : MonoBehaviour
 
     public virtual IEnumerator redZonealert()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         redZone.SetActive(true);
         StartCoroutine(attack());
     }
 
     public virtual IEnumerator attack()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(2f);
         redZone.SetActive(false);
         novabeam.SetTrigger("attack");
         atkHitblock.SetActive(true);
