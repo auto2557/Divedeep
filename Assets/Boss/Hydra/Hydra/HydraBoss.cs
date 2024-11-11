@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class HydraBoss : enemyHP
 {
     public Transform player; 
-    private player playerscript;
+    public player playerscript;
     public float speed;
     private Animator animator;
     public Animator[] part;
@@ -22,6 +22,9 @@ public class HydraBoss : enemyHP
     public GameObject[] hitblock;
     public GameObject ULTboss;
     public GameObject[] spawnMissile;
+    public GameObject skill7;
+    public GameObject skill8;
+    public GameObject Halo;
 
     public bool head1 = true;
     public bool head2 = true;
@@ -55,7 +58,10 @@ public class HydraBoss : enemyHP
     hitblock[1].SetActive(false);
     hitblock[2].SetActive(false);
 
-    ULTboss.SetActive(false);
+        skill7.SetActive(false);
+        skill8.SetActive(false);
+
+        ULTboss.SetActive(false);
 
     Dictionary<int, int> bgmSelections = new Dictionary<int, int>
     {
@@ -68,7 +74,7 @@ public class HydraBoss : enemyHP
     speed = 1.2f;
 
   
-    GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+    /*GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
     if (playerObject != null)
     {
         player = playerObject.transform;
@@ -81,7 +87,7 @@ public class HydraBoss : enemyHP
     {
         player = dashModeObject.transform;  
         playerscript = playerObject.GetComponent<player>(); 
-    }
+    }*/
 
     hp = maxHP;
     rb = GetComponent<Rigidbody2D>();
@@ -130,9 +136,10 @@ public class HydraBoss : enemyHP
         else if ((hp <= 0 && phase1 == true) && !hasSwitchedBGM)
 {
     LightPhase2.SetActive(true);
+            Halo.SetActive(true);
     phase1 = false;
     phase2 = true;
-    maxHP = 1500;
+    maxHP = 3000;
     hp = maxHP;
     healthSlider.maxValue = maxHP;
     healthSlider.value = maxHP;
@@ -172,6 +179,10 @@ public class HydraBoss : enemyHP
         redzone[0].SetActive(false);
         redzone[1].SetActive(false);
         redzone[2].SetActive(false);
+        redzone[3].SetActive(false);
+        redzone[4].SetActive(false);
+        redzone[5].SetActive(false);
+        redzone[6].SetActive(false);
         hitblock[0].SetActive(false);
         hitblock[1].SetActive(false);
         hitblock[2].SetActive(false);
@@ -182,7 +193,10 @@ public class HydraBoss : enemyHP
            part[3].SetBool("ult",false);
             part[4].SetBool("ult",false);
 
-         ULTboss.SetActive(false);
+        skill7.SetActive(false);
+        skill8.SetActive(false);
+
+        ULTboss.SetActive(false);
 
         Camera.main.orthographicSize = 2.409138f;
         
@@ -207,8 +221,32 @@ public class HydraBoss : enemyHP
             Destroy(scriptToRemove3);
         }
 
-        LaserSpawner scriptToRemove4 = gameObject.GetComponent<LaserSpawner>();
+        Novabeam scriptToRemove4 = hydra[5].GetComponent<Novabeam>();
         if (scriptToRemove4 != null)
+        {
+            Destroy(scriptToRemove4);
+        }
+
+        Novabeam2 scriptToRemove5 = hydra[6].GetComponent<Novabeam2>();
+        if (scriptToRemove5 != null)
+        {
+            Destroy(scriptToRemove5);
+        }
+
+        Novabeam scriptToRemove6 = hydra[7].GetComponent<Novabeam>();
+        if (scriptToRemove6 != null)
+        {
+            Destroy(scriptToRemove6);
+        }
+
+        Novabeam2 scriptToRemove7 = hydra[8].GetComponent<Novabeam2>();
+        if (scriptToRemove7 != null)
+        {
+            Destroy(scriptToRemove7);
+        }
+
+        LaserSpawner scriptToRemove8 = gameObject.GetComponent<LaserSpawner>();
+        if (scriptToRemove8 != null)
         {
             Destroy(scriptToRemove4);
         }
@@ -218,7 +256,7 @@ public class HydraBoss : enemyHP
 
     IEnumerator coolDownskill()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(4f);
 
          if (phase1)
     {
@@ -230,7 +268,7 @@ public class HydraBoss : enemyHP
         }
         else if (hp <= 3000 && hp > 2000 && head1 && head2 && head3)
         {
-               int patternSkill = Random.Range(1, 6);
+               int patternSkill = Random.Range(4, 6);
             skillNumber = patternSkill;
         }
         else if(hp<= 2000 && hp > 1000 && head1 == false && head2 == true && head3 == true)
@@ -247,15 +285,33 @@ public class HydraBoss : enemyHP
           else if (phase2)
     {
        
-        if (hp <= 1500 && head1 == false && head2 == false)
+        if (hp <= 3000 && head1 == false && head2 == false)
         {
-               int patternSkill = Random.Range(4, 7); 
+               int patternSkill = Random.Range(4, 9); 
             skillNumber = patternSkill;
             speed = 15f;
             waitTimes = 6f;
         }
+        else if (hp <= 2000 && head1 == false && head2 == false)
+                {
+                    int patternSkill = Random.Range(5, 9);
+                    skillNumber = patternSkill;
+                    speed = 15f;
+                    waitTimes = 6f;
+                }
+
+
+           }
+            else if (hp <= 1000 && head1 == false && head2 == false)
+            {
+                int patternSkill = Random.Range(6, 9);
+                skillNumber = patternSkill;
+                speed = 15f;
+                waitTimes = 6f;
+            }
+
+
         
-    }
     }
         
         patternBoss();
@@ -343,7 +399,33 @@ public class HydraBoss : enemyHP
                 }
             }
             break;
-    }
+            case 7:
+                if(phase2)
+                {
+                    Camera.main.orthographicSize = 3f;
+                    redzone[3].SetActive(true);
+                    redzone[4].SetActive(true);
+                    skill7.SetActive(true);
+                    hydra[5].AddComponent<Novabeam>();
+                    hydra[6].AddComponent<Novabeam2>();
+                    waitTimes = 8f;
+                    isMoving = false;
+                }
+                break;
+            case 8:
+                if (phase2)
+                {
+                    Camera.main.orthographicSize = 3f;
+                    redzone[5].SetActive(true);
+                    redzone[6].SetActive(true);
+                    skill8.SetActive(true);
+                    hydra[7].AddComponent<Novabeam>();
+                    hydra[8].AddComponent<Novabeam2>();
+                    waitTimes = 8f;
+                    isMoving = false;
+                }
+                break;
+        }
 }
 
 

@@ -122,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   maxLaserLength: 100
-  laserGrowthSpeed: 25
+  laserGrowthSpeed: 23
   extraDistanceAfterHit: 20
   laserDamage: 0
 --- !u!120 &5590924434528066432

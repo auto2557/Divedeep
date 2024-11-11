@@ -29,8 +29,8 @@ public class LaserSpawner : MonoBehaviour
 
     void Start()
     {
-        yDistance = 7.5f;
-        Camera.main.orthographicSize = 7;
+        yDistance = 9f;
+        Camera.main.orthographicSize = 9;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         laserPrefab = GameObject.FindGameObjectWithTag("hydrabeam");
         ScheduleNextSpawn();

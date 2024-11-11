@@ -59,13 +59,13 @@ public class Movement : MonoBehaviour
             if (isGrounded)
             {
                 Jump(firstJumpForce);  
-                SoundManager.instance.PlaySFX("player", 1,4);
+                SoundManager.instance.PlaySFX("player", 1,0);
             }
             else if (canDoubleJump)
             {
                 Jump(secondJumpForce); 
                 canDoubleJump = false;  
-                SoundManager.instance.PlaySFX("player", 2,2);
+                SoundManager.instance.PlaySFX("player", 2,0);
             }
         }
 
