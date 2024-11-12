@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using TMPro;
@@ -13,12 +13,55 @@ public class Attack : Movement
     protected bool isAttacking = false;
     protected bool inputBuffered = false;
     protected bool canSlash = true;
+    protected bool isRangedMode = false;
 
     public GameObject hitBlockRight;
     public GameObject hitBlockLeft;
 
     public GameObject Sonicblow;
+    public GameObject rangedProjectile;
     public TextMeshProUGUI cooldownslash;
+
+ 
+
+    protected void HandleRangedAttack()
+    {
+        if (Input.GetKey(KeyCode.X))
+        {
+            if (!isAttacking)
+            {
+                isAttacking = true;
+                animator.SetBool("attackRange",true);
+                StartCoroutine(FireRangedAttack());
+            }
+            
+        }
+        else
+        {
+            animator.SetBool("attackRange", false);
+        }
+    }
+
+    protected IEnumerator FireRangedAttack()
+    {
+        rb.velocity = Vector2.zero; 
+        int randomDmg = Random.Range(3, 8);
+        damage = randomDmg;
+        Debug.Log("Ranged dmg = " + damage);
+
+        Vector2 fireDirection = facingRight ? Vector2.right : Vector2.left;
+        GameObject projectile = Instantiate(rangedProjectile, transform.position, Quaternion.identity);
+        projectile.GetComponent<Rigidbody2D>().velocity = fireDirection * 5f;
+
+        if (!facingRight)
+        {
+            projectile.transform.localScale = new Vector2(-1, 1);
+        }
+
+        yield return new WaitForSeconds(0.3f); 
+        isAttacking = false;
+    }
+
 
     protected void UpdateHitBlockPosition()
     {
@@ -41,6 +84,11 @@ public class Attack : Movement
 
     protected void HandleAttack()
     {
+        if (isRangedMode)
+        {
+            return; 
+        }
+
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
         if (Input.GetKeyDown(KeyCode.X))
@@ -61,7 +109,7 @@ public class Attack : Movement
 
         if (Input.GetKeyDown(KeyCode.S) && canSlash)
         {
-            SoundManager.instance.PlaySFX("player", 3,0);
+            SoundManager.instance.PlaySFX("player", 3, 0);
             animator.SetBool("isSlash", true);
             IAISLASH();
             canSlash = false;
@@ -69,6 +117,7 @@ public class Attack : Movement
             StartCoroutine(waitForSlash());
         }
     }
+
 
     protected void StartAttackSequence()
     {

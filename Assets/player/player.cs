@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -22,6 +22,25 @@ public class player : Attack
         {
             return;
         }
+
+        if (Input.GetKeyDown(KeyCode.F)) 
+        {
+            isRangedMode = !isRangedMode;
+            Debug.Log("Mode switched to " + (isRangedMode ? "Ranged" : "Melee"));
+        }
+
+        if (isRangedMode)
+        {
+            HandleRangedAttack();
+            animator.SetBool("idle2", true);
+        }
+        else
+        {
+            HandleAttack();
+            animator.SetBool("idle2", false);
+        }
+
+        UpdateHitBlockPosition();
         CheckGround();
         movement();
         AnimatePlayer();
