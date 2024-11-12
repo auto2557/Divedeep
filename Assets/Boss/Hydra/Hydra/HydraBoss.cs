@@ -30,7 +30,7 @@ public class HydraBoss : enemyHP
     public bool head2 = true;
     private bool head3 = true;
 
-    private  int maxHP = 3000;
+    private  int maxHP = 4000;
 
     public float waitTimes;
      private bool isMoving = false;
@@ -42,7 +42,10 @@ public class HydraBoss : enemyHP
 
     void Start()
 {
-    phase1 = true;
+
+        SoundManager.instance.PlaySFX("boss", 0, 1);
+
+        phase1 = true;
     phase2 = false;
 
     isMoving = false;
@@ -113,7 +116,6 @@ public class HydraBoss : enemyHP
 
        if (hp <= 2000 && hp>1000 && phase1 == true)
         {
-      
             part[0].SetTrigger("die");
             head[0].SetActive(false);
             head1 = false;
@@ -135,11 +137,11 @@ public class HydraBoss : enemyHP
         }
         else if ((hp <= 0 && phase1 == true) && !hasSwitchedBGM)
         {
-    LightPhase2.SetActive(true);
+            LightPhase2.SetActive(true);
             Halo.SetActive(true);
     phase1 = false;
     phase2 = true;
-    maxHP = 3000;
+    maxHP = 4000;
     hp = maxHP;
     healthSlider.maxValue = maxHP;
     healthSlider.value = maxHP;
@@ -298,32 +300,32 @@ public class HydraBoss : enemyHP
         else if (phase2)
         {
 
-            if (hp <= 3000 && head1 == false && head2 == false)
+            if (hp <= 4000 && head1 == false && head2 == false)
             {
                 int patternSkill = Random.Range(4, 9);
                 skillNumber = patternSkill;
-                speed = 3f;
+                speed = 2f;
                 waitTimes = 8f;
             }
-            else if (hp <= 2500 && head1 == false && head2 == false)
+            else if (hp <= 2700 && head1 == false && head2 == false)
             {
                 int patternSkill = Random.Range(7, 9);
                 skillNumber = patternSkill;
-                speed = 3f;
+                speed = 2f;
                 waitTimes = 8f;
             }
             else if (hp <= 2000 && head1 == false && head2 == false)
             {
                 int patternSkill = Random.Range(5, 9);
                 skillNumber = patternSkill;
-                speed = 3f;
+                speed = 2f;
                 waitTimes = 8f;
             }
             else if (hp <= 1000 && head1 == false && head2 == false)
             {
                 int patternSkill = Random.Range(6, 9);
                 skillNumber = patternSkill;
-                speed = 3f;
+                speed = 2f;
                 waitTimes = 8f;
             }
 
@@ -352,7 +354,8 @@ public class HydraBoss : enemyHP
                 hydra[0].AddComponent<Head1atk>();
                 Debug.Log("1");
             }
-            break;
+                waitTimes = 4f;
+                break;
 
         case 2:
             isMoving = true;
@@ -363,7 +366,8 @@ public class HydraBoss : enemyHP
                 hydra[1].AddComponent<Head2atk>();
                 Debug.Log("2");
             }
-            break;
+                waitTimes = 4f;
+                break;
 
         case 4:
             isMoving = true;
@@ -374,9 +378,11 @@ public class HydraBoss : enemyHP
                 hydra[2].AddComponent<Head3atk>();
                 Debug.Log("3");
             }
-            break;
+                waitTimes = 4f;
+                break;
+              
 
-        case 3:
+            case 3:
                 isMoving = false;
                 if (head1)
             {
@@ -397,7 +403,8 @@ public class HydraBoss : enemyHP
                 hydra[2].AddComponent<Head3atk>();
             }
             Debug.Log("4");
-            break;
+                waitTimes = 6f;
+                break;
 
         case 5:
             if (head1 || head2 || head3)
@@ -411,7 +418,8 @@ public class HydraBoss : enemyHP
         case 6:
             if (head1 || head2 || head3)
             {
-                Dimension.SetActive(true);
+                    SoundManager.instance.PlaySFX("boss", 0, 1);
+                    Dimension.SetActive(true);
                 waitTimes = 10f;
                 isMoving = false;
                 ULTboss.SetActive(true);

@@ -24,6 +24,7 @@ public class Novabeam2 : MonoBehaviour
     public virtual IEnumerator redZonealert()
     {
         yield return new WaitForSeconds(1f);
+        SoundManager.instance.PlaySFX("boss", 1, 1);
         redZone.SetActive(true);
         StartCoroutine(attack());
     }
@@ -31,6 +32,7 @@ public class Novabeam2 : MonoBehaviour
     public virtual IEnumerator attack()
     {
         yield return new WaitForSeconds(1f);
+        SoundManager.instance.PlaySFX("boss", 3, 1);
         redZone.SetActive(false);
         novabeam.SetTrigger("attack");
         atkHitblock.SetActive(true);

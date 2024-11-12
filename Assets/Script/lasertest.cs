@@ -24,6 +24,7 @@ public class LaserController : MonoBehaviour
 
     private void Start()
     {
+        SoundManager.instance.PlaySFX("boss", 3, 1);
         int Randomdmg = Random.Range(4, 6);
         laserDamage = Randomdmg;
         lineRenderer = GetComponent<LineRenderer>();

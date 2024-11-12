@@ -19,6 +19,7 @@ public class Head3atk : HeadAtk
     public override IEnumerator redZonealert()
     {
         yield return new WaitForSeconds(1f);
+        SoundManager.instance.PlaySFX("boss", 1, 1);
         redZone.SetActive(true);
           StartCoroutine(attack());
     }
@@ -26,6 +27,7 @@ public class Head3atk : HeadAtk
     public override IEnumerator attack()
     {
         yield return new WaitForSeconds(2f);
+        SoundManager.instance.PlaySFX("boss", 2, 1);
         redZone.SetActive(false);
           StartCoroutine(attackhitblock());
         hydra.SetTrigger("attack");
@@ -36,7 +38,8 @@ public class Head3atk : HeadAtk
     public override IEnumerator attackhitblock()
     {
          yield return new WaitForSeconds(0.5f);
-            atkHitblock.SetActive(true);
+        
+        atkHitblock.SetActive(true);
     }
 
     public override IEnumerator cooldown()

@@ -20,6 +20,7 @@ public class HydraULcharge : MonoBehaviour
 
     void Start()
     {
+        SoundManager.instance.PlaySFX("boss", 4, 1);
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -65,7 +66,8 @@ public class HydraULcharge : MonoBehaviour
 
             if (bulletTimer >= bulletSpawnInterval)
             {
-                bulletTimer = 0f; 
+                bulletTimer = 0f;
+                SoundManager.instance.PlaySFX("boss", 5, 1);
                 ShootHellBullets();
                 canShoot = false; 
             }
@@ -80,7 +82,6 @@ public class HydraULcharge : MonoBehaviour
             float angle = i * (360f / bulletCount);
             Quaternion rotation = Quaternion.Euler(0, 0, angle);
 
-          
             GameObject bullet = Instantiate(bulletPrefab, transform.position, rotation);
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             Vector2 direction = rotation * Vector2.right;
