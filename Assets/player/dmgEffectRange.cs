@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class dmgEffectRange : MonoBehaviour
 {
-    public GameObject Range;
     void Start()
     {
-        Destroy(gameObject, 5f);
+        Destroy(gameObject, 7f);
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))
         {
-            Instantiate(Range, transform.position, transform.rotation);
-            Destroy(Range, 1f);
+            Destroy(gameObject, 0.1f);
         }
     }
 }
