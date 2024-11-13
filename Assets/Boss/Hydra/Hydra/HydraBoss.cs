@@ -39,11 +39,12 @@ public class HydraBoss : enemyHP
       private bool phase1;
       private bool phase2;
       public GameObject LightPhase2;
+    public AudioSource hydraSong2;
 
     void Start()
 {
 
-        SoundManager.instance.PlaySFX("boss", 0, 1);
+        SoundManager.instance.PlaySFX("boss", 4, 1);
 
         phase1 = true;
     phase2 = false;
@@ -137,11 +138,19 @@ public class HydraBoss : enemyHP
         }
         else if ((hp <= 0 && phase1 == true) && !hasSwitchedBGM)
         {
+            SoundManager.instance.StopAllBGM();
+
+            if (hydraSong2 != null)
+            {
+                hydraSong2.Play();
+            }
             LightPhase2.SetActive(true);
             Halo.SetActive(true);
     phase1 = false;
     phase2 = true;
-    maxHP = 4000;
+
+
+            maxHP = 4000;
     hp = maxHP;
     healthSlider.maxValue = maxHP;
     healthSlider.value = maxHP;
@@ -160,9 +169,9 @@ public class HydraBoss : enemyHP
 
     public override void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((collision.CompareTag("hitblock") || collision.CompareTag("slash")) && !isDead && !isHit)
+        if ((collision.CompareTag("hitblock") || collision.CompareTag("slash")) && !isDead)
         {
-            isHit = true;
+          
 
             int damageAmount = Playerscript.damage;
             hp -= damageAmount;
@@ -170,7 +179,7 @@ public class HydraBoss : enemyHP
             ShowDamagePopup(damageAmount);
 
             UpdateHealthSlider();
-            StartCoroutine(ResetHit());
+          
         }
     }
 
@@ -277,22 +286,22 @@ public class HydraBoss : enemyHP
 
             if (hp >= 3000 && head1 && head2 && head3)
             {
-                int patternSkill = Random.Range(1, 9);
+                int patternSkill = Random.Range(1, 5);
                 skillNumber = patternSkill;
             }
             else if (hp <= 3000 && hp > 2000 && head1 && head2 && head3)
             {
-                int patternSkill = Random.Range(4, 6);
+                int patternSkill = Random.Range(3, 5);
                 skillNumber = patternSkill;
             }
             else if (hp <= 2000 && hp > 1000 && head1 == false && head2 == true && head3 == true)
             {
-                int patternSkill = Random.Range(2, 7);
+                int patternSkill = Random.Range(2, 6);
                 skillNumber = patternSkill;
             }
             else if (hp < 1000 && head1 == false && head2 == false && head3 == true)
             {
-                int patternSkill = Random.Range(4, 7);
+                int patternSkill = Random.Range(4, 6);
                 skillNumber = patternSkill;
             }
         }

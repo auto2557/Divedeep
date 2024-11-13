@@ -71,8 +71,8 @@ public class hydramissile : MonoBehaviour
         {
             hydraBoss.TakeDamage(damageMelee);
         }
-
-        anim.SetTrigger("boom");
+            SoundManager.instance.PlaySFX("other", 5, 1);
+            anim.SetTrigger("boom");
         isLaunched = false; 
         rb.velocity = Vector2.zero;
         

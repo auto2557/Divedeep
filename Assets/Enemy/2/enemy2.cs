@@ -19,7 +19,7 @@ public class enemy2 : enemyHP
 
         enem2 = GetComponent<enemy2>();
         bulletSpeed = 5f;
-         hp = 40;
+         hp = 70;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 
@@ -61,10 +61,10 @@ public class enemy2 : enemyHP
 
     public override void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((collision.CompareTag("hitblock") || collision.CompareTag("slash")) && !isDead && !isHit)
+        if ((collision.CompareTag("hitblock") || collision.CompareTag("slash")) && !isDead)
         {
-            isHit = true; 
 
+            SoundManager.instance.PlaySFX("player", 7, 0);
             int damageAmount = Playerscript.damage;  
             hp -= damageAmount;
 
@@ -76,7 +76,7 @@ public class enemy2 : enemyHP
                 StartCoroutine(Die());
             }
 
-            StartCoroutine(ResetHit()); 
+           
         }
     }
 

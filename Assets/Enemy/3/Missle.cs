@@ -30,6 +30,7 @@ public class Missile : MonoBehaviour
     private IEnumerator LaunchAfterDelay()
     {
         yield return new WaitForSeconds(delayBeforeLaunch);
+        SoundManager.instance.PlaySFX("other", 4, 1);
         isLaunched = true;
     }
 
@@ -67,9 +68,18 @@ public class Missile : MonoBehaviour
                 playerHealth.TakeDamage(damageMelee);
             }
                   anim.SetTrigger("boom");
-                isLaunched = false; 
+            SoundManager.instance.PlaySFX("other", 5, 1);
+            isLaunched = false; 
                 rb.velocity = Vector2.zero;
                 Destroy(gameObject,1f);
+        }
+        else if(collision.CompareTag("slash"))
+        {
+            anim.SetTrigger("boom");
+            SoundManager.instance.PlaySFX("other", 5, 1);
+            isLaunched = false;
+            rb.velocity = Vector2.zero;
+            Destroy(gameObject, 1f);
         }
         }
 
@@ -78,6 +88,7 @@ public class Missile : MonoBehaviour
     IEnumerator boom()
     {
         yield return new WaitForSeconds(6f);
+        SoundManager.instance.PlaySFX("other", 5, 1);
         anim.SetTrigger("boom");
         isLaunched = false; 
         rb.velocity = Vector2.zero;

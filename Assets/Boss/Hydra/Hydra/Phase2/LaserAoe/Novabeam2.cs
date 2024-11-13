@@ -31,7 +31,7 @@ public class Novabeam2 : MonoBehaviour
 
     public virtual IEnumerator attack()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.3f);
         SoundManager.instance.PlaySFX("boss", 3, 1);
         redZone.SetActive(false);
         novabeam.SetTrigger("attack");

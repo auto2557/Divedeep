@@ -6,7 +6,8 @@ public class dmgEffectRange : MonoBehaviour
 {
     void Start()
     {
-        Destroy(gameObject, 7f);
+        SoundManager.instance.PlaySFX("player", 0, 0);
+        Destroy(gameObject, 4f);
     }
 
     void OnTriggerEnter2D(Collider2D collision)

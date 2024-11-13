@@ -1,12 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class enemy1 : EnemyPatrolByDistance
 {
+    private enemy1 enem1;
     void Start()
     {
-        hp = 40;
+        enem1 = GetComponent<enemy1>();
+        hp = 60;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 
@@ -58,5 +61,15 @@ public class enemy1 : EnemyPatrolByDistance
         }
     }
 
-    
+    public override IEnumerator Die()
+    {
+        anim.SetTrigger("Die");
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        gameObject.GetComponent<Rigidbody2D>().simulated = false;
+        enem1.enabled = false;
+        yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
+    }
+
+
 }

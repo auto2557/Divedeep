@@ -8,7 +8,7 @@ public class enemyHP : MonoBehaviour
     public player Playerscript;
     public Animator anim;
     public bool isDead = false;
-    protected bool isHit = false;
+   
 
     public GameObject damagePopupPrefab;  
 
@@ -21,10 +21,10 @@ public class enemyHP : MonoBehaviour
 
     public virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((collision.CompareTag("hitblock") || collision.CompareTag("slash")) && !isDead && !isHit)
+        if ((collision.CompareTag("hitblock") || collision.CompareTag("slash")) && !isDead)
         {
-            isHit = true; 
 
+            SoundManager.instance.PlaySFX("player", 7, 0);
             int damageAmount = Playerscript.damage;  
             hp -= damageAmount;
 
@@ -45,7 +45,7 @@ public class enemyHP : MonoBehaviour
                 StartCoroutine(Die());
             }
 
-            StartCoroutine(ResetHit()); 
+           
         }
     }
 
@@ -55,9 +55,4 @@ public class enemyHP : MonoBehaviour
         damagePopup.GetComponent<DamagePopup>().Setup(damageAmount);
     }
 
-    public IEnumerator ResetHit()
-    {
-        yield return new WaitForSeconds(0.3f); 
-        isHit = false;  
-    }
 }

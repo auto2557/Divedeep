@@ -149,8 +149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 5000
-  speed: 4
-  delayBeforeLaunch: 3
+  speed: 5
+  delayBeforeLaunch: 2
   target: {fileID: 0}
 --- !u!61 &2231601723275854335
 BoxCollider2D:

@@ -1513,7 +1513,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -252, y: -275}
+  m_AnchoredPosition: {x: -208, y: -159}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1029189653
@@ -3416,6 +3416,14 @@ PrefabInstance:
     - {fileID: 6020543225263258320, guid: 2a2afa0351141be4ea6a5d8cd1383252, type: 3}
     - {fileID: 4101280906159938521, guid: 2a2afa0351141be4ea6a5d8cd1383252, type: 3}
     - {fileID: 4775694899212316717, guid: 2a2afa0351141be4ea6a5d8cd1383252, type: 3}
+    - {fileID: 2492679530179085213, guid: 2a2afa0351141be4ea6a5d8cd1383252, type: 3}
+    - {fileID: 7574537175398707339, guid: 2a2afa0351141be4ea6a5d8cd1383252, type: 3}
+    - {fileID: 449281120909622101, guid: 2a2afa0351141be4ea6a5d8cd1383252, type: 3}
+    - {fileID: 3073724615941811767, guid: 2a2afa0351141be4ea6a5d8cd1383252, type: 3}
+    - {fileID: 7101400797606977785, guid: 2a2afa0351141be4ea6a5d8cd1383252, type: 3}
+    - {fileID: 3454489354877090501, guid: 2a2afa0351141be4ea6a5d8cd1383252, type: 3}
+    - {fileID: 7203690476141040170, guid: 2a2afa0351141be4ea6a5d8cd1383252, type: 3}
+    - {fileID: 3545494482975368924, guid: 2a2afa0351141be4ea6a5d8cd1383252, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3477105968763440507, guid: 2a2afa0351141be4ea6a5d8cd1383252, type: 3}
       insertIndex: -1

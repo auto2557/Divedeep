@@ -18,7 +18,7 @@ public class enemy3 : EnemyPatrolByDistance
 
     void Start()
     {
-        hp = 80;
+        hp = 200;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 

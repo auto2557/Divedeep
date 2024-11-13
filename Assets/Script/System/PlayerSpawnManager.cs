@@ -25,15 +25,15 @@ public class PlayerSpawnManager : MonoBehaviour
     {
         anim = GetComponent<Animator>();
 
-        // กำหนดเส้นทางสำหรับไฟล์ JSON ใน Application.persistentDataPath
+       
         saveFilePath = Path.Combine(Application.persistentDataPath, "PlayerPosition.json");
 
-        // Attempt to find the player GameObject and assign it to the player variable
+      
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject != null)
         {
             player = playerObject.transform;
-            LoadPlayerPosition();  // Call this only if player is successfully assigned
+            LoadPlayerPosition();  
         }
         else
         {
@@ -49,6 +49,7 @@ public class PlayerSpawnManager : MonoBehaviour
     {
         if (collision.CompareTag("Player") || collision.CompareTag("dashMode"))
         {
+            SoundManager.instance.PlaySFX("other", 3, 1);
             anim.SetBool("isSave", true);
             SavePlayerPosition();
             Debug.Log("Position saved to JSON file");

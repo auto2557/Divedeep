@@ -15,6 +15,7 @@ public class shootMissile : MonoBehaviour
 
     void Start()
     {
+        SoundManager.instance.PlaySFX("other", 4, 1);
         lastXPosition = target.position.x; 
 
         for (int i = 0; i < spawnCount; i++)

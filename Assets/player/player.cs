@@ -32,11 +32,15 @@ public class player : Attack
         if (isRangedMode)
         {
             HandleRangedAttack();
+            tab2.SetActive(true);
+            tab1.SetActive(false);
             animator.SetBool("idle2", true);
         }
         else
         {
             HandleAttack();
+            tab2.SetActive(false);
+            tab1.SetActive(true);
             animator.SetBool("idle2", false);
         }
 

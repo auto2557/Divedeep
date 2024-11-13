@@ -14,6 +14,8 @@ public class Attack : Movement
     protected bool inputBuffered = false;
     protected bool canSlash = true;
     protected bool isRangedMode = false;
+    public GameObject tab1;
+    public GameObject tab2;
 
     public GameObject hitBlockRight;
     public GameObject hitBlockLeft;
@@ -45,20 +47,20 @@ public class Attack : Movement
     protected IEnumerator FireRangedAttack()
     {
         rb.velocity = Vector2.zero; 
-        int randomDmg = Random.Range(3, 8);
+        int randomDmg = Random.Range(5, 10);
         damage = randomDmg;
         Debug.Log("Ranged dmg = " + damage);
 
         Vector2 fireDirection = facingRight ? Vector2.right : Vector2.left;
         GameObject projectile = Instantiate(rangedProjectile, transform.position, Quaternion.identity);
-        projectile.GetComponent<Rigidbody2D>().velocity = fireDirection * 5f;
+        projectile.GetComponent<Rigidbody2D>().velocity = fireDirection * 7f;
 
         if (!facingRight)
         {
             projectile.transform.localScale = new Vector2(-1, 1);
         }
 
-        yield return new WaitForSeconds(0.3f); 
+        yield return new WaitForSeconds(0.5f); 
         isAttacking = false;
     }
 
@@ -86,19 +88,19 @@ public class Attack : Movement
     {
         if (isRangedMode)
         {
-            return; 
+            return;
         }
 
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X) && !isAttacking)
         {
             inputBuffered = true;
         }
 
         if (isAttacking && stateInfo.normalizedTime < 1f)
         {
-            return;
+            return; 
         }
 
         if (inputBuffered && !isAttacking)
