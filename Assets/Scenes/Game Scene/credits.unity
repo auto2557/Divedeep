@@ -464,8 +464,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -457.11346, y: -1599}
-  m_SizeDelta: {x: 403.3781, y: 50}
+  m_AnchoredPosition: {x: -457.11346, y: -2214}
+  m_SizeDelta: {x: 403.3781, y: 1250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1560721289
 MonoBehaviour:
@@ -500,11 +500,15 @@ MonoBehaviour:
     \u0E0A\u0E32\u0E27\u0E1A\u0E49\u0E32\u0E19\u0E40\u0E01\u0E32\u0E30\n\n\n\nGraphic
     Designer / UX/UI /  Sound Designer\n\n \u0E19\u0E32\u0E22 \u0E40\u0E01\u0E23\u0E34\u0E01\u0E44\u0E01\u0E27\u0E31\u0E25
     \u0E04\u0E33\u0E1C\u0E07\n\n\nArtist / Background\n\n\u0E19\u0E32\u0E07\u0E2A\u0E32\u0E27
-    \u0E27\u0E23\u0E34\u0E28\u0E23\u0E32 \u0E44\u0E1E\u0E42\u0E23\u0E08\u0E19\u0E4C\n\n\nAnimator
-    /  Writer\n\nMr.Sarawut Gankao\n\n\nLogo Design\n\nMr.Asia nitiraks\n\nBGM(1)
+    \u0E27\u0E23\u0E34\u0E28\u0E23\u0E32 \u0E44\u0E1E\u0E42\u0E23\u0E08\u0E19\u0E4C\n\n\n\nAnimator
+    /  Writer\n\nMr.Sarawut Gankao\n\n\nLogo Design\n\nMr.Asia nitiraks\n\n\n\nBGM(1)
     \nHonor of Kings\u3010Doria & Heino\u3011- The Mermaid Song | Piano Cover\nby 
     (YouTube)Tie The Note\n\nBGM(2)\nSuccession (Amiya Medic Cutscene)/\nArknights:
-    Absolved Will Be The Seekers OST Piano Arrangement\nby (YouTube)  ChaconneScott\r\n\n\n\n\n\n"
+    Absolved Will Be The Seekers OST Piano Arrangement\nby (YouTube)  ChaconneScott\r\n\n\n\n\nBoss
+    Fight Music(1)\nLight & Shadow Hiroyuki Sawano feat. Gemie \n~Star Guardian 2019
+    Theme Song(League of Legends)\ninstrumental\n\nBoss Fight Music(2)\nLight & Shadow
+    Hiroyuki Sawano feat. Gemie \n~Star Guardian 2019 Theme Song(League of Legends)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThanks
+    For playing"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cc13935577b1b3f4b8b82c15eaf4375a, type: 2}
   m_sharedMaterial: {fileID: 7267016693637494523, guid: cc13935577b1b3f4b8b82c15eaf4375a, type: 2}
@@ -567,7 +571,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -421.65738, y: -1009.54517, z: -1516.345, w: -2868.4485}
+  m_margin: {x: -421.65738, y: -1009.54517, z: -1516.345, w: -3740.101}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -594,7 +598,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   creditText: {fileID: 1560721289}
-  scrollSpeed: 100
+  scrollSpeed: 50
+  endDelay: 5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
